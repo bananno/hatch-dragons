@@ -6,3 +6,14 @@ body {
 a {
   color: #00B7FF;
 }
+
+.habitat {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px;
+  width: 500px;
+}
+
+.habitat img {
+  height: 50px;
+}

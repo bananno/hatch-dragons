@@ -6,8 +6,12 @@
 
 <div>
     <% habitats.forEach(habitat => { %>
-        <div>
-            <%= habitat %>
+        <div class="habitat">
+            <img src="https://vignette.wikia.nocookie.net/dragonvale/images/5/55/PlantHabitat2013.png">
+            <b><%= habitat.name %> Habitat</b>
+            <form action="/sellHabitat/<%= habitat._id %>" method="post">
+                <button type="submit">sell habitat</button>
+            </form>
         </div>
     <% }); %>
 </div>
