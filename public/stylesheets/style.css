@@ -15,5 +15,6 @@ a {
 }
 
 .habitat img {
-  height: 50px;
+  max-height: 100px;
+  max-width: 100px;
 }
