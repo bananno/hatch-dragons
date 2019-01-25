@@ -18,8 +18,8 @@ function getCurrentUser(req, res, next) {
 }
 
 function loginUser(req, res, next) {
-  let username = req.body.loginUsername;
-  let password = req.body.loginPassword;
+  let username = req.body.username;
+  let password = req.body.password;
 
   if (username && password) {
     User.authenticate(username, password, (error, user) => {

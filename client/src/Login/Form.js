@@ -18,16 +18,39 @@ class Form extends Component {
 
     let fieldType = field.match('password') ? 'password' : 'text';
 
-    return (
-      <input key={i} type={fieldType} name={field} placeholder={field}
-        value={this.state[field]} onChange={handleChange}
-        />
-    );
+    return (<input key={i} type={fieldType} name={field} placeholder={field}
+      value={this.state[field]} onChange={handleChange} required=""/>);
   }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let path = '/' + this.props.title.toLowerCase();
+
+    const response = await fetch(path, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    });
+
+    const responseResult = await response.json();
+
+    if (responseResult.user) {
+      console.log('YES');
+      // this.props.setState({ currentUser: responseResult.user });
+    } else {
+      console.log('NO');
+      console.log(responseResult.message);
+      // this.setState({ formError: responseResult.message });
+    }
+
+  };
 
   render () {
     return (
-      <div>
+      <div onSubmit={this.handleSubmit}>
         <h2>{this.props.title}</h2>
         <form>
           {this.props.fields.map(this.getInputField)}
