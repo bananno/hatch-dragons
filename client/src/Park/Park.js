@@ -12,7 +12,13 @@ class Park extends Component {
           incubator
         </div>
         <div style={{border:"1px solid black"}}>
-          habitats
+          {
+            this.props.rootState.habitats.map((habitat, i) => {
+              return (
+                <div key={i}>{habitat.gameModel}</div>
+              );
+            })
+          }
         </div>
       </div>
     );
