@@ -12,6 +12,7 @@ router.get('/', showHomePage);
 router.post('/buyHabitat/:habitatIndex', buyHabitat);
 router.post('/buyDragon/:dragonIndex/incubate', buyDragon);
 router.post('/sellHabitat/:habitatId', sellHabitat);
+router.post('/hatchDragon/:dragonId/:habitatId', hatchDragon);
 
 function authenticate(req, res, next, callback) {
   User.findById(req.session.userId, (error, user) => {
@@ -112,7 +113,19 @@ function sellHabitat(req, res, next) {
         return res.redirect('/');
       }
     });
+  });
+}
 
+function hatchDragon(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let habitatId = req.params.habitatId;
+    let dragonId = req.params.dragonId;
+
+    Habitat.findById(habitatId, (err, habitat) => {
+      Dragon.findById(dragonId, (err, dragon) => {
+        return res.redirect('/');
+      });
+    });
   });
 }
 
