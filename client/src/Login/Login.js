@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './form.js';
 
 class Login extends Component {
   state = {
@@ -54,6 +55,8 @@ class Login extends Component {
   render () {
     return (
       <div>
+        <Form/>
+        <Form/>
         <div>
           <h2>Login</h2>
           <form onSubmit={this.handleSubmitLogin}>
