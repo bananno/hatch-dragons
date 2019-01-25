@@ -31,8 +31,7 @@ class App extends Component {
     this.setState({ currentUser: null });
   }
 
-  setGlobalState = (newState) => {
-    console.log('setting global state...');
+  setRootState = (newState) => {
     this.setState(newState);
   }
 
@@ -56,7 +55,7 @@ class App extends Component {
         {
           this.state.currentUser
           ? null
-          : <Login state={this.state} setState={this.setGlobalState}/>
+          : <Login rootState={this.state} setRootState={this.setRootState}/>
         }
       </div>
     );

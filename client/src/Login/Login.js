@@ -11,7 +11,7 @@ class Login extends Component {
   }
 
   loginUser = (user) => {
-    this.props.setState({
+    this.props.setRootState({
       currentUser: user
     });
   }
