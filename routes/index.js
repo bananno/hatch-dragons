@@ -9,7 +9,7 @@ router.get('/login', showLogin);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
 router.get('/logout', logoutUser);
-router.post('/buyHabitat', buyHabitat);
+router.post('/buyHabitat/:habitatIndex', buyHabitat);
 router.post('/sellHabitat/:habitatId', sellHabitat);
 
 function authenticate(req, res, next, callback) {
@@ -38,6 +38,7 @@ function showHomePage(req, res, next) {
         view: 'index',
         currentUser: user,
         habitats: habitats,
+        habitatModels: habitatModels,
       });
     });
   });
@@ -116,9 +117,12 @@ function logoutUser(req, res, next) {
 
 function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
+    let index = parseInt(req.params.habitatIndex);
+    let model = habitatModels[index];
+
     let habitatData = {
       user: user,
-      name: 'Plant'
+      name: model.name
     };
 
     Habitat.create(habitatData, (error, habitat) => {
