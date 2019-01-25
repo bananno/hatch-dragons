@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Habitat = require('../models/habitat');
+const habitatModels = require('../gameModels/habitats.js');
 
 router.get('/', showHomePage);
 router.get('/login', showLogin);
@@ -28,6 +29,11 @@ function authenticate(req, res, next, callback) {
 function showHomePage(req, res, next) {
   authenticate(req, res, next, (user) => {
     Habitat.find({ user: user }, (err, habitats) => {
+
+      habitats.forEach(thisHab => {
+        thisHab.model = habitatModels.filter(mod => mod.name == thisHab.name)[0];
+      });
+
       res.render('layout', {
         view: 'index',
         currentUser: user,
