@@ -26,9 +26,12 @@ function authenticate(req, res, next, callback) {
 
 function showHomePage(req, res, next) {
   authenticate(req, res, next, (user) => {
-    res.render('layout', {
-      view: 'index',
-      currentUser: user,
+    Habitat.find({ user: user }, (err, habitats) => {
+      res.render('layout', {
+        view: 'index',
+        currentUser: user,
+        habitats: habitats,
+      });
     });
   });
 };
@@ -106,7 +109,18 @@ function logoutUser(req, res, next) {
 
 function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
-    res.redirect('/');
+    let habitatData = {
+      user: user,
+      name: 'Plant'
+    };
+
+    Habitat.create(habitatData, (error, habitat) => {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/');
+      }
+    });
   });
 }
 

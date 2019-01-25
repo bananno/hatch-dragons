@@ -3,3 +3,11 @@
 <form action="/buyHabitat" method="post">
     <input type="submit" value="buy habitat">
 </form>
+
+<div>
+    <% habitats.forEach(habitat => { %>
+        <div>
+            <%= habitat %>
+        </div>
+    <% }); %>
+</div>
