@@ -18,8 +18,21 @@ a {
   width: 500px;
 }
 
-#store img,
 .habitat img {
   max-height: 100px;
   max-width: 100px;
+}
+
+.store-item {
+  display: inline-block;
+  border: 1px solid black;
+  height: 150px;
+  width: 100px;
+  vertical-align: bottom;
+  padding: 5px;
+}
+
+.store-item img {
+  max-height: 80px;
+  max-width: 80px;
 }

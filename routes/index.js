@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var Habitat = require('../models/habitat');
 const habitatModels = require('../gameModels/habitats.js');
+const dragonModels = require('../gameModels/dragons.js');
 
 router.get('/', showHomePage);
 router.get('/login', showLogin);
@@ -39,6 +40,7 @@ function showHomePage(req, res, next) {
         currentUser: user,
         habitats: habitats,
         habitatModels: habitatModels,
+        dragonModels: dragonModels,
       });
     });
   });
