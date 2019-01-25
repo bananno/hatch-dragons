@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 class Login extends Component {
   state = {
-    loginPostResponse: '',
-    formData: {
+    responseToPost: '',
+    loginForm: {
       loginUsername: '',
-      loginPassword: '',
+      loginPassword: ''
+    },
+    signupForm: {
       username: '',
       password: '',
       passwordConf: '',
@@ -19,11 +21,11 @@ class Login extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ post: this.state.post }),
+      body: JSON.stringify(this.state.loginForm),
     });
     const body = await response.text();
 
-    this.setState({ loginPostResponse: body });
+    this.setState({ responseToPost: body });
   };
 
   handleSubmitSignup = async e => {
@@ -33,17 +35,17 @@ class Login extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ post: this.state.post }),
+      body: JSON.stringify(this.state.signupForm),
     });
     const body = await response.text();
 
-    this.setState({ loginPostResponse: body });
+    this.setState({ responseToPost: body });
   };
 
-  getHandleInputChange = (fieldName) => {
+  getHandleInputChange = (formName, fieldName) => {
     return (e) => {
       let newState = this.state;
-      newState.formData[fieldName] = e.target.value;
+      newState[formName][fieldName] = e.target.value;
       this.setState(newState);
     };
   }
@@ -56,12 +58,12 @@ class Login extends Component {
           <form onSubmit={this.handleSubmitLogin}>
               <input
                 type="text" name="loginUsername" placeholder="username"
-                value={this.state.formData.loginUsername} required=""
-                onChange={this.getHandleInputChange('loginUsername')}/>
+                value={this.state.loginForm.loginUsername} required=""
+                onChange={this.getHandleInputChange('loginForm', 'loginUsername')}/>
               <input
                 type="password" name="loginPassword" placeholder="password"
-                value={this.state.formData.loginPassword} required=""
-                onChange={this.getHandleInputChange('loginPassword')}/>
+                value={this.state.loginForm.loginPassword} required=""
+                onChange={this.getHandleInputChange('loginForm', 'loginPassword')}/>
               <button type="submit">LOGIN</button>
           </form>
         </div>
@@ -70,22 +72,22 @@ class Login extends Component {
           <form onSubmit={this.handleSubmitSignup}>
               <input
                 type="text" name="username" placeholder="username"
-                value={this.state.formData.username} required=""
-                onChange={this.getHandleInputChange('username')}/>
+                value={this.state.signupForm.username} required=""
+                onChange={this.getHandleInputChange('signupForm', 'username')}/>
               <input
                 type="password" name="password" placeholder="password"
-                value={this.state.formData.password} required=""
-                onChange={this.getHandleInputChange('password')}/>
+                value={this.state.signupForm.password} required=""
+                onChange={this.getHandleInputChange('signupForm', 'password')}/>
               <input
                 type="password" name="passwordConf" placeholder="confirm password"
-                value={this.state.formData.passwordConf} required=""
-                onChange={this.getHandleInputChange('passwordConf')}/>
+                value={this.state.signupForm.passwordConf} required=""
+                onChange={this.getHandleInputChange('signupForm', 'passwordConf')}/>
               <button type="submit">REGISTER</button>
           </form>
         </div>
         <p style={{border:"1px solid black"}}>
           <b>RESPONSE:</b><br/>
-          {this.state.loginPostResponse}
+          {this.state.responseToPost}
         </p>
       </div>
     );
