@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import habitatModels from '../gameModels/habitats';
+import dragonModels from '../gameModels/dragons';
+
 class Habitat extends Component {
   render () {
     let habitat = this.props.habitat;
