@@ -11,9 +11,16 @@ class Habitat extends Component {
       return dragon.habitat === habitat._id;
     });
 
+    let gameModel = habitatModels.filter(model => {
+      return model.name === habitat.gameModel;
+    })[0];
+
     return (
       <div className="park-habitat">
         <h3>{habitat.gameModel} Habitat</h3>
+
+        <img src={gameModel.image} className="habitat-image"/>
+
         {dragons.map((dragon, i) => {
           return (
             <div key={i}>{dragon.gameModel} Dragon</div>
