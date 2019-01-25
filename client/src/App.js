@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/getCurrentUser');
+    const response = await fetch('/getData');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -22,7 +22,9 @@ class App extends Component {
 
   visitDatabase = () => {
     this.callApi()
-      .then(res => this.setState({ currentUser: res.user }))
+      .then(res => this.setState({
+        currentUser: res.user,
+      }))
       .catch(err => console.log(err));
   }
 

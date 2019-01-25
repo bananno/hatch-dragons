@@ -9,10 +9,21 @@ const habitatModels = require('../gameModels/habitats.js');
 const dragonModels = require('../gameModels/dragons.js');
 
 router.get('/', showHomePage);
+router.get('/getData', getData);
 router.post('/buyHabitat/:habitatIndex', buyHabitat);
 router.post('/buyDragon/:dragonIndex/incubate', buyDragon);
 router.post('/sellHabitat/:habitatId', sellHabitat);
 router.post('/hatchDragon/:dragonId/:habitatId', hatchDragon);
+
+function getData(req, res) {
+  User.findById(req.session.userId, (error, user) => {
+    if (error || user === null) {
+      return res.send({ user: null });
+    } else {
+      return res.send({ user: user });
+    }
+  });
+}
 
 function authenticate(req, res, next, callback) {
   User.findById(req.session.userId, (error, user) => {
