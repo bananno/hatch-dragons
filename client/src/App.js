@@ -73,7 +73,11 @@ class App extends Component {
         </form>
         <p>{this.state.responseToPost}</p>
 
-        <Login state={this.state} setState={this.setState}/>
+        {
+          this.state.currentUser
+          ? null
+          : <Login state={this.state} setState={this.setState}/>
+        }
       </div>
     );
   }
