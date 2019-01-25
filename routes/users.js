@@ -2,18 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-router.get('/login', showLogin);
 router.get('/getCurrentUser', getCurrentUser);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
 router.post('/logout', logoutUser);
-
-function showLogin(req, res, next) {
-  res.render('layout', {
-    view: 'login',
-    currentUser: null,
-  });
-};
 
 function getCurrentUser(req, res, next) {
   User.findById(req.session.userId, (error, user) => {
