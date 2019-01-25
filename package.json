@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "client": "cd client && npm start",
+    "client": "cd client && yarn start",
     "server": "nodemon app.js",
-    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
-    "dev:server": "cd client && npm build && cd .. && npm start"
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start"
   },
   "dependencies": {
     "bcrypt": "^3.0.3",
