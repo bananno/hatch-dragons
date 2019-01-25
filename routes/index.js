@@ -37,7 +37,7 @@ function showHomePage(req, res, next) {
       Dragon.find({ user: user }, (err, dragons) => {
 
         habitats.forEach(record => {
-          record.model = habitatModels.filter(model => model.name == record.name)[0];
+          record.model = habitatModels.filter(model => model.name == record.gameModel)[0];
         });
 
         dragons.forEach(record => {
@@ -135,7 +135,7 @@ function buyHabitat(req, res, next) {
 
     let habitatData = {
       user: user,
-      name: model.name
+      gameModel: model.name,
     };
 
     Habitat.create(habitatData, (error, habitat) => {

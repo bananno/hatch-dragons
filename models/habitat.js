@@ -6,7 +6,7 @@ const HabitatSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  name: {
+  gameModel: {
     type: String,
     required: true
   }
