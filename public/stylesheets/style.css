@@ -41,3 +41,7 @@ a {
 .incubator img {
   height: 80px;
 }
+
+.place-hatched-egg {
+  display: none;
+}

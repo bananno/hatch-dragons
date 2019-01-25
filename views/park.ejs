@@ -36,9 +36,7 @@
             <div class="inline">
                 <img src="<%= dragon.model.images[0] %>">
                 <b><%= dragon.model.name %> Dragon</b>
-                <form action="/hatchDragon/<%= dragon._id %>" method="post">
-                    <button type="submit">hatch</button>
-                </form>
+                <button>hatch</button>
             </div>
         <% }); %>
     </div>
@@ -50,6 +48,16 @@
             <form action="/sellHabitat/<%= habitat._id %>" method="post">
                 <button type="submit">sell habitat</button>
             </form>
+            <% incubatorEggs.forEach(dragon => { %>
+                <%
+                    let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
+                %>
+                <div class="place-hatched-egg">
+                    <form action="<%= hatchRoute %>" method="post">
+                        <button type="submit">place</button>
+                    </form>
+                </div>
+            <% }); %>
         </div>
     <% }); %>
 </div>
