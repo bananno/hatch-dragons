@@ -8,12 +8,17 @@ const DragonSchema = new mongoose.Schema({
   },
   habitat: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Habitat',
+    ref: 'Habitat'
   },
-  name: {
+  gameModel: {
     type: String,
     required: true
-  }
+  },
+  level: {
+    type: Number,
+    required: true,
+    default: 0
+  },
 });
 
 const Dragon = mongoose.model('Dragon', DragonSchema);
