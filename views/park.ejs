@@ -36,7 +36,7 @@
             <div class="inline">
                 <img src="<%= dragon.model.images[0] %>">
                 <b><%= dragon.model.name %> Dragon</b>
-                <button>hatch</button>
+                <button class="hatch" onClick="hatchEgg('<%= dragon._id %>');">hatch</button>
             </div>
         <% }); %>
     </div>
@@ -52,7 +52,7 @@
                 <%
                     let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
                 %>
-                <div class="place-hatched-egg">
+                <div class="place-hatched-egg" dragon_id="<%= dragon._id %>">
                     <form action="<%= hatchRoute %>" method="post">
                         <button type="submit">place</button>
                     </form>
