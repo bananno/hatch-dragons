@@ -31,6 +31,18 @@
 <div id="park">
     <div class="incubator">
         <b>incubator</b><br>
+
+        <% dragons.forEach(dragon => { %>
+            <% if (dragon.level == 0) { %>
+                <div class="inline">
+                    <img src="<%= dragon.model.image.baby %>">
+                    <b><%= dragon.model.name %> Dragon</b>
+                    <form action="/hatchDragon/<%= dragon._id %>" method="post">
+                        <button type="submit">hatch</button>
+                    </form>
+                </div>
+            <% }; %>
+        <% }); %>
     </div>
 
     <% habitats.forEach(habitat => { %>

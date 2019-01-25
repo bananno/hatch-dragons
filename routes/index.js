@@ -34,17 +34,24 @@ function authenticate(req, res, next, callback) {
 function showHomePage(req, res, next) {
   authenticate(req, res, next, (user) => {
     Habitat.find({ user: user }, (err, habitats) => {
+      Dragon.find({ user: user }, (err, dragons) => {
 
-      habitats.forEach(thisHab => {
-        thisHab.model = habitatModels.filter(mod => mod.name == thisHab.name)[0];
-      });
+        habitats.forEach(record => {
+          record.model = habitatModels.filter(model => model.name == record.name)[0];
+        });
 
-      res.render('layout', {
-        view: 'index',
-        currentUser: user,
-        habitats: habitats,
-        habitatModels: habitatModels,
-        dragonModels: dragonModels,
+        dragons.forEach(record => {
+          record.model = dragonModels.filter(model => model.name == record.gameModel)[0];
+        });
+
+        res.render('layout', {
+          view: 'index',
+          currentUser: user,
+          habitats: habitats,
+          dragons: dragons,
+          habitatModels: habitatModels,
+          dragonModels: dragonModels,
+        });
       });
     });
   });
