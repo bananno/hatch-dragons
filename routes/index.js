@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Habitat = require('../models/habitat');
 
 router.get('/', showHomePage);
 router.get('/login', showLogin);
