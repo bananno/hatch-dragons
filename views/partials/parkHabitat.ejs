@@ -6,28 +6,31 @@
     });
 %>
 
-<div class="habitat">
-    <img src="<%= habitat.model.image %>">
+<div class="habitat basic" habitat_id="<%= habitat._id %>">
+    <div onClick="expandHabitat('<%= habitat._id %>')">
+        <h3 class="title"><%= habitat.gameModel %> Habitat</h3>
 
-    <b><%= habitat.name %> Habitat</b>
+        <img src="<%= habitat.model.image %>" class="habitat-image">
 
-    <form action="/sellHabitat/<%= habitat._id %>" method="post">
-        <button type="submit">sell habitat</button>
-    </form>
+        <% habitatDragons.forEach(dragon => { %>
+            <img src="<%= dragon.model.images[1] %>" class="dragon-image">
+        <% }); %>
 
-    <% habitatDragons.forEach(dragon => { %>
-        <img src="<%= dragon.model.images[1] %>">
-    <% }); %>
+        <% incubatorEggs.forEach(dragon => { %>
+            <%
+                let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
+            %>
 
-    <% incubatorEggs.forEach(dragon => { %>
-        <%
-            let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
-        %>
+            <div class="place-hatched-egg" dragon_id="<%= dragon._id %>">
+                <form action="<%= hatchRoute %>" method="post">
+                    <button type="submit">place</button>
+                </form>
+            </div>
+        <% }); %>
 
-        <div class="place-hatched-egg" dragon_id="<%= dragon._id %>">
-            <form action="<%= hatchRoute %>" method="post">
-                <button type="submit">place</button>
-            </form>
-        </div>
-    <% }); %>
+        <form action="/sellHabitat/<%= habitat._id %>" method="post" class="sell-habitat-form">
+            <button type="submit">sell habitat</button>
+        </form>
+    </div>
+    <button onClick="unExpandHabitats()" class="close-button">close</button><br>
 </div>
