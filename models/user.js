@@ -2,12 +2,6 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
   username: {
     type: String,
     unique: true,
@@ -25,8 +19,8 @@ var UserSchema = new mongoose.Schema({
 });
 
 // authenticate input against database
-UserSchema.statics.authenticate = function(email, password, callback) {
-  User.findOne({ email: email })
+UserSchema.statics.authenticate = function(username, password, callback) {
+  User.findOne({ username: username })
     .exec(function(err, user) {
       if (err) {
         return callback(err)
