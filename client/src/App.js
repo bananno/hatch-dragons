@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Login from './login.js';
 
 class App extends Component {
   state = {
@@ -53,6 +54,7 @@ class App extends Component {
           <button type="submit">Submit</button>
         </form>
         <p>{this.state.responseToPost}</p>
+        <Login/>
       </div>
     );
   }
