@@ -19,7 +19,7 @@
 
     <% dragonModels.forEach((dragon, i) => { %>
         <div class="store-item">
-            <img src="<%= dragon.image.baby %>"><br>
+            <img src="<%= dragon.images[1] %>"><br>
             <%= dragon.name %> Dragon<br>
             <form action="/buyDragon/<%= i %>/incubate" method="post">
                 <input type="submit" value="buy and incubate">
@@ -35,7 +35,7 @@
         <% dragons.forEach(dragon => { %>
             <% if (dragon.level == 0) { %>
                 <div class="inline">
-                    <img src="<%= dragon.model.image.baby %>">
+                    <img src="<%= dragon.model.images[0] %>">
                     <b><%= dragon.model.name %> Dragon</b>
                     <form action="/hatchDragon/<%= dragon._id %>" method="post">
                         <button type="submit">hatch</button>
