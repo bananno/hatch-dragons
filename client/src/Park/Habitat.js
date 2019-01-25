@@ -4,7 +4,9 @@ class Habitat extends Component {
   render () {
     let habitat = this.props.habitat;
 
-    let dragons = this.props.rootState.dragons;
+    let dragons = this.props.rootState.dragons.filter(dragon => {
+      return dragon.habitat === habitat._id;
+    });
 
     return (
       <div className="park-habitat">
