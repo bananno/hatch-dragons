@@ -19,7 +19,7 @@ class Habitat extends Component {
       <div className="park-habitat">
         <h3>{habitat.gameModel} Habitat</h3>
 
-        <img src={gameModel.image} className="habitat-image"/>
+        <img src={gameModel.image} className="habitat-image" alt=""/>
 
         {dragons.map((dragon, i) => {
           return (
