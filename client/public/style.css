@@ -37,3 +37,9 @@
 .login-box-sub button {
   cursor: pointer;
 }
+
+/* OTHER */
+
+.park-habitat {
+  border: 1px solid green;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Habitat from './Habitat';
 
 class Park extends Component {
   render () {
@@ -15,7 +16,7 @@ class Park extends Component {
           {
             this.props.rootState.habitats.map((habitat, i) => {
               return (
-                <div key={i}>{habitat.gameModel}</div>
+                <Habitat key={i} habitat={habitat} rootState={this.props.rootState}/>
               );
             })
           }
