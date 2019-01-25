@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from './form.js';
+import Form from './Form.js';
 
 class Login extends Component {
   state = {
