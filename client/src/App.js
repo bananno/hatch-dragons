@@ -5,12 +5,10 @@ import Park from './Park/Park.js';
 class App extends Component {
   state = {
     currentUser: null,
-  };
+  }
 
   componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ currentUser: res.user }))
-      .catch(err => console.log(err));
+    this.visitDatabase();
   }
 
   callApi = async () => {
@@ -20,7 +18,13 @@ class App extends Component {
     if (response.status !== 200) throw Error(body.message);
 
     return body;
-  };
+  }
+
+  visitDatabase = () => {
+    this.callApi()
+      .then(res => this.setState({ currentUser: res.user }))
+      .catch(err => console.log(err));
+  }
 
   clickLogout = async () => {
     await fetch('/logout', {
@@ -29,7 +33,7 @@ class App extends Component {
         'Content-Type': 'application/json',
       }
     });
-    this.setState({ currentUser: null });
+    this.visitDatabase();
   }
 
   setRootState = (newState) => {
