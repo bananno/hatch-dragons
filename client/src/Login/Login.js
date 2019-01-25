@@ -53,10 +53,12 @@ class Login extends Component {
   }
 
   render () {
+    let list1 = ['username', 'password'];
+    let list2 = ['username', 'password', 'passwordConf'];
     return (
       <div>
-        <Form/>
-        <Form/>
+        <Form title="Login" fields={list1}/>
+        <Form title="Signup" fields={list2}/>
         <div>
           <h2>Login</h2>
           <form onSubmit={this.handleSubmitLogin}>
