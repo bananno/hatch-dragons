@@ -9,6 +9,7 @@ router.post('/login', loginUser);
 router.post('/signup', signupUser);
 router.get('/logout', logoutUser);
 router.post('/buyHabitat', buyHabitat);
+router.post('/sellHabitat/:habitatId', sellHabitat);
 
 function authenticate(req, res, next, callback) {
   User.findById(req.session.userId, (error, user) => {
@@ -121,6 +122,24 @@ function buyHabitat(req, res, next) {
         return res.redirect('/');
       }
     });
+  });
+}
+
+function sellHabitat(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let habitatData = {
+      _id: req.params.habitatId,
+      user: user
+    };
+
+    Habitat.find(habitatData, (error, habitat) => {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/');
+      }
+    });
+
   });
 }
 
