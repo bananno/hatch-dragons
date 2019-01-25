@@ -29,11 +29,11 @@ const habitats = [
   },
   {
     name: 'Metal',
-    image: 'https://vignette.wikia.nocookie.net/dragonvale/images/0/08/WaterHabitat2013.png',
+    image: 'https://vignette.wikia.nocookie.net/dragonvale/images/3/38/MetalHabitat2013.png',
   },
   {
     name: 'Light',
-    image: 'https://vignette.wikia.nocookie.net/dragonvale/images/3/38/MetalHabitat2013.png',
+    image: 'https://vignette.wikia.nocookie.net/dragonvale/images/a/ab/LightHabitat.png',
   },
   {
     name: 'Dark',
