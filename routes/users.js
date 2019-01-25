@@ -27,7 +27,7 @@ function loginUser(req, res, next) {
         return res.send('Wrong username or password.');
       } else {
         req.session.userId = user._id;
-        return res.send(user);
+        return res.send({ user: user });
       }
     });
   } else {
@@ -52,7 +52,7 @@ function signupUser(req, res, next) {
         return res.send('ERROR: ' + error);
       } else {
         req.session.userId = user._id;
-        return res.send(user);
+        return res.send({ user: user });
       }
     });
   } else {
