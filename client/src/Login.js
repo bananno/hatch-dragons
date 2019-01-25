@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Login extends Component {
   state = {
-    responseToPost: '',
+    formError: '',
     loginForm: {
       loginUsername: '',
       loginPassword: ''
@@ -26,8 +26,15 @@ class Login extends Component {
     });
 
     const responseResult = await response.text();
+    const responseUser = await response.user;
 
-    this.setState({ responseToPost: responseResult });
+    if (responseUser) {
+      this.props.setState({ currentUser: responseUser });
+      this.setState({ formError: '' });
+    } else {
+      this.setState({ formError: responseResult });
+    }
+
   };
 
   handleSubmitLogin = event => {
@@ -83,7 +90,7 @@ class Login extends Component {
         </div>
         <p style={{border:"1px solid black"}}>
           <b>RESPONSE:</b><br/>
-          {this.state.responseToPost}
+          {this.state.formError}
         </p>
       </div>
     );

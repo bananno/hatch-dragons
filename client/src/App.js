@@ -72,7 +72,8 @@ class App extends Component {
           <button type="submit">Submit</button>
         </form>
         <p>{this.state.responseToPost}</p>
-        <Login/>
+
+        <Login state={this.state} setState={this.setState}/>
       </div>
     );
   }
