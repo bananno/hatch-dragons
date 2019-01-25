@@ -20,7 +20,15 @@ function getData(req, res) {
     if (error || user === null) {
       return res.send({ user: null });
     } else {
-      return res.send({ user: user });
+      Habitat.find({ user: user }, (err, habitats) => {
+        Dragon.find({ user: user }, (err, dragons) => {
+          return res.send({
+            user: user,
+            habitats: habitats,
+            dragons: dragons,
+          });
+        });
+      });
     }
   });
 }

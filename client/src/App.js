@@ -5,6 +5,8 @@ import Park from './Park/Park.js';
 class App extends Component {
   state = {
     currentUser: null,
+    habitats: [],
+    dragons: [],
   }
 
   componentDidMount() {
@@ -24,6 +26,8 @@ class App extends Component {
     this.callApi()
       .then(res => this.setState({
         currentUser: res.user,
+        habitats: res.habitats,
+        dragons: res.dragons,
       }))
       .catch(err => console.log(err));
   }
