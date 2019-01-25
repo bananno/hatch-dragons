@@ -6,6 +6,7 @@ router.get('/', showHomePage);
 router.get('/login', showLogin);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
+router.get('/logout', logoutUser);
 
 function authenticate(req, res, next, callback) {
   User.findById(req.session.userId, (error, user) => {
@@ -25,7 +26,7 @@ function showHomePage(req, res, next) {
   authenticate(req, res, next, (user) => {
     res.render('layout', {
       view: 'index',
-      user: user,
+      currentUser: user,
     });
   });
 };
@@ -33,7 +34,7 @@ function showHomePage(req, res, next) {
 function showLogin(req, res, next) {
   res.render('layout', {
     view: 'login',
-    user: null,
+    currentUser: null,
   });
 };
 
@@ -127,6 +128,18 @@ function old(req, res, next) {
     var err = new Error('All fields required.');
     err.status = 400;
     return next(err);
+  }
+}
+
+function logoutUser(req, res, next) {
+  if (req.session) {
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
   }
 }
 

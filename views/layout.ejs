@@ -6,6 +6,17 @@
 <body>
     <h1>HatchDragons</h1>
 
+    <% if (currentUser) { %>
+        <p>
+            <b>current user:</b>
+            <%= currentUser.username %>
+        </p>
+        <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/logout">logout</a></li>
+        </ul>
+    <% } %>
+
     <%- include('./' + view) %>
 </body>
 </html>
