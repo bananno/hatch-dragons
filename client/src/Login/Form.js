@@ -38,8 +38,7 @@ class Form extends Component {
     const responseResult = await response.json();
 
     if (responseResult.user) {
-      console.log('YES');
-      // this.props.setState({ currentUser: responseResult.user });
+      this.props.loginUser(responseResult.user);
     } else {
       this.props.showError(responseResult.message);
     }
