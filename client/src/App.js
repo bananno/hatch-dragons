@@ -56,9 +56,13 @@ class App extends Component {
           {this.state.currentUser ? this.state.currentUser.username : '[none]'}
         </p>
 
-        <form onSubmit={this.clickLogout}>
-          <button type="submit">logout</button>
-        </form>
+        {
+          this.state.currentUser
+          ? (<form onSubmit={this.clickLogout}>
+              <button type="submit">logout</button>
+            </form>)
+          : null
+        }
 
         <form onSubmit={this.handleSubmit}>
           <p>
