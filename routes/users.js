@@ -24,14 +24,14 @@ function loginUser(req, res, next) {
   if (username && password) {
     User.authenticate(username, password, (error, user) => {
       if (error || !user) {
-        return res.send('Wrong username or password.');
+        return res.send({ message: 'Wrong username or password.' });
       } else {
         req.session.userId = user._id;
         return res.send({ user: user });
       }
     });
   } else {
-    return res.send('All fields are required.');
+    return res.send({ message: 'All fields are required.' });
   }
 }
 
@@ -43,20 +43,20 @@ function signupUser(req, res, next) {
   };
 
   if (userData.password !== userData.passwordConf) {
-    return res.send('Passwords do not match.');
+    return res.send({ message: 'Passwords do not match.' });
   }
 
   if (req.body.username && req.body.password && req.body.passwordConf) {
     User.create(userData, function (error, user) {
       if (error) {
-        return res.send('ERROR: ' + error);
+        return res.send({ message: 'ERROR: ' + error });
       } else {
         req.session.userId = user._id;
         return res.send({ user: user });
       }
     });
   } else {
-    return res.send('All fields are required.');
+    return res.send({ message: 'All fields are required.' });
   }
 }
 

@@ -47,6 +47,11 @@ class App extends Component {
     this.setState({ currentUser: null });
   }
 
+  setGlobalState = (newState) => {
+    console.log('setting global state...');
+    this.setState(newState);
+  }
+
   render() {
     return (
       <div className="App">
@@ -80,7 +85,7 @@ class App extends Component {
         {
           this.state.currentUser
           ? null
-          : <Login state={this.state} setState={this.setState}/>
+          : <Login state={this.state} setState={this.setGlobalState}/>
         }
       </div>
     );

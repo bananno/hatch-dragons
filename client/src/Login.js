@@ -25,14 +25,12 @@ class Login extends Component {
       body: JSON.stringify(this.state[formName]),
     });
 
-    const responseResult = await response.text();
-    const responseUser = await response.user;
+    const responseResult = await response.json();
 
-    if (responseUser) {
-      this.props.setState({ currentUser: responseUser });
-      this.setState({ formError: '' });
+    if (responseResult.user) {
+      this.props.setState({ currentUser: responseResult.user });
     } else {
-      this.setState({ formError: responseResult });
+      this.setState({ formError: responseResult.message });
     }
 
   };
