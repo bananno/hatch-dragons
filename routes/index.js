@@ -1,7 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../models/user');
-var Habitat = require('../models/habitat');
+const express = require('express');
+const router = express.Router();
+
+const User = require('../models/user');
+const Habitat = require('../models/habitat');
+const Dragon = require('../models/dragon');
+
 const habitatModels = require('../gameModels/habitats.js');
 const dragonModels = require('../gameModels/dragons.js');
 
