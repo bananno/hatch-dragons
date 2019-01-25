@@ -37,6 +37,16 @@ class App extends Component {
     this.setState({ responseToPost: body });
   };
 
+  clickLogout = async () => {
+    await fetch('/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    this.setState({ currentUser: null });
+  }
+
   render() {
     return (
       <div className="App">
@@ -45,6 +55,11 @@ class App extends Component {
           <b>Current user: </b>
           {this.state.currentUser ? this.state.currentUser.username : '[none]'}
         </p>
+
+        <form onSubmit={this.clickLogout}>
+          <button type="submit">logout</button>
+        </form>
+
         <form onSubmit={this.handleSubmit}>
           <p>
             <strong>Post to Server:</strong>

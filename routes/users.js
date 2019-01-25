@@ -6,7 +6,7 @@ router.get('/login', showLogin);
 router.get('/getCurrentUser', getCurrentUser);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
-router.get('/logout', logoutUser);
+router.post('/logout', logoutUser);
 
 function showLogin(req, res, next) {
   res.render('layout', {
