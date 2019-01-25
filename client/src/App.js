@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from './Login/Login.js';
+import Park from './Park/Park.js';
 
 class App extends Component {
   state = {
@@ -53,6 +54,7 @@ class App extends Component {
         }
 
         <Login rootState={this.state} setRootState={this.setRootState}/>
+        <Park/>
       </div>
     );
   }
