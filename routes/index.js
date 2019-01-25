@@ -5,8 +5,10 @@ const User = require('../models/user');
 const Habitat = require('../models/habitat');
 const Dragon = require('../models/dragon');
 
-const habitatModels = require('../gameModels/habitats.js');
-const dragonModels = require('../gameModels/dragons.js');
+const habitatModels = require('../client/src/gameModels/habitats.js');
+const dragonModels = require('../client/src/gameModels/dragons.js');
+
+console.log(habitatModels);
 
 router.get('/', showHomePage);
 router.get('/getData', getData);
