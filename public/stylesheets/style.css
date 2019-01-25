@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .habitat {
   border: 1px solid black;
   padding: 10px;
@@ -14,6 +18,7 @@ a {
   width: 500px;
 }
 
+#store img,
 .habitat img {
   max-height: 100px;
   max-width: 100px;

@@ -1,12 +1,17 @@
 <h2>Home Page</h2>
 
-<div>
-    <b>store</b>
+<div id="store">
+    <p>
+        <b>Store</b>
+    </p>
     <% habitatModels.forEach((model, i) => { %>
-        <form action="/buyHabitat/<%= i %>" method="post">
-            <span><%= model.name %>
-            <input type="submit" value="buy habitat">
-        </form>
+        <div class="inline">
+            <img src="<%= model.image %>"><br>
+            <%= model.name %><br>
+            <form action="/buyHabitat/<%= i %>" method="post">
+                <input type="submit" value="buy habitat">
+            </form>
+        </div>
     <% }); %>
 </div>
 
