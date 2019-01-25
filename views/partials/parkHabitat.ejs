@@ -1,0 +1,33 @@
+<%
+    let habitat = params.habitat;
+
+    let habitatDragons = dragons.filter(dragon => {
+        return '' + dragon.habitat == '' + habitat._id;
+    });
+%>
+
+<div class="habitat">
+    <img src="<%= habitat.model.image %>">
+
+    <b><%= habitat.name %> Habitat</b>
+
+    <form action="/sellHabitat/<%= habitat._id %>" method="post">
+        <button type="submit">sell habitat</button>
+    </form>
+
+    <% habitatDragons.forEach(dragon => { %>
+        <img src="<%= dragon.model.images[1] %>">
+    <% }); %>
+
+    <% incubatorEggs.forEach(dragon => { %>
+        <%
+            let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
+        %>
+
+        <div class="place-hatched-egg" dragon_id="<%= dragon._id %>">
+            <form action="<%= hatchRoute %>" method="post">
+                <button type="submit">place</button>
+            </form>
+        </div>
+    <% }); %>
+</div>
