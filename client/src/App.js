@@ -52,11 +52,7 @@ class App extends Component {
           : null
         }
 
-        {
-          this.state.currentUser
-          ? null
-          : <Login rootState={this.state} setRootState={this.setRootState}/>
-        }
+        <Login rootState={this.state} setRootState={this.setRootState}/>
       </div>
     );
   }

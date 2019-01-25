@@ -17,6 +17,10 @@ class Login extends Component {
   }
 
   render () {
+    if (this.props.rootState.currentUser) {
+      return null;
+    }
+
     let list1 = ['username', 'password'];
     let list2 = ['username', 'password', 'passwordConf'];
     return (
