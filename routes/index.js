@@ -45,7 +45,7 @@ function loginUser(req, res, next) {
   if (username && password) {
     User.authenticate(username, password, (error, user) => {
       if (error || !user) {
-        var err = new Error('Wrong email or password.');
+        var err = new Error('Wrong username or password.');
         err.status = 401;
         return next(err);
       } else {
