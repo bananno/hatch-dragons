@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 
 router.get('/login', showLogin);
+router.get('/getCurrentUser', getCurrentUser);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
 router.get('/logout', logoutUser);
@@ -13,6 +14,16 @@ function showLogin(req, res, next) {
     currentUser: null,
   });
 };
+
+function getCurrentUser(req, res, next) {
+  User.findById(req.session.userId, (error, user) => {
+    if (error || user === null) {
+      return res.send({ user: null });
+    } else {
+      return res.send({ user: user });
+    }
+  });
+}
 
 function loginUser(req, res, next) {
   let username = req.body.loginUsername;

@@ -3,19 +3,19 @@ import Login from './Login.js';
 
 class App extends Component {
   state = {
-    response: '',
+    currentUser: null,
     post: '',
     responseToPost: '',
   };
 
   componentDidMount() {
     this.callApi()
-      .then(res => this.setState({ response: res.express }))
+      .then(res => this.setState({ currentUser: res.user }))
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/getCurrentUser');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -41,7 +41,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>HatchDragons</h1>
-        <p>{this.state.response}</p>
+        <p>
+          <b>Current user: </b>
+          {this.state.currentUser ? this.state.currentUser.username : '[none]'}
+        </p>
         <form onSubmit={this.handleSubmit}>
           <p>
             <strong>Post to Server:</strong>
