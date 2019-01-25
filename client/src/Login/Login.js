@@ -10,10 +10,8 @@ class Login extends Component {
     });
   }
 
-  loginUser = (user) => {
-    this.props.setRootState({
-      currentUser: user
-    });
+  loginUser = () => {
+    this.props.visitDatabase();
   }
 
   render () {
