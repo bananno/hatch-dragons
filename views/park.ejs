@@ -32,16 +32,14 @@
     <div class="incubator">
         <b>incubator</b><br>
 
-        <% dragons.forEach(dragon => { %>
-            <% if (dragon.level == 0) { %>
-                <div class="inline">
-                    <img src="<%= dragon.model.images[0] %>">
-                    <b><%= dragon.model.name %> Dragon</b>
-                    <form action="/hatchDragon/<%= dragon._id %>" method="post">
-                        <button type="submit">hatch</button>
-                    </form>
-                </div>
-            <% }; %>
+        <% incubatorEggs.forEach(dragon => { %>
+            <div class="inline">
+                <img src="<%= dragon.model.images[0] %>">
+                <b><%= dragon.model.name %> Dragon</b>
+                <form action="/hatchDragon/<%= dragon._id %>" method="post">
+                    <button type="submit">hatch</button>
+                </form>
+            </div>
         <% }); %>
     </div>
 

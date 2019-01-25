@@ -40,6 +40,8 @@ function showHomePage(req, res, next) {
           record.model = dragonModels.filter(model => model.name == record.gameModel)[0];
         });
 
+        incubatorEggs = dragons.filter(dragon => dragon.level == 0);
+
         res.render('layout', {
           view: 'park',
           currentUser: user,
@@ -47,6 +49,7 @@ function showHomePage(req, res, next) {
           dragons: dragons,
           habitatModels: habitatModels,
           dragonModels: dragonModels,
+          incubatorEggs: incubatorEggs,
         });
       });
     });
