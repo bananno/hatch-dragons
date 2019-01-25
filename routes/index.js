@@ -8,6 +8,7 @@ router.get('/login', showLogin);
 router.post('/login', loginUser);
 router.post('/signup', signupUser);
 router.get('/logout', logoutUser);
+router.post('/buyHabitat', buyHabitat);
 
 function authenticate(req, res, next, callback) {
   User.findById(req.session.userId, (error, user) => {
@@ -101,6 +102,12 @@ function logoutUser(req, res, next) {
       }
     });
   }
+}
+
+function buyHabitat(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    res.redirect('/');
+  });
 }
 
 module.exports = router;
