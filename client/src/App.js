@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-
   state = {
     response: '',
     post: '',
     responseToPost: '',
+  };
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+
+    if (response.status !== 200) throw Error(body.message);
+
+    return body;
   };
 
   handleSubmit = async e => {
@@ -26,7 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>HatchDragons</h1>
-
+        <p>{this.state.response}</p>
         <form onSubmit={this.handleSubmit}>
           <p>
             <strong>Post to Server:</strong>
@@ -39,7 +53,6 @@ class App extends Component {
           <button type="submit">Submit</button>
         </form>
         <p>{this.state.responseToPost}</p>
-
       </div>
     );
   }
