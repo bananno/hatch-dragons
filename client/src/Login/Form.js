@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
-  state = (() => {
-    let temp = {};
-    this.props.fields.forEach(field => {
-      temp[field] = '';
-    });
-    return temp;
-  })();
+  state = {
+    username: '',
+    password: '',
+    passwordConf: ''
+  }
 
   getInputField = (field, i) => {
     const handleChange = (e) => {
@@ -16,7 +14,7 @@ class Form extends Component {
       this.setState(newState);
     };
 
-    let fieldType = field.match('password') ? 'password' : 'text';
+    let fieldType = field.match('password') || 'text';
 
     return (<input key={i} type={fieldType} name={field} placeholder={field}
       value={this.state[field]} onChange={handleChange} required=""/>);
@@ -50,7 +48,9 @@ class Form extends Component {
       <div onSubmit={this.handleSubmit}>
         <h2>{this.props.title}</h2>
         <form>
-          {this.props.fields.map(this.getInputField)}
+          {this.getInputField('username')}
+          {this.getInputField('password')}
+          {this.props.title === 'Signup' ? this.getInputField('passwordConf') : null}
           <button type="submit">{this.props.title}</button>
         </form>
       </div>
