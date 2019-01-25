@@ -121,9 +121,27 @@ function hatchDragon(req, res, next) {
     let habitatId = req.params.habitatId;
     let dragonId = req.params.dragonId;
 
-    Habitat.findById(habitatId, (err, habitat) => {
-      Dragon.findById(dragonId, (err, dragon) => {
-        return res.redirect('/');
+    Habitat.findById(habitatId, (err1, habitat) => {
+      Dragon.findById(dragonId, (err2, dragon) => {
+        if (err1 || err2) {
+          return next(err1 || err2);
+        } else if ('' + habitat.user != '' + user._id
+            || '' + dragon.user != '' + user._id) {
+          console.log('wrong user');
+          return res.redirect('/');
+        } else {
+          let dragonData = {
+            level: 1,
+            habitat: habitat,
+          };
+          dragon.update(dragonData, (err, dragon) => {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/');
+            }
+          });
+        }
       });
     });
   });
