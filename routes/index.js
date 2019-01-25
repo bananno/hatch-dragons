@@ -41,7 +41,7 @@ function showHomePage(req, res, next) {
         });
 
         res.render('layout', {
-          view: 'index',
+          view: 'park',
           currentUser: user,
           habitats: habitats,
           dragons: dragons,
