@@ -27,13 +27,6 @@ app.use(session({
   })
 }));
 
-
-
-app.get('/api/hello', (req, res) => {
-  console.log('TESTING ONE');
-  res.send({ express: 'Hello From Express' });
-});
-
 app.post('/api/world', (req, res) => {
   console.log('TESTING TWO');
   console.log(req.body);
