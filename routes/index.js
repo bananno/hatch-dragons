@@ -132,7 +132,7 @@ function sellHabitat(req, res, next) {
       user: user
     };
 
-    Habitat.find(habitatData, (error, habitat) => {
+    Habitat.deleteOne(habitatData, error => {
       if (error) {
         return next(error);
       } else {
