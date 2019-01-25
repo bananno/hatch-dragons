@@ -22,12 +22,11 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <div className="login-box">
         <Form title="Login" showError={this.showError} loginUser={this.loginUser}/>
         <Form title="Signup" showError={this.showError} loginUser={this.loginUser}/>
-        <p style={{border:"1px solid black"}}>
-          <b>ERROR:</b><br/>
-          {this.state.errorMessage || '(none)'}
+        <p className="error">
+          {this.state.errorMessage}
         </p>
       </div>
     );

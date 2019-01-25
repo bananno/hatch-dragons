@@ -40,12 +40,11 @@ class Form extends Component {
     } else {
       this.props.showError(responseResult.message);
     }
-
   };
 
   render () {
     return (
-      <div onSubmit={this.handleSubmit}>
+      <div className="login-box-sub" onSubmit={this.handleSubmit}>
         <h2>{this.props.title}</h2>
         <form>
           {this.getInputField('username')}
