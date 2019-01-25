@@ -45,9 +45,21 @@
         <div class="habitat">
             <img src="<%= habitat.model.image %>">
             <b><%= habitat.name %> Habitat</b>
+
             <form action="/sellHabitat/<%= habitat._id %>" method="post">
                 <button type="submit">sell habitat</button>
             </form>
+
+            <%
+                let habitatDragons = dragons.filter(dragon => {
+                    return '' + dragon.habitat == '' + habitat._id;
+                });
+            %>
+
+            <% habitatDragons.forEach(dragon => { %>
+                <img src="<%= dragon.model.images[1] %>">
+            <% }); %>
+
             <% incubatorEggs.forEach(dragon => { %>
                 <%
                     let hatchRoute = '/hatchDragon/' + dragon._id + '/' + habitat._id;
