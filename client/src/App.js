@@ -54,7 +54,7 @@ class App extends Component {
         }
 
         <Login rootState={this.state} setRootState={this.setRootState}/>
-        <Park/>
+        <Park rootState={this.state} setRootState={this.setRootState}/>
       </div>
     );
   }
