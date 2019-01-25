@@ -14,32 +14,28 @@ class Login extends Component {
     }
   };
 
-  handleSubmitLogin = async e => {
-    e.preventDefault();
-    const response = await fetch('/login', {
+  handleSubmit = async (event, path, formName) => {
+    event.preventDefault();
+
+    const response = await fetch(path, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state.loginForm),
+      body: JSON.stringify(this.state[formName]),
     });
-    const body = await response.text();
 
-    this.setState({ responseToPost: body });
+    const responseResult = await response.text();
+
+    this.setState({ responseToPost: responseResult });
   };
 
-  handleSubmitSignup = async e => {
-    e.preventDefault();
-    const response = await fetch('/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state.signupForm),
-    });
-    const body = await response.text();
+  handleSubmitLogin = event => {
+    handleSubmit(event, '/login', 'loginForm');
+  };
 
-    this.setState({ responseToPost: body });
+  handleSubmitSignup = event => {
+    handleSubmit(event, '/signup', 'signupForm');
   };
 
   getHandleInputChange = (formName, fieldName) => {
