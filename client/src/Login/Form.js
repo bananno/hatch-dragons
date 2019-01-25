@@ -41,9 +41,7 @@ class Form extends Component {
       console.log('YES');
       // this.props.setState({ currentUser: responseResult.user });
     } else {
-      console.log('NO');
-      console.log(responseResult.message);
-      // this.setState({ formError: responseResult.message });
+      this.props.showError(responseResult.message);
     }
 
   };
