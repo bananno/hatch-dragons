@@ -21,11 +21,18 @@
         <div class="store-item">
             <img src="<%= dragon.image.baby %>"><br>
             <%= dragon.name %> Dragon<br>
+            <form action="/buyDragon/<%= i %>/incubate" method="post">
+                <input type="submit" value="buy and incubate">
+            </form>
         </div>
     <% }); %>
 </div>
 
-<div>
+<div id="park">
+    <div class="incubator">
+        <b>incubator</b><br>
+    </div>
+
     <% habitats.forEach(habitat => { %>
         <div class="habitat">
             <img src="<%= habitat.model.image %>">
