@@ -31,11 +31,11 @@ class Login extends Component {
   };
 
   handleSubmitLogin = event => {
-    handleSubmit(event, '/login', 'loginForm');
+    this.handleSubmit(event, '/login', 'loginForm');
   };
 
   handleSubmitSignup = event => {
-    handleSubmit(event, '/signup', 'signupForm');
+    this.handleSubmit(event, '/signup', 'signupForm');
   };
 
   getHandleInputChange = (formName, fieldName) => {
