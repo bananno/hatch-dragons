@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
+import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
-import dragonModels from '../gameModels/dragons';
 
 class Habitat extends Component {
   render () {
@@ -23,7 +22,7 @@ class Habitat extends Component {
 
         {dragons.map((dragon, i) => {
           return (
-            <div key={i}>{dragon.gameModel} Dragon</div>
+            <Dragon key={i} dragon={dragon}/>
           );
         })}
       </div>
