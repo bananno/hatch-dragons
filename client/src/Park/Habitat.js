@@ -4,15 +4,26 @@ import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
   handleClick = () => {
-    let hatchDragon = this.props.rootState.hatchDragon;
-
-    if (hatchDragon) {
-      console.log('hatched!');
-
-      this.props.setRootState({
-        hatchDragon: null
-      });
+    if (this.props.rootState.hatchDragon) {
+      this.hatchDragon();
     }
+  }
+
+  hatchDragon = async () => {
+    const response = await fetch('/hatchDragon', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        dragon: this.props.rootState.hatchDragon._id,
+        habitat: this.props.habitat._id
+      }),
+    });
+
+    const responseResult = await response.text();
+
+    console.log(responseResult);
   }
 
   render () {
