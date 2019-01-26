@@ -10,7 +10,7 @@ class Dragon extends Component {
     })[0];
 
     return (
-      <div>
+      <div className="dragon">
         <h3>{this.props.dragon.gameModel} Dragon</h3>
 
         <img src={gameModel.images[dragon.level]} alt=""/>

@@ -43,3 +43,7 @@
 .park-habitat {
   border: 1px solid green;
 }
+
+.dragon img {
+  max-height: 100px;
+}
