@@ -13,7 +13,7 @@ class Dragon extends Component {
       <div>
         <h3>{this.props.dragon.gameModel} Dragon</h3>
 
-        <img src={gameModel.images[1]} alt=""/>
+        <img src={gameModel.images[dragon.level]} alt=""/>
       </div>
     );
   }

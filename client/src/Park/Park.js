@@ -10,7 +10,7 @@ class Park extends Component {
 
     return (
       <div>
-        <Incubator/>
+        <Incubator rootState={this.props.rootState}/>
         <div>
           <h2>Habitats</h2>
           {
