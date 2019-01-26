@@ -8,8 +8,6 @@ const Dragon = require('../models/dragon');
 const habitatModels = require('../client/src/gameModels/habitats.js');
 const dragonModels = require('../client/src/gameModels/dragons.js');
 
-console.log(habitatModels);
-
 router.get('/', showHomePage);
 router.get('/getData', getData);
 router.post('/buyHabitat/:habitatIndex', buyHabitat);
