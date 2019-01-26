@@ -14,6 +14,7 @@ router.post('/buyHabitat/:habitatIndex', buyHabitat);
 router.post('/buyDragon/:dragonIndex/incubate', buyDragon);
 router.post('/sellHabitat/:habitatId', sellHabitat);
 router.post('/hatchDragon/:dragonId/:habitatId', hatchDragon);
+router.post('/hatchDragon', hatchDragonNew);
 
 function getData(req, res) {
   User.findById(req.session.userId, (error, user) => {
@@ -158,6 +159,37 @@ function hatchDragon(req, res, next) {
               return next(err);
             } else {
               return res.redirect('/');
+            }
+          });
+        }
+      });
+    });
+  });
+}
+
+function hatchDragonNew(req, res, next) {
+  let habitatId = req.body.habitat;
+  let dragonId = req.body.dragon;
+
+  authenticate(req, res, next, (user) => {
+    Habitat.findById(habitatId, (err1, habitat) => {
+      Dragon.findById(dragonId, (err2, dragon) => {
+        if (err1 || err2) {
+          return next(err1 || err2);
+        } else if ('' + habitat.user != '' + user._id
+            || '' + dragon.user != '' + user._id) {
+          console.log('wrong user');
+          return res.redirect('/');
+        } else {
+          let dragonData = {
+            level: 1,
+            habitat: habitat,
+          };
+          dragon.update(dragonData, (err, dragon) => {
+            if (err) {
+              return next(err);
+            } else {
+              return res.send('success');
             }
           });
         }
