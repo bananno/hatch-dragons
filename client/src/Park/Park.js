@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Incubator from './Incubator';
 import Habitat from './Habitat';
 
 class Park extends Component {
@@ -9,10 +10,9 @@ class Park extends Component {
 
     return (
       <div>
-        <div style={{border:"1px solid black"}}>
-          incubator
-        </div>
-        <div style={{border:"1px solid black"}}>
+        <Incubator/>
+        <div>
+          <h2>Habitats</h2>
           {
             this.props.rootState.habitats.map((habitat, i) => {
               return (
