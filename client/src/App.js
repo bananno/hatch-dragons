@@ -7,6 +7,7 @@ class App extends Component {
     currentUser: null,
     habitats: [],
     dragons: [],
+    hatchDragon: null,
   }
 
   componentDidMount() {

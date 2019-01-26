@@ -22,9 +22,15 @@ class Habitat extends Component {
 
         {dragons.map((dragon, i) => {
           return (
-            <Dragon key={i} dragon={dragon}/>
+            <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}/>
           );
         })}
+
+        {
+          this.props.rootState.hatchDragon
+          ? <button>place here</button>
+          : null
+        }
       </div>
     );
   }

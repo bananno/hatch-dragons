@@ -44,6 +44,10 @@
   border: 1px solid green;
 }
 
+.dragon {
+  display: inline-block;
+}
+
 .dragon img {
   max-height: 100px;
 }

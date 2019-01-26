@@ -10,13 +10,14 @@ class Park extends Component {
 
     return (
       <div>
-        <Incubator rootState={this.props.rootState}/>
+        <Incubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
         <div>
           <h2>Habitats</h2>
           {
             this.props.rootState.habitats.map((habitat, i) => {
               return (
-                <Habitat key={i} habitat={habitat} rootState={this.props.rootState}/>
+                <Habitat key={i} habitat={habitat} rootState={this.props.rootState}
+                  setRootState={this.props.setRootState}/>
               );
             })
           }
