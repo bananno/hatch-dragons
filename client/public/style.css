@@ -51,3 +51,10 @@
 .dragon img {
   max-height: 100px;
 }
+
+.store-item {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}

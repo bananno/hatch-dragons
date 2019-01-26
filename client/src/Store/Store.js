@@ -16,8 +16,9 @@ class Store extends Component {
           {
             habitatModels.map((model, i) => {
               return (
-                <div key={i}>
-                  {model.name} Habitat
+                <div key={i} className="store-item">
+                  <h4>{model.name} Habitat</h4>
+                  <button>buy</button>
                 </div>
               );
             })
@@ -28,8 +29,9 @@ class Store extends Component {
           {
             dragonModels.map((model, i) => {
               return (
-                <div key={i}>
-                  {model.name} Dragon
+                <div key={i} className="store-item">
+                  <h4>{model.name} Dragon</h4>
+                  <button>buy</button>
                 </div>
               );
             })
