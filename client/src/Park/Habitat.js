@@ -3,6 +3,18 @@ import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
+  handleClick = () => {
+    let hatchDragon = this.props.rootState.hatchDragon;
+
+    if (hatchDragon) {
+      console.log('hatched!');
+
+      this.props.setRootState({
+        hatchDragon: null
+      });
+    }
+  }
+
   render () {
     let habitat = this.props.habitat;
 
@@ -15,7 +27,7 @@ class Habitat extends Component {
     })[0];
 
     return (
-      <div className="park-habitat">
+      <div className="park-habitat" onClick={this.handleClick}>
         <h3>{habitat.gameModel} Habitat</h3>
 
         <img src={gameModel.image} className="habitat-image" alt=""/>
@@ -25,12 +37,6 @@ class Habitat extends Component {
             <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}/>
           );
         })}
-
-        {
-          this.props.rootState.hatchDragon
-          ? <button>place here</button>
-          : null
-        }
       </div>
     );
   }
