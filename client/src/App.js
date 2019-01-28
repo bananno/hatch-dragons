@@ -34,14 +34,20 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  clickLogout = async () => {
-    await fetch('/logout', {
+  makePostRequest = async (path, data) => {
+    await fetch(path, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify(data)
     });
+
     this.visitDatabase();
+  }
+
+  clickLogout = () => {
+    this.makePostRequest('/logout');
   }
 
   setRootState = (newState) => {
