@@ -15,6 +15,7 @@ class Incubator extends Component {
           return (
             <Dragon key={i} dragon={dragon} incubator={true}
               rootState={this.props.rootState}
+              makePostRequest={this.props.makePostRequest}
               setRootState={this.props.setRootState}/>
           );
         })}

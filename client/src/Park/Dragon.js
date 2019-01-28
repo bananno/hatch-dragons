@@ -9,6 +9,9 @@ class Dragon extends Component {
   }
 
   sell = () => {
+    this.props.makePostRequest('/sellDragon', {
+      dragonId: this.props.dragon._id
+    });
   }
 
   handleClick = () => {

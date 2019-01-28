@@ -13,6 +13,7 @@ router.post('/buyHabitat', buyHabitat);
 router.post('/buyDragon', buyDragon);
 router.post('/sellHabitat/:habitatId', sellHabitat);
 router.post('/hatchDragon', hatchDragon);
+router.post('/sellDragon', sellDragon);
 
 function getData(req, res) {
   User.findById(req.session.userId, (error, user) => {
@@ -132,6 +133,23 @@ function hatchDragon(req, res, next) {
           });
         }
       });
+    });
+  });
+}
+
+function sellDragon(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let dragonData = {
+      _id: req.body.dragonId,
+      user: user
+    };
+
+    Dragon.deleteOne(dragonData, error => {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/');
+      }
     });
   });
 }
