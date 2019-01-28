@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
-import Dragon from '../Park/Dragon';
+import HabitatDragon from '../Dragon/HabitatDragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
@@ -43,7 +43,7 @@ class Habitat extends Component {
           <img src={gameModel.image} className="habitat-image" alt=""/>
           {dragons.map((dragon, i) => {
             return (
-              <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}
+              <HabitatDragon key={i} dragon={dragon} setRootState={this.props.setRootState}
                 makePostRequest={this.props.makePostRequest}
                 rootState={this.props.rootState}/>
             );

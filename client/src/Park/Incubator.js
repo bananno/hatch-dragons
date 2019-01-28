@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Dragon from './Dragon';
+import Dragon from '../Dragon/HabitatDragon';
 
 class Incubator extends Component {
   render () {
