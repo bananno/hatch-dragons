@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
-import Dragon from '../Dragon/HabitatDragon';
+import IncubatorDragon from '../Dragon/incubatorDragon';
 
 class ParkIncubator extends Component {
   onClose = () => {
@@ -14,7 +14,7 @@ class ParkIncubator extends Component {
       return null;
     }
 
-    let dragons = this.props.rootState.dragons.filter(dragon => {
+    let dragonEggs = this.props.rootState.dragons.filter(dragon => {
       return dragon.level === 0;
     });
 
@@ -22,13 +22,9 @@ class ParkIncubator extends Component {
       <Modal onClose={this.onClose}>
         <div className="incubator active">
           <h2>Incubator</h2>
-
-          {dragons.map((dragon, i) => {
+          {dragonEggs.map((dragon, i) => {
             return (
-              <Dragon key={i} dragon={dragon} incubator={true}
-                rootState={this.props.rootState}
-                makePostRequest={this.props.makePostRequest}
-                setRootState={this.props.setRootState}/>
+              <IncubatorDragon key={i} dragon={dragon} setRootState={this.props.setRootState}/>
             );
           })}
         </div>
