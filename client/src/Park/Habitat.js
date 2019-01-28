@@ -3,6 +3,12 @@ import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
+  sell = () => {
+    this.props.makePostRequest('/sellHabitat', {
+      habitatId: this.props.habitat._id
+    });
+  }
+
   handleClick = () => {
     if (this.props.rootState.hatchDragon) {
       this.hatchDragon();
@@ -52,6 +58,12 @@ class Habitat extends Component {
               rootState={this.props.rootState}/>
           );
         })}
+
+        {
+          isActive
+          ? <button onClick={this.sell}>sell</button>
+          : null
+        }
       </div>
     );
   }

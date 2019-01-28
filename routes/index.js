@@ -11,7 +11,7 @@ const dragonModels = require('../client/src/gameModels/dragons.js');
 router.get('/getData', getData);
 router.post('/buyHabitat', buyHabitat);
 router.post('/buyDragon', buyDragon);
-router.post('/sellHabitat/:habitatId', sellHabitat);
+router.post('/sellHabitat', sellHabitat);
 router.post('/hatchDragon', hatchDragon);
 router.post('/sellDragon', sellDragon);
 
@@ -92,7 +92,7 @@ function buyDragon(req, res, next) {
 function sellHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
     let habitatData = {
-      _id: req.params.habitatId,
+      _id: req.body.habitatId,
       user: user
     };
 
