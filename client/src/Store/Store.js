@@ -20,7 +20,7 @@ class Store extends Component {
     };
   }
 
-  closeStore = () => {
+  onClose = () => {
     this.props.setRootState({
       showStore: false
     });
@@ -36,10 +36,9 @@ class Store extends Component {
     }
 
     return (
-      <Modal>
+      <Modal onClose={this.onClose}>
         <div className="store">
           <h2>STORE</h2>
-          <button onClick={this.closeStore}>CLOSE</button>
           <div style={{border: "1px solid black"}}>
             <h3>Habitats</h3>
             {
