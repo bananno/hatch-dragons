@@ -112,6 +112,12 @@
   margin: 5px;
 }
 
+/* INCUBATOR */
+
+.incubator.park img {
+  height: 80px;
+}
+
 /* HABITAT */
 
 .habitat.park {
