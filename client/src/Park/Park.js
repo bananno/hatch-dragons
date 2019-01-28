@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Incubator from './Incubator';
+import ParkIncubator from './ParkIncubator';
 import ParkHabitat from '../Habitat/ParkHabitat';
 
 class Park extends Component {
@@ -10,7 +10,7 @@ class Park extends Component {
 
     return (
       <div>
-        <Incubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
+        <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
         <div>
           <h2>Habitats</h2>
           {

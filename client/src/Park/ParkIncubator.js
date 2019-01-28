@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dragon from '../Dragon/HabitatDragon';
 
-class Incubator extends Component {
+class ParkIncubator extends Component {
   render () {
     let dragons = this.props.rootState.dragons.filter(dragon => {
       return dragon.level === 0;
@@ -24,4 +24,4 @@ class Incubator extends Component {
   }
 }
 
-export default Incubator;
+export default ParkIncubator;
