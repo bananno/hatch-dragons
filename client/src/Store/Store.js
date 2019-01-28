@@ -4,52 +4,19 @@ import dragonModels from '../gameModels/dragons';
 
 class Store extends Component {
   buyHabitat = (index) => {
-    return async () => {
-      await fetch('/buyHabitat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          habitatIndex: index
-        }),
+    return () => {
+      this.props.makePostRequest('/buyHabitat', {
+        habitatIndex: index
       });
-
-      this.props.visitDatabase();
     };
   }
 
   buyDragon = (index) => {
-    return async () => {
-      await fetch('/buyDragon', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          dragonIndex: index
-        }),
+    return () => {
+      this.props.makePostRequest('/buyDragon', {
+        dragonIndex: index
       });
-
-      this.props.visitDatabase();
     };
-  }
-
-  hatchDragon = async () => {
-    const response = await fetch('/hatchDragon', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        dragon: this.props.rootState.hatchDragon._id,
-        habitat: this.props.habitat._id
-      }),
-    });
-
-    const responseResult = await response.text();
-
-    console.log(responseResult);
   }
 
   render () {
