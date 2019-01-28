@@ -4,7 +4,7 @@ import HabitatDragon from '../Dragon/HabitatDragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
-  close = () => {
+  onClose = () => {
     this.props.setRootState({
       activeHabitat: null
     });
@@ -35,10 +35,9 @@ class Habitat extends Component {
 
 
     return (
-      <Modal>
+      <Modal onClose={this.onClose}>
         <div className={className}>
           <h1>{gameModel.name}</h1>
-          <button onClick={this.close}>CLOSE</button>
           <br/>
           <img src={gameModel.image} className="habitat-image" alt=""/>
           {dragons.map((dragon, i) => {
