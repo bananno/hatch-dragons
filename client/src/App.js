@@ -55,7 +55,7 @@ class App extends Component {
     this.setState(newState);
   }
 
-  toggleStore = () => {
+  openStore = () => {
     this.setState({
       showStore: !this.state.showStore
     });
@@ -88,12 +88,13 @@ class App extends Component {
 
         {
           (this.state.currentUser && !this.state.showStore)
-          ? <button onClick={this.toggleStore}>STORE</button>
+          ? <button onClick={this.openStore}>STORE</button>
           : null
         }
 
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
         <Store rootState={this.state} makePostRequest={this.makePostRequest}
+          setRootState={this.setRootState}
           visitDatabase={this.visitDatabase}/>
         <Park rootState={this.state} setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>

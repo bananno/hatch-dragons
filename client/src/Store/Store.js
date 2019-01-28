@@ -19,14 +19,25 @@ class Store extends Component {
     };
   }
 
+  closeStore = () => {
+    this.props.setRootState({
+      showStore: false
+    });
+  }
+
   render () {
     if (this.props.rootState.currentUser == null) {
+      return null;
+    }
+
+    if (!this.props.rootState.showStore) {
       return null;
     }
 
     return (
       <div style={{border: "3px solid black"}}>
         <h2>STORE</h2>
+        <button onClick={this.closeStore}>CLOSE</button>
         <div style={{border: "1px solid black"}}>
           <h3>Habitats</h3>
           {
