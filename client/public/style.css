@@ -110,6 +110,17 @@
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
+  text-align: center;
+}
+
+.market-item img {
+  max-height: 80px;
+  max-width: 80px;
+}
+
+.market-item .image-frame {
+  height: 90px;
+  width: 90px;
 }
 
 /* INCUBATOR */
