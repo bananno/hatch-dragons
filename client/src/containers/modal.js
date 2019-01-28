@@ -9,6 +9,11 @@ const modal = (props) => {
             ? <button onClick={props.onClose}>CLOSE</button>
             : null
         }
+        {
+            props.onBack
+            ? <button onClick={props.onBack}>BACK</button>
+            : null
+        }
         {props.children}
       </div>
     </div>

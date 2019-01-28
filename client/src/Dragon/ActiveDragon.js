@@ -3,9 +3,16 @@ import Modal from '../containers/modal';
 import dragonModels from '../gameModels/dragons';
 
 class ActiveDragon extends Component {
-  close = () => {
+  onClose = () => {
     this.props.setRootState({
-      activeHabitat: null
+      activeHabitat: null,
+      activeDragon: null
+    });
+  }
+
+  onBack = () => {
+    this.props.setRootState({
+      activeDragon: null
     });
   }
 
@@ -31,10 +38,9 @@ class ActiveDragon extends Component {
     let imageSrc = gameModel.images[1];
 
     return (
-      <Modal>
+      <Modal onClose={this.onClose} onBack={this.onBack}>
         <div className={className}>
-          <h1>{gameModel.name}</h1>
-          <button onClick={this.close}>CLOSE</button>
+          <h1>{gameModel.name} Dragon</h1>
           <br/>
           <img src={imageSrc} alt=""/>
           <button onClick={this.sell}>sell</button>
