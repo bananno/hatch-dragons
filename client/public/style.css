@@ -52,12 +52,33 @@
   cursor: pointer;
 }
 
+/* STORE */
+
+.store {
+  background-color: white;
+  width: 800px;
+  margin: auto;
+  border: 2px solid black;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.store-item {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
 /* OTHER */
 
 .modal {
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  overflow: scroll;
 }
 
 .park-habitat {
@@ -81,11 +102,4 @@
 
 .dragon img {
   max-height: 100px;
-}
-
-.store-item {
-  display: inline-block;
-  border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
 }

@@ -37,36 +37,36 @@ class Store extends Component {
 
     return (
       <Modal>
-      <div style={{border: "3px solid black"}}>
-        <h2>STORE</h2>
-        <button onClick={this.closeStore}>CLOSE</button>
-        <div style={{border: "1px solid black"}}>
-          <h3>Habitats</h3>
-          {
-            habitatModels.map((model, i) => {
-              return (
-                <div key={i} className="store-item">
-                  <h4>{model.name} Habitat</h4>
-                  <button onClick={this.buyHabitat(i)}>buy</button>
-                </div>
-              );
-            })
-          }
+        <div className="store">
+          <h2>STORE</h2>
+          <button onClick={this.closeStore}>CLOSE</button>
+          <div style={{border: "1px solid black"}}>
+            <h3>Habitats</h3>
+            {
+              habitatModels.map((model, i) => {
+                return (
+                  <div key={i} className="store-item">
+                    <h4>{model.name} Habitat</h4>
+                    <button onClick={this.buyHabitat(i)}>buy</button>
+                  </div>
+                );
+              })
+            }
+          </div>
+          <div style={{border: "1px solid black"}}>
+            <h3>Dragons</h3>
+            {
+              dragonModels.map((model, i) => {
+                return (
+                  <div key={i} className="store-item">
+                    <h4>{model.name} Dragon</h4>
+                    <button onClick={this.buyDragon(i)}>buy</button>
+                  </div>
+                );
+              })
+            }
+          </div>
         </div>
-        <div style={{border: "1px solid black"}}>
-          <h3>Dragons</h3>
-          {
-            dragonModels.map((model, i) => {
-              return (
-                <div key={i} className="store-item">
-                  <h4>{model.name} Dragon</h4>
-                  <button onClick={this.buyDragon(i)}>buy</button>
-                </div>
-              );
-            })
-          }
-        </div>
-      </div>
       </Modal>
     );
   }
