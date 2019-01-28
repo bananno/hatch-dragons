@@ -33,12 +33,12 @@ class ParkHabitat extends Component {
 
     let className = 'habitat park';
 
+    let style = {
+      backgroundImage: 'url("' + gameModel.image + '")'
+    };
+
     return (
-      <div className={className} onClick={this.handleClick}>
-        <h3>{habitat.gameModel} Habitat</h3>
-
-        <img src={gameModel.image} className="habitat-image" alt=""/>
-
+      <div className={className} onClick={this.handleClick} style={style}>
         {dragons.map((dragon, i) => {
           return (
             <MiniDragon key={i} dragon={dragon}/>

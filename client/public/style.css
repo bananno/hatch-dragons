@@ -132,14 +132,23 @@
 /* HABITAT */
 
 .habitat.park {
-  border: 3px solid green;
-  margin: 5px 0;
-  padding: 10px;
+  height: 200px;
+  width: 300px;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
 }
 
 .habitat.active h2 {
   font-weight: bold;
   font-size: 20px;
+}
+
+.dragon.mini img {
+  max-height: 50px;
+  max-height: 50px;
 }
 
 /* DRAGON */
