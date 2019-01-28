@@ -39,11 +39,7 @@ class Habitat extends Component {
 
     let isActive = this.props.rootState.activeHabitat === habitat;
 
-    let className = 'park-habitat';
-
-    if (isActive) {
-      className += ' active';
-    }
+    let className = 'habitat park';
 
     return (
       <div className={className} onClick={this.handleClick}>

@@ -70,6 +70,23 @@
   margin: 5px;
 }
 
+/* HABITAT */
+
+.habitat.park {
+  border: 3px solid green;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.habitat.active {
+  background-color: white;
+  width: 800px;
+  margin: auto;
+  border: 2px solid black;
+  padding: 30px;
+  margin-top: 30px;
+}
+
 /* OTHER */
 
 .modal {
@@ -79,16 +96,6 @@
   position: absolute;
   top: 0;
   overflow: scroll;
-}
-
-.park-habitat {
-  border: 3px solid green;
-  margin: 5px 0;
-  padding: 10px;
-}
-
-.park-habitat.active {
-  border-color: red;
 }
 
 .dragon {
