@@ -6,6 +6,10 @@ class Habitat extends Component {
   handleClick = () => {
     if (this.props.rootState.hatchDragon) {
       this.hatchDragon();
+    } else {
+      this.props.setRootState({
+        activeHabitat: this.props.habitat._id
+      });
     }
   }
 
@@ -27,8 +31,16 @@ class Habitat extends Component {
       return model.name === habitat.gameModel;
     })[0];
 
+    let isActive = this.props.rootState.activeHabitat === habitat._id;
+
+    let className = 'park-habitat';
+
+    if (isActive) {
+      className += ' active';
+    }
+
     return (
-      <div className="park-habitat" onClick={this.handleClick}>
+      <div className={className} onClick={this.handleClick}>
         <h3>{habitat.gameModel} Habitat</h3>
 
         <img src={gameModel.image} className="habitat-image" alt=""/>

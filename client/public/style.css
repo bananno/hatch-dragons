@@ -41,7 +41,13 @@
 /* OTHER */
 
 .park-habitat {
-  border: 1px solid green;
+  border: 3px solid green;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.park-habitat.active {
+  border-color: red;
 }
 
 .dragon {
