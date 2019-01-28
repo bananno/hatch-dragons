@@ -4,6 +4,7 @@ import Market from './Market/Market.js';
 import Park from './Park/Park.js';
 import ActiveHabitat from './Habitat/ActiveHabitat.js';
 import ActiveDragon from './Dragon/ActiveDragon.js';
+import ActiveIncubator from './Park/ActiveIncubator.js';
 
 class App extends Component {
   state = {
@@ -11,6 +12,7 @@ class App extends Component {
     habitats: [],
     dragons: [],
     showMarket: false,
+    showIncubator: false,
     hatchDragon: null,
   }
 
@@ -110,6 +112,9 @@ class App extends Component {
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
         <ActiveDragon rootState={this.state}
+          setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}/>
+        <ActiveIncubator rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
       </div>
