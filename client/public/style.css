@@ -48,6 +48,7 @@
   width: 800px;
   margin: auto;
   border: 2px solid black;
+  border-radius: 10px;
   padding: 30px;
   margin-top: 30px;
 }
@@ -87,6 +88,22 @@
 }
 
 /* MARKET */
+
+.market h2 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.market h3 {
+  margin: 20px 0 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.market-section {
+  border: 2px solid black;
+}
 
 .market-item {
   display: inline-block;

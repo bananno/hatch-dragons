@@ -43,8 +43,8 @@ class Market extends Component {
       <Modal onClose={this.onClose}>
         <div className="market">
           <h2>MARKET</h2>
-          <div style={{border: "1px solid black"}}>
-            <h3>Habitats</h3>
+          <h3>Habitats</h3>
+          <div className="market-section">
             {
               habitatModels.map((model, i) => {
                 return (
@@ -56,8 +56,8 @@ class Market extends Component {
               })
             }
           </div>
-          <div style={{border: "1px solid black"}}>
-            <h3>Dragons</h3>
+          <h3>Dragons</h3>
+          <div className="market-section">
             {
               dragonModels.map((model, i) => {
                 return (
