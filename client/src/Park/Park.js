@@ -17,7 +17,8 @@ class Park extends Component {
             this.props.rootState.habitats.map((habitat, i) => {
               return (
                 <Habitat key={i} habitat={habitat} rootState={this.props.rootState}
-                  setRootState={this.props.setRootState}/>
+                  setRootState={this.props.setRootState}
+                  makePostRequest={this.props.makePostRequest}/>
               );
             })
           }

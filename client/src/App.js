@@ -72,9 +72,10 @@ class App extends Component {
         }
 
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
-        <Store rootState={this.state} setRootState={this.setRootState}
+        <Store rootState={this.state}
+          visitDatabase={this.visitDatabase}/>
+        <Park rootState={this.state} setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
-        <Park rootState={this.state} setRootState={this.setRootState}/>
       </div>
     );
   }

@@ -9,21 +9,11 @@ class Habitat extends Component {
     }
   }
 
-  hatchDragon = async () => {
-    const response = await fetch('/hatchDragon', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        dragon: this.props.rootState.hatchDragon._id,
-        habitat: this.props.habitat._id
-      }),
+  hatchDragon = () => {
+    this.props.makePostRequest('/hatchDragon', {
+      dragon: this.props.rootState.hatchDragon._id,
+      habitat: this.props.habitat._id
     });
-
-    const responseResult = await response.text();
-
-    console.log(responseResult);
   }
 
   render () {
