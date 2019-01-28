@@ -8,6 +8,9 @@ class Dragon extends Component {
     });
   }
 
+  sell = () => {
+  }
+
   handleClick = () => {
     this.props.setRootState({
       activeDragon: this.props.dragon._id
@@ -21,9 +24,12 @@ class Dragon extends Component {
       return model.name === dragon.gameModel;
     })[0];
 
+    let isActive = this.props.rootState.activeDragon === dragon._id
+      && !this.props.incubator;
+
     let className = 'dragon';
 
-    if (this.props.rootState.activeDragon === dragon._id) {
+    if (isActive) {
       className += ' active';
     }
 
@@ -36,6 +42,12 @@ class Dragon extends Component {
         {
           this.props.incubator
           ? <button onClick={this.hatch}>hatch</button>
+          : null
+        }
+
+        {
+          isActive
+          ? <button onClick={this.sell}>sell</button>
           : null
         }
       </div>
