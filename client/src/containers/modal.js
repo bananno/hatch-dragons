@@ -3,7 +3,9 @@ import React from 'react';
 const modal = (props) => {
   return (
     <div className="modal">
-      {props.children}
+      <div className="popup">
+        {props.children}
+      </div>
     </div>
   );
 };
