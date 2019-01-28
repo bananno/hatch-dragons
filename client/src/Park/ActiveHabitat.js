@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
+import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
   close = () => {
     this.props.setRootState({
       activeHabitat: null
+    });
+  }
+
+  sell = () => {
+    this.props.makePostRequest('/sellHabitat', {
+      habitatId: this.props.rootState.activeHabitat._id
     });
   }
 
@@ -22,6 +29,10 @@ class Habitat extends Component {
       return model.name === habitat.gameModel;
     })[0];
 
+    let dragons = this.props.rootState.dragons.filter(dragon => {
+      return dragon.habitat === habitat._id;
+    });
+
     return (
       <Modal>
         <div className={className}>
@@ -29,6 +40,18 @@ class Habitat extends Component {
           <button onClick={this.close}>CLOSE</button>
           <br/>
           <img src={gameModel.image} className="habitat-image" alt=""/>
+          {dragons.map((dragon, i) => {
+            return (
+              <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}
+                makePostRequest={this.props.makePostRequest}
+                rootState={this.props.rootState}/>
+            );
+          })}
+          {
+            dragons.length === 0
+            ? <button onClick={this.sell}>sell</button>
+            : null
+          }
         </div>
       </Modal>
     );
