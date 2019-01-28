@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Login from './Login/Login.js';
 import Store from './Store/Store.js';
 import Park from './Park/Park.js';
+import ActiveHabitat from './Park/ActiveHabitat.js';
 
 class App extends Component {
   state = {
@@ -97,6 +98,9 @@ class App extends Component {
           setRootState={this.setRootState}
           visitDatabase={this.visitDatabase}/>
         <Park rootState={this.state} setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}/>
+        <ActiveHabitat rootState={this.state}
+          setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
       </div>
     );
