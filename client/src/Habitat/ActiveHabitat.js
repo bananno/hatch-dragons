@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
-import Dragon from './Dragon';
+import Dragon from '../Park/Dragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
