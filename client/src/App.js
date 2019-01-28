@@ -37,7 +37,7 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  makePostRequest = async (path, data) => {
+  makePostRequest = async (path, data, stateChanges) => {
     await fetch(path, {
       method: 'POST',
       headers: {
@@ -45,6 +45,10 @@ class App extends Component {
       },
       body: JSON.stringify(data)
     });
+
+    if (stateChanges) {
+      this.setState(stateChanges);
+    }
 
     this.visitDatabase();
   }

@@ -8,6 +8,8 @@ class Market extends Component {
     return () => {
       this.props.makePostRequest('/buyHabitat', {
         habitatIndex: index
+      }, {
+        showMarket: false
       });
     };
   }
@@ -16,6 +18,8 @@ class Market extends Component {
     return () => {
       this.props.makePostRequest('/buyDragon', {
         dragonIndex: index
+      }, {
+        showMarket: false
       });
     };
   }
