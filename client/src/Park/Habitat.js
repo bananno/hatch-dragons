@@ -3,12 +3,6 @@ import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
 
 class Habitat extends Component {
-  sell = () => {
-    this.props.makePostRequest('/sellHabitat', {
-      habitatId: this.props.habitat._id
-    });
-  }
-
   handleClick = () => {
     if (this.props.rootState.hatchDragon) {
       this.hatchDragon();
@@ -37,8 +31,6 @@ class Habitat extends Component {
       return model.name === habitat.gameModel;
     })[0];
 
-    let isActive = this.props.rootState.activeHabitat === habitat;
-
     let className = 'habitat park';
 
     return (
@@ -54,12 +46,6 @@ class Habitat extends Component {
               rootState={this.props.rootState}/>
           );
         })}
-
-        {
-          isActive && dragons.length === 0
-          ? <button onClick={this.sell}>sell</button>
-          : null
-        }
       </div>
     );
   }
