@@ -57,13 +57,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div class="page-header">
+        <div className="page-header">
           <h1>Hatch Dragons</h1>
         </div>
-        <p>
-          <b>Current user: </b>
-          {this.state.currentUser ? this.state.currentUser.username : '[none]'}
-        </p>
+
+        {
+          this.state.currentUser
+          ? (
+            <p>
+              <b>Current user: </b>
+              {this.state.currentUser.username}
+            </p>
+          ) : null
+        }
 
         {
           this.state.currentUser
