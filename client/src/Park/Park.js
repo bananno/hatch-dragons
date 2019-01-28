@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ActiveIncubator from './ActiveIncubator';
 import ParkIncubator from './parkIncubator';
 import ParkHabitat from '../Habitat/ParkHabitat';
 

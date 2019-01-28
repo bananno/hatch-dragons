@@ -27,9 +27,6 @@ class Dragon extends Component {
       return model.name === dragon.gameModel;
     })[0];
 
-    let isActive = this.props.rootState.activeDragon === dragon
-      && !this.props.incubator;
-
     let className = 'dragon habitat';
 
     return (
