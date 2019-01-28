@@ -7,6 +7,18 @@ class MarketSection extends Component {
     pageNumber: 0
   }
 
+  onBackPage = () => {
+    this.setState({
+      pageNumber: this.state.pageNumber - resultsPerPage
+    });
+  }
+
+  onNextPage = () => {
+    this.setState({
+      pageNumber: this.state.pageNumber + resultsPerPage
+    });
+  }
+
   render () {
     let startIndex = this.state.pageNumber;
     let modelsOnPage = this.props.models.slice(startIndex, startIndex + resultsPerPage);
@@ -16,7 +28,7 @@ class MarketSection extends Component {
     return (
       <div className="market-section">
         {
-          showBackButton ? <button>BACK</button> : null
+          showBackButton ? <button onClick={this.onBackPage}>BACK</button> : null
         }
         {
           modelsOnPage.map((model, i) => {
@@ -29,7 +41,7 @@ class MarketSection extends Component {
           })
         }
         {
-          showNextButton ? <button>NEXT</button> : null
+          showNextButton ? <button onClick={this.onNextPage}>NEXT</button> : null
         }
       </div>
     );
