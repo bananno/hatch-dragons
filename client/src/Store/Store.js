@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from '../containers/modal';
 import habitatModels from '../gameModels/habitats';
 import dragonModels from '../gameModels/dragons';
 
@@ -35,6 +36,7 @@ class Store extends Component {
     }
 
     return (
+      <Modal>
       <div style={{border: "3px solid black"}}>
         <h2>STORE</h2>
         <button onClick={this.closeStore}>CLOSE</button>
@@ -65,6 +67,7 @@ class Store extends Component {
           }
         </div>
       </div>
+      </Modal>
     );
   }
 }
