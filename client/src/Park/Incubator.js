@@ -14,6 +14,7 @@ class Incubator extends Component {
         {dragons.map((dragon, i) => {
           return (
             <Dragon key={i} dragon={dragon} incubator={true}
+              rootState={this.props.rootState}
               setRootState={this.props.setRootState}/>
           );
         })}

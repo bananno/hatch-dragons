@@ -35,7 +35,8 @@ class Habitat extends Component {
 
         {dragons.map((dragon, i) => {
           return (
-            <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}/>
+            <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}
+              rootState={this.props.rootState}/>
           );
         })}
       </div>
