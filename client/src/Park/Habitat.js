@@ -60,7 +60,7 @@ class Habitat extends Component {
         })}
 
         {
-          isActive
+          isActive && dragons.length === 0
           ? <button onClick={this.sell}>sell</button>
           : null
         }

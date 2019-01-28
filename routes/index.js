@@ -91,16 +91,24 @@ function buyDragon(req, res, next) {
 
 function sellHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
+    let habitatId = req.body.habitatId;
+
     let habitatData = {
-      _id: req.body.habitatId,
+      _id: habitatId,
       user: user
     };
 
-    Habitat.deleteOne(habitatData, error => {
-      if (error) {
-        return next(error);
+    Dragon.find({ habitat: habitatId}, (error, dragons) => {
+      if (dragons.length == 0) {
+        Habitat.deleteOne(habitatData, error => {
+          if (error) {
+            return next(error);
+          } else {
+            return res.redirect('/');
+          }
+        });
       } else {
-        return res.redirect('/');
+        console.log('Cannot delete habitat that houses dragons.');
       }
     });
   });
