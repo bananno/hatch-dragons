@@ -1,7 +1,7 @@
 import React from 'react';
 import dragonModels from '../gameModels/dragons';
 
-const minDragon = (props) => {
+const miniDragon = (props) => {
   let dragon = props.dragon;
 
   let gameModel = dragonModels.filter(model => {
@@ -9,10 +9,10 @@ const minDragon = (props) => {
   })[0];
 
   return (
-    <div class="dragon mini">
+    <div className="dragon mini">
       <img src={gameModel.images[dragon.level]} alt=""/>
     </div>
   );
 };
 
-export default minDragon;
+export default miniDragon;
