@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Message from './Other/message.js';
 import Login from './Login/Login.js';
 import Market from './Market/Market.js';
 import Park from './Park/Park.js';
@@ -102,6 +103,7 @@ class App extends Component {
           </div>
         </div>
 
+        <Message rootState={this.state} setRootState={this.setRootState}/>
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
         <Market rootState={this.state} makePostRequest={this.makePostRequest}
           setRootState={this.setRootState}
