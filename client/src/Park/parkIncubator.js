@@ -2,12 +2,18 @@ import React from 'react';
 import dragonModels from '../gameModels/dragons';
 
 const parkIncubator = (props) => {
+  const handleClick = () => {
+    props.setRootState({
+      showIncubator: true
+    });
+  };
+
   let dragonEggs = props.rootState.dragons.filter(dragon => {
     return dragon.level === 0;
   });
 
   return (
-    <div className="incubator park">
+    <div className="incubator park" onClick={handleClick}>
       <h2>Incubator</h2>
 
       {dragonEggs.map((dragon, i) => {
