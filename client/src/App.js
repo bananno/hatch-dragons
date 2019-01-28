@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from './Login/Login.js';
-import Store from './Store/Store.js';
+import Market from './Market/Market.js';
 import Park from './Park/Park.js';
 import ActiveHabitat from './Habitat/ActiveHabitat.js';
 import ActiveDragon from './Dragon/ActiveDragon.js';
@@ -10,7 +10,7 @@ class App extends Component {
     currentUser: null,
     habitats: [],
     dragons: [],
-    showStore: false,
+    showMarket: false,
     hatchDragon: null,
   }
 
@@ -57,9 +57,9 @@ class App extends Component {
     this.setState(newState);
   }
 
-  openStore = () => {
+  openMarket = () => {
     this.setState({
-      showStore: !this.state.showStore
+      showMarket: !this.state.showMarket
     });
   }
 
@@ -89,13 +89,13 @@ class App extends Component {
         }
 
         {
-          (this.state.currentUser && !this.state.showStore)
-          ? <button onClick={this.openStore}>STORE</button>
+          (this.state.currentUser && !this.state.showMarket)
+          ? <button onClick={this.openMarket}>MARKET</button>
           : null
         }
 
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
-        <Store rootState={this.state} makePostRequest={this.makePostRequest}
+        <Market rootState={this.state} makePostRequest={this.makePostRequest}
           setRootState={this.setRootState}
           visitDatabase={this.visitDatabase}/>
         <Park rootState={this.state} setRootState={this.setRootState}
