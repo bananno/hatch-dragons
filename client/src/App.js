@@ -8,6 +8,7 @@ class App extends Component {
     currentUser: null,
     habitats: [],
     dragons: [],
+    showStore: false,
     hatchDragon: null,
   }
 
@@ -54,6 +55,12 @@ class App extends Component {
     this.setState(newState);
   }
 
+  toggleStore = () => {
+    this.setState({
+      showStore: !this.state.showStore
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,6 +83,12 @@ class App extends Component {
           ? (<form onSubmit={this.clickLogout}>
               <button type="submit">logout</button>
             </form>)
+          : null
+        }
+
+        {
+          (this.state.currentUser && !this.state.showStore)
+          ? <button onClick={this.toggleStore}>STORE</button>
           : null
         }
 
