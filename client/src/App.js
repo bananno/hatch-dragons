@@ -3,6 +3,7 @@ import Login from './Login/Login.js';
 import Store from './Store/Store.js';
 import Park from './Park/Park.js';
 import ActiveHabitat from './Habitat/ActiveHabitat.js';
+import ActiveDragon from './Dragon/ActiveDragon.js';
 
 class App extends Component {
   state = {
@@ -100,6 +101,9 @@ class App extends Component {
         <Park rootState={this.state} setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
         <ActiveHabitat rootState={this.state}
+          setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}/>
+        <ActiveDragon rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
       </div>

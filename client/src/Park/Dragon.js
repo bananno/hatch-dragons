@@ -16,7 +16,7 @@ class Dragon extends Component {
 
   handleClick = () => {
     this.props.setRootState({
-      activeDragon: this.props.dragon._id
+      activeDragon: this.props.dragon
     });
   }
 
@@ -27,7 +27,7 @@ class Dragon extends Component {
       return model.name === dragon.gameModel;
     })[0];
 
-    let isActive = this.props.rootState.activeDragon === dragon._id
+    let isActive = this.props.rootState.activeDragon === dragon
       && !this.props.incubator;
 
     let className = 'dragon';
