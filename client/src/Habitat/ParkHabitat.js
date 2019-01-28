@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Dragon from '../Park/Dragon';
+import MiniDragon from '../Dragon/MiniDragon';
 import habitatModels from '../gameModels/habitats';
 
-
-class Habitat extends Component {
+class ParkHabitat extends Component {
   handleClick = () => {
     if (this.props.rootState.hatchDragon) {
       this.hatchDragon();
@@ -42,9 +41,7 @@ class Habitat extends Component {
 
         {dragons.map((dragon, i) => {
           return (
-            <Dragon key={i} dragon={dragon} setRootState={this.props.setRootState}
-              makePostRequest={this.props.makePostRequest}
-              rootState={this.props.rootState}/>
+            <MiniDragon key={i} dragon={dragon}/>
           );
         })}
       </div>
@@ -52,4 +49,4 @@ class Habitat extends Component {
   }
 }
 
-export default Habitat;
+export default ParkHabitat;
