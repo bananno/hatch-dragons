@@ -33,6 +33,7 @@ class Habitat extends Component {
       return dragon.habitat === habitat._id;
     });
 
+
     return (
       <Modal>
         <div className={className}>

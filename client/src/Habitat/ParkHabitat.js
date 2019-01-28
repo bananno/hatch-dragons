@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dragon from './Dragon';
 import habitatModels from '../gameModels/habitats';
 
+
 class Habitat extends Component {
   handleClick = () => {
     if (this.props.rootState.hatchDragon) {
