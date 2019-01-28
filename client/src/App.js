@@ -72,31 +72,33 @@ class App extends Component {
       <div className="App">
         <div className="page-header">
           <h1>Hatch Dragons</h1>
+          <div>
+            {
+              (this.state.currentUser && !this.state.showMarket)
+              ? <button onClick={this.openMarket}>MARKET</button>
+              : null
+            }
+          </div>
+          <div>
+            {
+              this.state.currentUser
+              ? (
+                <p>
+                  <b>Current user: </b>
+                  {this.state.currentUser.username}
+                </p>
+              ) : null
+            }
+
+            {
+              this.state.currentUser
+              ? (<form onSubmit={this.clickLogout}>
+                  <button type="submit">logout</button>
+                </form>)
+              : null
+            }
+          </div>
         </div>
-
-        {
-          this.state.currentUser
-          ? (
-            <p>
-              <b>Current user: </b>
-              {this.state.currentUser.username}
-            </p>
-          ) : null
-        }
-
-        {
-          this.state.currentUser
-          ? (<form onSubmit={this.clickLogout}>
-              <button type="submit">logout</button>
-            </form>)
-          : null
-        }
-
-        {
-          (this.state.currentUser && !this.state.showMarket)
-          ? <button onClick={this.openMarket}>MARKET</button>
-          : null
-        }
 
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
         <Market rootState={this.state} makePostRequest={this.makePostRequest}
