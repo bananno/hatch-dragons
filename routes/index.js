@@ -100,7 +100,23 @@ function buyHabitat(req, res, next) {
 }
 
 function buyHabitatNew(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let index = parseInt(req.body.habitatIndex);
+    let model = habitatModels[index];
 
+    let habitatData = {
+      user: user,
+      gameModel: model.name,
+    };
+
+    Habitat.create(habitatData, (error, habitat) => {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  });
 }
 
 function buyDragon(req, res, next) {

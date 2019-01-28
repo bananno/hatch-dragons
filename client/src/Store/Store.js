@@ -4,8 +4,18 @@ import dragonModels from '../gameModels/dragons';
 
 class Store extends Component {
   buyHabitat = (index) => {
-    return () => {
-      console.log('buy habitat #' + index);
+    return async () => {
+      await fetch('/buyHabitat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          habitatIndex: index
+        }),
+      });
+
+      this.props.visitDatabase();
     };
   }
 
