@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MarketItem from './marketItem';
 
 const resultsPerPage = 4;
 
@@ -33,10 +34,7 @@ class MarketSection extends Component {
         {
           modelsOnPage.map((model, i) => {
             return (
-              <div key={i} className="market-item">
-                <h4>{model.name}</h4>
-                <button onClick={this.props.onPurchase(i)}>buy</button>
-              </div>
+              <MarketItem key={i} model={model} onPurchase={this.props.onPurchase(i)}/>
             );
           })
         }
