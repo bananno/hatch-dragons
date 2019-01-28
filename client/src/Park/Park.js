@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import ActiveIncubator from './ActiveIncubator';
 import ParkIncubator from './ParkIncubator';
 import ParkHabitat from '../Habitat/ParkHabitat';
 
 class Park extends Component {
+  state = {
+    showIncubator: false
+  }
+
   render () {
     if (this.props.rootState.currentUser == null) {
       return null;
@@ -10,7 +15,11 @@ class Park extends Component {
 
     return (
       <div>
-        <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
+        {
+          this.state.showIncubator
+          ? <ActiveIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
+          : <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
+        }
         <div>
           <h2>Habitats</h2>
           {
