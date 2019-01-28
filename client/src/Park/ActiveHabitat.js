@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from '../containers/modal';
 
 class Habitat extends Component {
   render () {
@@ -7,9 +8,9 @@ class Habitat extends Component {
     }
 
     return (
-      <div>
+      <Modal>
         HABITAT
-      </div>
+      </Modal>
     );
   }
 }
