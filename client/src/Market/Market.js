@@ -48,35 +48,6 @@ class Market extends Component {
           <MarketSection models={habitatModels} onPurchase={this.buyHabitat}/>
           <h3>Dragons</h3>
           <MarketSection models={dragonModels} onPurchase={this.buyDragon}/>
-
-          <br/>
-          <br/>
-
-          <div className="market-section">
-            {
-              habitatModels.map((model, i) => {
-                return (
-                  <div key={i} className="market-item">
-                    <h4>{model.name} Habitat</h4>
-                    <button onClick={this.buyHabitat(i)}>buy</button>
-                  </div>
-                );
-              })
-            }
-          </div>
-          <h3>Dragons</h3>
-          <div className="market-section">
-            {
-              dragonModels.map((model, i) => {
-                return (
-                  <div key={i} className="market-item">
-                    <h4>{model.name} Dragon</h4>
-                    <button onClick={this.buyDragon(i)}>buy</button>
-                  </div>
-                );
-              })
-            }
-          </div>
         </div>
       </Modal>
     );
