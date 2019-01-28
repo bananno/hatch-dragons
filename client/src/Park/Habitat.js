@@ -14,7 +14,7 @@ class Habitat extends Component {
       this.hatchDragon();
     } else {
       this.props.setRootState({
-        activeHabitat: this.props.habitat._id
+        activeHabitat: this.props.habitat
       });
     }
   }
@@ -37,7 +37,7 @@ class Habitat extends Component {
       return model.name === habitat.gameModel;
     })[0];
 
-    let isActive = this.props.rootState.activeHabitat === habitat._id;
+    let isActive = this.props.rootState.activeHabitat === habitat;
 
     let className = 'park-habitat';
 
