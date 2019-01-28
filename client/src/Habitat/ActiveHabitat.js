@@ -41,13 +41,16 @@ class Habitat extends Component {
           <h1>{gameModel.name}</h1>
           <br/>
           <img src={gameModel.image} className="habitat-image" alt=""/>
-          {dragons.map((dragon, i) => {
-            return (
-              <HabitatDragon key={i} dragon={dragon} setRootState={this.props.setRootState}
-                makePostRequest={this.props.makePostRequest}
-                rootState={this.props.rootState}/>
-            );
-          })}
+          <h2>Dragons</h2>
+          <div>
+            {dragons.map((dragon, i) => {
+              return (
+                <HabitatDragon key={i} dragon={dragon} setRootState={this.props.setRootState}
+                  makePostRequest={this.props.makePostRequest}
+                  rootState={this.props.rootState}/>
+              );
+            })}
+          </div>
           {
             dragons.length === 0
             ? <button onClick={this.sell}>sell</button>

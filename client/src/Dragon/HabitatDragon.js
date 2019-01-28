@@ -30,11 +30,7 @@ class Dragon extends Component {
     let isActive = this.props.rootState.activeDragon === dragon
       && !this.props.incubator;
 
-    let className = 'dragon';
-
-    if (isActive) {
-      className += ' active';
-    }
+    let className = 'dragon habitat';
 
     return (
       <div className={className} onClick={this.props.incubator ? null : this.handleClick}>
@@ -45,12 +41,6 @@ class Dragon extends Component {
         {
           this.props.incubator
           ? <button onClick={this.hatch}>hatch</button>
-          : null
-        }
-
-        {
-          isActive
-          ? <button onClick={this.sell}>sell</button>
           : null
         }
       </div>
