@@ -3,6 +3,45 @@ import habitatModels from '../gameModels/habitats';
 import dragonModels from '../gameModels/dragons';
 
 class Store extends Component {
+  buyHabitat = (index) => {
+    return () => {
+      console.log('buy habitat #' + index);
+    };
+  }
+
+  buyDragon = (index) => {
+    return async () => {
+      await fetch('/buyDragon', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          dragonIndex: index
+        }),
+      });
+
+      this.props.visitDatabase();
+    };
+  }
+
+  hatchDragon = async () => {
+    const response = await fetch('/hatchDragon', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        dragon: this.props.rootState.hatchDragon._id,
+        habitat: this.props.habitat._id
+      }),
+    });
+
+    const responseResult = await response.text();
+
+    console.log(responseResult);
+  }
+
   render () {
     if (this.props.rootState.currentUser == null) {
       return null;
@@ -18,7 +57,7 @@ class Store extends Component {
               return (
                 <div key={i} className="store-item">
                   <h4>{model.name} Habitat</h4>
-                  <button>buy</button>
+                  <button onClick={this.buyHabitat(i)}>buy</button>
                 </div>
               );
             })
@@ -31,7 +70,7 @@ class Store extends Component {
               return (
                 <div key={i} className="store-item">
                   <h4>{model.name} Dragon</h4>
-                  <button>buy</button>
+                  <button onClick={this.buyDragon(i)}>buy</button>
                 </div>
               );
             })

@@ -12,6 +12,8 @@ router.get('/', showHomePage);
 router.get('/getData', getData);
 router.post('/buyHabitat/:habitatIndex', buyHabitat);
 router.post('/buyDragon/:dragonIndex/incubate', buyDragon);
+router.post('/buyHabitat', buyHabitatNew);
+router.post('/buyDragon', buyDragonNew);
 router.post('/sellHabitat/:habitatId', sellHabitat);
 router.post('/hatchDragon/:dragonId/:habitatId', hatchDragon);
 router.post('/hatchDragon', hatchDragonNew);
@@ -97,9 +99,35 @@ function buyHabitat(req, res, next) {
   });
 }
 
+function buyHabitatNew(req, res, next) {
+
+}
+
 function buyDragon(req, res, next) {
   authenticate(req, res, next, (user) => {
     let index = parseInt(req.params.dragonIndex);
+    let model = dragonModels[index];
+
+    let dragonData = {
+      user: user,
+      habitat: null,
+      gameModel: model.name,
+      level: 0,
+    };
+
+    Dragon.create(dragonData, (error, habitat) => {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  });
+}
+
+function buyDragonNew(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
     let dragonData = {
