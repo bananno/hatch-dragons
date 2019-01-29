@@ -1,7 +1,7 @@
 import React from 'react';
 import findModel from '../gameModels/findModel';
 
-const incubatorDragon = (props) => {
+const IncubatorDragon = (props) => {
   let gameModel = findModel('dragon', props.dragon);
 
   let className = 'dragon egg';
@@ -35,4 +35,4 @@ const incubatorDragon = (props) => {
   );
 };
 
-export default incubatorDragon;
+export default IncubatorDragon;

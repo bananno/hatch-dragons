@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
-import IncubatorDragon from '../Dragon/incubatorDragon';
+import IncubatorDragon from '../Dragon/IncubatorDragon';
 
 class ParkIncubator extends Component {
   onClose = () => {
