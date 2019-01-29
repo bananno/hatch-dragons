@@ -107,7 +107,10 @@ class ParkHabitat extends Component {
   getConstructionDisplay = () => {
     if (this.waitingToComplete()) {
       return (
-        <Timer time={this.state.secondsRemaining}/>
+        <div className="construction">
+          <span>UNDER CONSTRUCATION</span><br/>
+          <Timer time={this.state.secondsRemaining}/>
+        </div>
       );
     }
 

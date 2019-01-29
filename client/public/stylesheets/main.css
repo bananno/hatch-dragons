@@ -172,6 +172,26 @@
   cursor: pointer;
 }
 
+.habitat.park .construction {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 96%;
+  color: red;
+  padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.habitat.park .timer {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-top: 30px;
+  display: inline-block;
+}
+
 .habitat.park.eligible {
   border: 2px solid blue;
 }
