@@ -129,9 +129,13 @@ function placeDragon(req, res, next) {
           return res.redirect('/');
         } else {
           let dragonData = {
-            level: 1,
             habitat: habitat,
           };
+
+          if (dragon.level == 0) {
+            dragonData.level = 1;
+          }
+
           dragon.update(dragonData, (err, dragon) => {
             if (err) {
               return next(err);
