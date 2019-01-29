@@ -13,9 +13,9 @@ class Park extends Component {
         <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
         <div>
           {
-            this.props.rootState.habitats.map((habitat, i) => {
+            this.props.rootState.habitats.map(habitat => {
               return (
-                <ParkHabitat key={i} habitat={habitat}
+                <ParkHabitat key={habitat._id} habitat={habitat}
                   rootState={this.props.rootState}
                   setRootState={this.props.setRootState}
                   makePostRequest={this.props.makePostRequest}/>
