@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import dragonModels from '../gameModels/dragons';
 
 class Dragon extends Component {
-  hatch = () => {
-    this.props.setRootState({
-      hatchDragon: this.props.dragon
-    });
-  }
-
-  sell = () => {
-    this.props.makePostRequest('/sellDragon', {
-      dragonId: this.props.dragon._id
-    });
-  }
-
   handleClick = () => {
     this.props.setRootState({
       activeDragon: this.props.dragon
@@ -30,16 +18,9 @@ class Dragon extends Component {
     let className = 'dragon habitat';
 
     return (
-      <div className={className} onClick={this.props.incubator ? null : this.handleClick}>
+      <div className={className} onClick={this.handleClick}>
         <h3>{this.props.dragon.gameModel} Dragon</h3>
-
         <img src={gameModel.images[dragon.level]} alt=""/>
-
-        {
-          this.props.incubator
-          ? <button onClick={this.hatch}>hatch</button>
-          : null
-        }
       </div>
     );
   }
