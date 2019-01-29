@@ -19,6 +19,9 @@ const DragonSchema = new mongoose.Schema({
     required: true,
     default: 0
   },
+  timestamp: {
+    type: Date,
+  }
 });
 
 const Dragon = mongoose.model('Dragon', DragonSchema);

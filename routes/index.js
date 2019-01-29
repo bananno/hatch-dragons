@@ -72,11 +72,14 @@ function buyDragon(req, res, next) {
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
+    let ts = new Date();
+
     let dragonData = {
       user: user,
       habitat: null,
       gameModel: model.name,
       level: 0,
+      timestamp: ts,
     };
 
     Dragon.create(dragonData, (error, habitat) => {
