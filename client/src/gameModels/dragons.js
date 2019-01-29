@@ -9,6 +9,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/75/PlantDragonAdult.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/7c/PlantDragonElder.png',
     ],
+    eggTime: [0, 0, 5],
   },
   {
     name: 'Fire',
@@ -20,6 +21,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/72/FireDragonAdult.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/c/ce/FireDragonElder.png',
     ],
+    eggTime: [0, 5, 0],
   },
   {
     name: 'Earth',
@@ -31,6 +33,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/2/2c/EarthDragonAdult.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/4/48/EarthDragonElder.png',
     ],
+    eggTime: [2, 0, 0],
   },
   {
     name: 'Cold',
@@ -42,6 +45,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/2/2a/ColdDragonAdult.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/70/ColdDragonElder.png',
     ],
+    eggTime: [12, 0, 0],
   },
   {
     name: 'Evergreen',
@@ -53,6 +57,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/e/e2/EvergreenDragonAdult.png',
       null,
     ],
+    eggTime: [10, 0, 0],
   },
 ];
 
