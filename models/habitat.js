@@ -13,7 +13,7 @@ const HabitatSchema = new mongoose.Schema({
   timestamp: {
     type: Number,
   },
-  built: {
+  complete: {
     type: Boolean,
     default: false,
   },

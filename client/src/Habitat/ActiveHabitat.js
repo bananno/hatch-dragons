@@ -52,7 +52,7 @@ class Habitat extends Component {
             })}
           </div>
           {
-            !habitat.built
+            !habitat.complete
             ? <p>UNDER CONSTRUCTION</p>
             : null
           }
