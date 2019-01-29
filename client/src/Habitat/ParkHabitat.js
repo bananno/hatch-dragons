@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import MiniDragon from '../Dragon/MiniDragon';
-import habitatModels from '../gameModels/habitats';
+import findModel from '../gameModels/findModel';
 
 class ParkHabitat extends Component {
   habitat = this.props.habitat
 
-  gameModel = (() => {
-    return habitatModels.filter(model => {
-      return model.name === this.habitat.gameModel;
-    })[0];
-  })()
+  gameModel = findModel('habitat', this.habitat)
 
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
