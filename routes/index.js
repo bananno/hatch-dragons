@@ -72,7 +72,7 @@ function buyDragon(req, res, next) {
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
-    let ts = new Date();
+    let ts = new Date().getTime();
 
     let dragonData = {
       user: user,

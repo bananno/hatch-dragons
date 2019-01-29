@@ -20,7 +20,7 @@ const DragonSchema = new mongoose.Schema({
     default: 0
   },
   timestamp: {
-    type: Date,
+    type: Number,
   }
 });
 
