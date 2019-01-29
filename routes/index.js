@@ -143,6 +143,15 @@ function placeDragon(req, res, next) {
           };
 
           if (dragon.level == 0) {
+            let now = new Date().getTime();
+            let secondsRequired = dragonModel.eggTime[2] + (dragonModel.eggTime[1] * 60)
+              + (dragonModel.eggTime[0] * 60 * 60);
+            let secondsElapsed = Math.round((now - dragon.timestamp)/1000);
+
+            if (secondsElapsed < secondsRequired) {
+              return;
+            }
+
             dragonData.level = 1;
           }
 
