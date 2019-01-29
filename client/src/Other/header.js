@@ -11,16 +11,21 @@ const header = (props) => {
     props.makePostRequest('/logout');
   };
 
+  const getMarketButton = () => {
+    if (props.rootState.currentUser != null) {
+      if (props.rootState.hatchDragon == null) {
+        return (<button onClick={openMarket}>MARKET</button>);
+      }
+    }
+    return null;
+  }
+
   return (
     <div className="page-header">
       <h1>Hatch Dragons</h1>
 
       <div>
-        {
-          (props.rootState.currentUser && !props.rootState.showMarket)
-          ? <button onClick={openMarket}>MARKET</button>
-          : null
-        }
+        {getMarketButton()}
       </div>
 
       <div>
