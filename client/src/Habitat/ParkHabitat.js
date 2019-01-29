@@ -18,8 +18,26 @@ class ParkHabitat extends Component {
   }
 
   placeDragon = () => {
+    let dragon = this.props.rootState.placeDragon;
+    let dragonModel = findModel('dragon', dragon);
+
+    let elementOverlap = (() => {
+      for (let i in this.gameModel.elements) {
+        for (let j in dragonModel.elements) {
+          if (this.gameModel.elements[i] === dragonModel.elements[j]) {
+            return true;
+          }
+        }
+      }
+      return false;
+    })();
+
+    if (!elementOverlap) {
+      return;
+    }
+
     this.props.makePostRequest('/placeDragon', {
-      dragon: this.props.rootState.placeDragon._id,
+      dragon: dragon._id,
       habitat: this.habitat._id
     }, {
       placeDragon: null
