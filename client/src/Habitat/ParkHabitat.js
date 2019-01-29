@@ -36,10 +36,11 @@ class ParkHabitat extends Component {
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
       this.placeDragon();
-    } else {
+    } else if (this.habitat.complete || this.state.secondsRemaining > 0) {
       this.props.setRootState({
         activeHabitat: this.props.habitat
       });
+    } else {
     }
   }
 
