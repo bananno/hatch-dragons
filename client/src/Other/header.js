@@ -20,32 +20,41 @@ const header = (props) => {
     return null;
   }
 
+  const getCurrentUserInfo = () => {
+    if (props.rootState.currentUser == null) {
+      return null;
+    }
+
+    return (
+      <p>
+        <b>Current user: </b>
+        {props.rootState.currentUser.username}
+      </p>
+    );
+  }
+
+  const getLogoutButton = () => {
+    if (props.rootState.currentUser == null
+        || props.rootState.hatchDragon != null) {
+      return null;
+    }
+
+    return (
+      <form onSubmit={clickLogout}>
+        <button type="submit">logout</button>
+      </form>
+    );
+  }
+
   return (
     <div className="page-header">
       <h1>Hatch Dragons</h1>
-
       <div>
         {getMarketButton()}
       </div>
-
       <div>
-        {
-          props.rootState.currentUser
-          ? (
-            <p>
-              <b>Current user: </b>
-              {props.rootState.currentUser.username}
-            </p>
-          ) : null
-        }
-
-        {
-          props.rootState.currentUser
-          ? (<form onSubmit={clickLogout}>
-              <button type="submit">logout</button>
-            </form>)
-          : null
-        }
+        {getCurrentUserInfo()}
+        {getLogoutButton()}
       </div>
     </div>
   );
