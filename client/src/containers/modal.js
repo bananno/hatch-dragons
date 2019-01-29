@@ -6,7 +6,7 @@ const modal = (props) => {
       <div className="popup">
         {
             props.onClose
-            ? <button onClick={props.onClose}>CLOSE</button>
+            ? <div onClick={props.onClose} className="close-button">X</div>
             : null
         }
         {

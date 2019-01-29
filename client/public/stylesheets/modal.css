@@ -28,3 +28,12 @@
 .modal .main-image {
   height: 200px;
 }
+
+.modal .close-button {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  background-image: url(../images/red-x.png);
+  background-size: 50px;
+  color: transparent;
+}
