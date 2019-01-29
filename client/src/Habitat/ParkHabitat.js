@@ -2,23 +2,35 @@ import React, { Component } from 'react';
 import MiniDragon from '../Dragon/MiniDragon';
 import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
+import calculateTime from '../tools/calculateTime';
 
 class ParkHabitat extends Component {
-  state = {
-    secondsRemaining: 0
-  }
+  state = {}
 
   habitat = this.props.habitat
 
   gameModel = findModel('habitat', this.habitat)
 
   componentDidMount() {
-    this.setState({
-      construction: true
-    });
+    this.makeTimer();
+    this.interval = setInterval(this.makeTimer, 1000);
   }
 
   componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  makeTimer = () => {
+    let times = calculateTime(this.habitat.timestamp, this.gameModel.buildTime);
+
+    this.setState({
+      construction: !times.timeIsDone,
+      secondsRemaining: times.secondsRemaining,
+    });
+
+    if (times.timeIsDone) {
+      clearInterval(this.interval);
+    }
   }
 
   handleClick = () => {
