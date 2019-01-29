@@ -1,21 +1,22 @@
 import React from 'react';
 
 const message = (props) => {
-  let message = null;
+  const onCancelHatchDragon = () => {
+    props.setRootState({
+      hatchDragon: null
+    });
+  }
 
   if (props.rootState.hatchDragon) {
-    message = 'Select a habitat for the dragon.';
+    return (
+      <div className="message">
+        Select a habitat for the dragon.
+        <button onClick={onCancelHatchDragon}>cancel</button>
+      </div>
+    );
   }
 
-  if (message == null) {
-    return null;
-  }
-
-  return (
-    <div className="message">
-      {message}
-    </div>
-  );
+  return null;
 };
 
 export default message;
