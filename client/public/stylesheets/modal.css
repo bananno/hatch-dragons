@@ -21,6 +21,11 @@
   padding: 30px;
 }
 
+.modal .column {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .modal .main-title {
   font-size: 40px;
   font-weight: bold;
