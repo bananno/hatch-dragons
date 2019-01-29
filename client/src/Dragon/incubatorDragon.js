@@ -15,10 +15,8 @@ const incubatorDragon = (props) => {
 
   return (
     <div className={className}>
-      <h3>{gameModel.name} Dragon</h3>
-
-      <img src={gameModel.images[0]} alt=""/>
-
+      <h1>{gameModel.name} Dragon</h1>
+      <img src={gameModel.images[0]} alt=""/><br/>
       <button onClick={onHatch}>hatch</button>
     </div>
   );

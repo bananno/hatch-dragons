@@ -21,7 +21,7 @@ class ParkIncubator extends Component {
     return (
       <Modal onClose={this.onClose}>
         <div className="incubator active">
-          <h2>Incubator</h2>
+          <h1 className="main-title">Incubator</h1>
           {dragonEggs.map((dragon, i) => {
             return (
               <IncubatorDragon key={i} dragon={dragon} setRootState={this.props.setRootState}/>

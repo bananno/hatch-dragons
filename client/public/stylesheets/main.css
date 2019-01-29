@@ -216,3 +216,28 @@
 .dragon img {
   max-height: 100px;
 }
+
+.dragon.egg {
+  width: 150px;
+  margin: 5px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.dragon.egg h1 {
+  font-weight: bold;
+}
+
+.dragon.egg img {
+  height: 100px;
+  margin: 10px 0;
+}
+
+.dragon.egg button {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
