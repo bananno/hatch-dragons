@@ -39,9 +39,8 @@ class Habitat extends Component {
     return (
       <Modal onClose={this.onClose}>
         <div className={className}>
-          <h1>{gameModel.name}</h1>
-          <br/>
-          <img src={gameModel.image} className="habitat-image" alt=""/>
+          <img src={gameModel.image} className="main-image" alt=""/>
+          <h1 className="main-title">{gameModel.name} Habitat</h1>
           <h2>Dragons</h2>
           <div>
             {dragons.map((dragon, i) => {
