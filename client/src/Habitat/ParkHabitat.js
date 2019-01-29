@@ -87,6 +87,9 @@ class ParkHabitat extends Component {
     this.props.makePostRequest('/completeHabitat', {
       habitat: this.habitat._id
     });
+    this.setState({
+      readyToComplete: false
+    });
   }
 
   placeDragon = () => {
