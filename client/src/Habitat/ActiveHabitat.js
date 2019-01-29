@@ -13,6 +13,8 @@ class Habitat extends Component {
   sell = () => {
     this.props.makePostRequest('/sellHabitat', {
       habitatId: this.props.rootState.activeHabitat._id
+    }, {
+      activeHabitat: null
     });
   }
 
@@ -33,7 +35,6 @@ class Habitat extends Component {
     let dragons = this.props.rootState.dragons.filter(dragon => {
       return dragon.habitat === habitat._id;
     });
-
 
     return (
       <Modal onClose={this.onClose}>
