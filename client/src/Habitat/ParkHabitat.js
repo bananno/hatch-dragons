@@ -83,14 +83,20 @@ class ParkHabitat extends Component {
     });
   }
 
-  getTimerDisplay = () => {
-    if (!this.state.construction) {
-      return null;
+  getConstructionDisplay = () => {
+    if (this.state.secondsRemaining > 0) {
+      return (
+        <Timer time={this.state.secondsRemaining}/>
+      );
     }
 
-    return (
-      <Timer time={this.state.secondsRemaining}/>
-    );
+    if (!this.habitat.complete) {
+      return (
+        <button>COMPLETE</button>
+      );
+    }
+
+    return null;
   }
 
   render () {
@@ -110,7 +116,7 @@ class ParkHabitat extends Component {
 
     return (
       <div className={className} onClick={this.handleClick} style={style}>
-        {this.getTimerDisplay()}
+        {this.getConstructionDisplay()}
         {dragons.map((dragon, i) => {
           return (
             <MiniDragon key={i} dragon={dragon}/>
