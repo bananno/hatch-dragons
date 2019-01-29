@@ -1,6 +1,7 @@
 const dragons = [
   {
     name: 'Plant',
+    elements: ['plant'],
     images: [
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/7b/PlantDragonEgg.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/b/bf/PlantDragonBaby.png',
@@ -8,6 +9,7 @@ const dragons = [
   },
   {
     name: 'Fire',
+    elements: ['fire'],
     images: [
       'https://vignette.wikia.nocookie.net/dragonvale/images/f/f5/FireDragonEgg.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/5/54/FireDragonBaby.png',
@@ -15,6 +17,7 @@ const dragons = [
   },
   {
     name: 'Earth',
+    elements: ['earth'],
     images: [
       'https://vignette.wikia.nocookie.net/dragonvale/images/e/e2/EarthDragonEgg.png',
       'https://vignette.wikia.nocookie.net/dragonvale/images/5/5c/EarthDragonBaby.png',
