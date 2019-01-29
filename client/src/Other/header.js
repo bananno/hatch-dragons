@@ -1,6 +1,9 @@
 import React from 'react';
 
 const header = (props) => {
+  const currentlyLoggedIn = props.rootState.currentUser != null;
+  const currentlyHatchingDragon = props.rootState.hatchDragon != null;
+
   const openMarket = () => {
     props.setRootState({
       showMarket: true
@@ -12,16 +15,19 @@ const header = (props) => {
   };
 
   const getMarketButton = () => {
-    if (props.rootState.currentUser != null) {
-      if (props.rootState.hatchDragon == null) {
-        return (<button onClick={openMarket}>MARKET</button>);
-      }
+    if (!currentlyLoggedIn) {
+      return null;
     }
-    return null;
+
+    let disabled = currentlyHatchingDragon;
+
+    return (
+      <button onClick={openMarket} disabled={disabled}>MARKET</button>
+    );
   }
 
   const getCurrentUserInfo = () => {
-    if (props.rootState.currentUser == null) {
+    if (!currentlyLoggedIn) {
       return null;
     }
 
@@ -34,13 +40,14 @@ const header = (props) => {
   }
 
   const getLogoutButton = () => {
-    if (props.rootState.currentUser == null
-        || props.rootState.hatchDragon != null) {
+    if (props.rootState.currentUser == null) {
       return null;
     }
 
+    let disabled = currentlyHatchingDragon;
+
     return (
-      <button onClick={clickLogout}>logout</button>
+      <button onClick={clickLogout} disabled={disabled}>logout</button>
     );
   }
 
