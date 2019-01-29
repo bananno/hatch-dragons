@@ -32,14 +32,14 @@
   height: 200px;
 }
 
-.modal .close-button {
+.modal .close-button-frame {
   text-align: right;
   position: relative;
   top: 35px;
   left: 20px;
 }
 
-.modal .close-button div {
+.modal .close-button {
   display: inline-block;
   height: 65px;
   width: 65px;
@@ -51,7 +51,21 @@
   border-radius: 35px;
 }
 
-.modal .close-button div:hover {
+.modal .close-button:hover {
   cursor: pointer;
   background-size: 65px;
+}
+
+.modal .back-button {
+  height: 55px;
+  width: 65px;
+  background-image: url(../images/green-arrow.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.modal .back-button:hover {
+  cursor: pointer;
+  background-size: 65px 50px;
 }

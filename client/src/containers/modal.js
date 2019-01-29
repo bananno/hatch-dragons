@@ -4,17 +4,17 @@ const modal = (props) => {
   return (
     <div className="modal">
       <div className="modal-sub-frame">
-        <div className="close-button">
+        <div className="close-button-frame">
           {
               props.onClose
-              ? <div onClick={props.onClose}>X</div>
+              ? <div className="close-button" onClick={props.onClose}> </div>
               : null
           }
         </div>
         <div className="popup">
           {
               props.onBack
-              ? <button onClick={props.onBack}>BACK</button>
+              ? <div className="back-button" onClick={props.onBack}> </div>
               : null
           }
           <br/>
