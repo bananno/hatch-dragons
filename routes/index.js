@@ -128,6 +128,13 @@ function placeDragon(req, res, next) {
           console.log('wrong user');
           return res.redirect('/');
         } else {
+          let habitatModel = findModel('habitat', habitat);
+          let dragonModel = findModel('dragon', dragon);
+
+          if (!elementsOverlap(habitatModel, dragonModel)) {
+            return;
+          }
+
           let dragonData = {
             habitat: habitat,
           };
@@ -164,6 +171,26 @@ function sellDragon(req, res, next) {
       }
     });
   });
+}
+
+function findModel(type, item) {
+  let models = type === 'habitat' ? habitatModels : dragonModels;
+  let modelName = item.gameModel;
+
+  return models.filter(model => {
+    return model.name === modelName;
+  })[0];
+}
+
+function elementsOverlap(model1, model2) {
+  for (let i in model1.elements) {
+    for (let j in model2.elements) {
+      if (model1.elements[i] === model2.elements[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 module.exports = router;
