@@ -12,9 +12,8 @@ class ParkHabitat extends Component {
   gameModel = findModel('habitat', this.habitat)
 
   componentDidMount() {
-    if (this.habitat.complete) {
+    if (this.props.habitat.complete) {
       this.setState({
-        complete: true,
         readyToComplete: false,
         waitingToComplete: false,
         secondsRemaining: 0
@@ -33,7 +32,6 @@ class ParkHabitat extends Component {
     let times = calculateTime(this.habitat.timestamp, this.gameModel.buildTime);
 
     this.setState({
-      complete: false,
       readyToComplete: times.timeIsDone,
       waitingToComplete: !times.timeIsDone,
       secondsRemaining: times.secondsRemaining
@@ -47,17 +45,17 @@ class ParkHabitat extends Component {
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
       this.placeDragon();
-    } else if (this.state.readyToComplete) {
-      this.completeConstruction();
-    } else {
+    } else if (this.props.habitat.complete || this.state.secondsRemaining > 0) {
       this.props.setRootState({
         activeHabitat: this.props.habitat
       });
+    } else {
+      this.completeConstruction();
     }
   }
 
   isEligibleForPlacingDragon = () => {
-    if (!this.state.complete) {
+    if (!this.props.habitat.complete) {
       return false;
     }
 
@@ -110,19 +108,15 @@ class ParkHabitat extends Component {
       return null;
     }
 
-    if (this.state.waitingToComplete) {
+    if (this.state.secondsRemaining > 0) {
       return (
         <Timer time={this.state.secondsRemaining}/>
       );
     }
 
-    if (this.state.readyToComplete) {
-      return (
-        <button>COMPLETE</button>
-      );
-    }
-
-    return null;
+    return (
+      <button>COMPLETE</button>
+    );
   }
 
   render () {
