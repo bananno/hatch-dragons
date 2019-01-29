@@ -64,14 +64,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header rootState={this.state} setRootState={this.setRootState}
-          makePostRequest={this.makePostRequest}/>
-        <Message rootState={this.state} setRootState={this.setRootState}/>
-        <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
-        <Market rootState={this.state} makePostRequest={this.makePostRequest}
+        <Header rootState={this.state}
           setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}/>
+        <Message rootState={this.state}
+          setRootState={this.setRootState}/>
+        <Login rootState={this.state}
           visitDatabase={this.visitDatabase}/>
-        <Park rootState={this.state} setRootState={this.setRootState}
+        <Market rootState={this.state}
+          setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}
+          visitDatabase={this.visitDatabase}/>
+        <Park rootState={this.state}
+          setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
         <ActiveHabitat rootState={this.state}
           setRootState={this.setRootState}
