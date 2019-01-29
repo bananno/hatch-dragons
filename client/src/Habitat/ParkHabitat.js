@@ -4,7 +4,7 @@ import habitatModels from '../gameModels/habitats';
 
 class ParkHabitat extends Component {
   handleClick = () => {
-    if (this.props.rootState.hatchDragon || this.props.rootState.placeDragon) {
+    if (this.props.rootState.placeDragon) {
       this.placeDragon();
     } else {
       this.props.setRootState({
@@ -15,11 +15,10 @@ class ParkHabitat extends Component {
 
   placeDragon = () => {
     this.props.makePostRequest('/placeDragon', {
-      dragon: (this.props.rootState.hatchDragon || this.props.rootState.placeDragon)._id,
+      dragon: (this.props.rootState.placeDragon)._id,
       habitat: this.props.habitat._id
     }, {
-      placeDragon: null,
-      hatchDragon: null
+      placeDragon: null
     });
   }
 

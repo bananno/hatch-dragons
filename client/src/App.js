@@ -15,7 +15,6 @@ class App extends Component {
     dragons: [],
     showMarket: false,
     showIncubator: false,
-    hatchDragon: null,
     placeDragon: null,
   }
 

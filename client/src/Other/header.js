@@ -2,8 +2,7 @@ import React from 'react';
 
 const header = (props) => {
   const currentlyLoggedIn = props.rootState.currentUser != null;
-  const currentlyPlacingDragon = props.rootState.hatchDragon != null
-    || props.rootState.placeDragon != null;
+  const currentlyPlacingDragon = props.rootState.placeDragon != null;
 
   const openMarket = () => {
     props.setRootState({

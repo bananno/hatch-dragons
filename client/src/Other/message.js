@@ -3,12 +3,11 @@ import React from 'react';
 const message = (props) => {
   const onCancelPlaceDragon = () => {
     props.setRootState({
-      hatchDragon: null,
       placeDragon: null,
     });
   }
 
-  if (props.rootState.hatchDragon || props.rootState.placeDragon) {
+  if (props.rootState.placeDragon) {
     return (
       <div className="message">
         Select a habitat for the dragon.
