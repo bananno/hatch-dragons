@@ -13,6 +13,10 @@ const HabitatSchema = new mongoose.Schema({
   timestamp: {
     type: Number,
   },
+  built: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Habitat = mongoose.model('Habitat', HabitatSchema);

@@ -52,6 +52,11 @@ class Habitat extends Component {
             })}
           </div>
           {
+            !habitat.built
+            ? <p>UNDER CONSTRUCTION</p>
+            : null
+          }
+          {
             dragons.length === 0
             ? <button onClick={this.sell}>sell</button>
             : null

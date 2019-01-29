@@ -44,7 +44,7 @@ class ParkHabitat extends Component {
   }
 
   isEligibleForPlacingDragon = () => {
-    if (this.state.construction) {
+    if (this.state.construction || !this.habitat.built) {
       return false;
     }
 
