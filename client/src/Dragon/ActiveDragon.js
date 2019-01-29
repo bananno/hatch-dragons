@@ -46,7 +46,7 @@ class ActiveDragon extends Component {
     let imageSrc = gameModel.images[1];
 
     return (
-      <Modal onClose={this.onClose} onBack={this.onBack}>
+      <Modal onClose={this.onClose} onBack={this.onBack} backText="testing">
         <div className={className}>
           <img src={imageSrc} alt="" className="main-image"/>
           <h1 className="main-title">{gameModel.name} Dragon</h1>

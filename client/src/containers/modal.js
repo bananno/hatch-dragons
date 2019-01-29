@@ -14,7 +14,7 @@ const modal = (props) => {
         <div className="popup">
           {
               props.onBack
-              ? <div className="back-button" onClick={props.onBack}> </div>
+              ? <div className="back-button" onClick={props.onBack}>{props.backText}</div>
               : null
           }
           <br/>

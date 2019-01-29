@@ -57,15 +57,18 @@
 }
 
 .modal .back-button {
-  height: 55px;
-  width: 65px;
+  height: 35px;
   background-image: url(../images/green-arrow.png);
-  background-size: 60px 50px;
+  background-size: 40px 30px;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: left;
+  padding-left: 50px;
+  font-size: 14px;
+  line-height: 35px;
 }
 
 .modal .back-button:hover {
   cursor: pointer;
-  background-size: 65px 50px;
+  background-size: 45px 35px;
+  font-size: 15px;
 }
