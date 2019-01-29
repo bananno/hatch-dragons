@@ -26,6 +26,19 @@ const header = (props) => {
     );
   }
 
+  const getMoneyInfo = () => {
+    if (!currentlyLoggedIn) {
+      return null;
+    }
+
+    return (
+      <p>
+        <b>Money: </b>
+        {props.rootState.currentUser.money}
+      </p>
+    );
+  }
+
   const getCurrentUserInfo = () => {
     if (!currentlyLoggedIn) {
       return null;
@@ -56,6 +69,9 @@ const header = (props) => {
       <h1>Hatch Dragons</h1>
       <div>
         {getMarketButton()}
+      </div>
+      <div>
+        {getMoneyInfo()}
       </div>
       <div>
         {getCurrentUserInfo()}
