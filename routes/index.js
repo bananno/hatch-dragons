@@ -12,7 +12,7 @@ router.get('/getData', getData);
 router.post('/buyHabitat', buyHabitat);
 router.post('/buyDragon', buyDragon);
 router.post('/sellHabitat', sellHabitat);
-router.post('/hatchDragon', hatchDragon);
+router.post('/placeDragon', placeDragon);
 router.post('/sellDragon', sellDragon);
 
 function getData(req, res) {
@@ -114,7 +114,7 @@ function sellHabitat(req, res, next) {
   });
 }
 
-function hatchDragon(req, res, next) {
+function placeDragon(req, res, next) {
   let habitatId = req.body.habitat;
   let dragonId = req.body.dragon;
 

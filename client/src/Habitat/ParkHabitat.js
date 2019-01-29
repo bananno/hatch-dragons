@@ -14,7 +14,7 @@ class ParkHabitat extends Component {
   }
 
   hatchDragon = () => {
-    this.props.makePostRequest('/hatchDragon', {
+    this.props.makePostRequest('/placeDragon', {
       dragon: this.props.rootState.hatchDragon._id,
       habitat: this.props.habitat._id
     }, {
