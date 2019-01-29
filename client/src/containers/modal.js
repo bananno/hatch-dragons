@@ -3,19 +3,23 @@ import React from 'react';
 const modal = (props) => {
   return (
     <div className="modal">
-      <div className="popup">
-        {
-            props.onClose
-            ? <div onClick={props.onClose} className="close-button">X</div>
-            : null
-        }
-        {
-            props.onBack
-            ? <button onClick={props.onBack}>BACK</button>
-            : null
-        }
-        <br/>
-        {props.children}
+      <div className="modal-sub-frame">
+        <div className="close-button">
+          {
+              props.onClose
+              ? <div onClick={props.onClose}>X</div>
+              : null
+          }
+        </div>
+        <div className="popup">
+          {
+              props.onBack
+              ? <button onClick={props.onBack}>BACK</button>
+              : null
+          }
+          <br/>
+          {props.children}
+        </div>
       </div>
     </div>
   );

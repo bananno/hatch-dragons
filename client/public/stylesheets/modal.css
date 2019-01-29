@@ -8,14 +8,17 @@
   overflow: scroll;
 }
 
-.popup {
-  background-color: white;
+.modal-sub-frame {
   width: 800px;
   margin: auto;
+  margin-top: 30px;
+}
+
+.popup {
+  background-color: white;
   border: 2px solid black;
   border-radius: 10px;
   padding: 30px;
-  margin-top: 30px;
 }
 
 .modal .main-title {
@@ -30,10 +33,25 @@
 }
 
 .modal .close-button {
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
+  text-align: right;
+  position: relative;
+  top: 35px;
+  left: 20px;
+}
+
+.modal .close-button div {
+  display: inline-block;
+  height: 65px;
+  width: 65px;
   background-image: url(../images/red-x.png);
-  background-size: 50px;
+  background-size: 60px;
   color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 35px;
+}
+
+.modal .close-button div:hover {
+  cursor: pointer;
+  background-size: 65px;
 }
