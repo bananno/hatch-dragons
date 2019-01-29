@@ -3,6 +3,14 @@ import MiniDragon from '../Dragon/MiniDragon';
 import habitatModels from '../gameModels/habitats';
 
 class ParkHabitat extends Component {
+  habitat = this.props.habitat
+
+  gameModel = (() => {
+    return habitatModels.filter(model => {
+      return model.name === this.habitat.gameModel;
+    })[0];
+  })()
+
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
       this.placeDragon();
@@ -15,28 +23,22 @@ class ParkHabitat extends Component {
 
   placeDragon = () => {
     this.props.makePostRequest('/placeDragon', {
-      dragon: (this.props.rootState.placeDragon)._id,
-      habitat: this.props.habitat._id
+      dragon: this.props.rootState.placeDragon._id,
+      habitat: this.habitat._id
     }, {
       placeDragon: null
     });
   }
 
   render () {
-    let habitat = this.props.habitat;
-
     let dragons = this.props.rootState.dragons.filter(dragon => {
-      return dragon.habitat === habitat._id;
+      return dragon.habitat === this.habitat._id;
     });
-
-    let gameModel = habitatModels.filter(model => {
-      return model.name === habitat.gameModel;
-    })[0];
 
     let className = 'habitat park';
 
     let style = {
-      backgroundImage: 'url("' + gameModel.image + '")'
+      backgroundImage: 'url("' + this.gameModel.image + '")'
     };
 
     return (
