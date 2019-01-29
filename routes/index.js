@@ -51,10 +51,12 @@ function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
     let index = parseInt(req.body.habitatIndex);
     let model = habitatModels[index];
+    let ts = new Date().getTime();
 
     let habitatData = {
       user: user,
       gameModel: model.name,
+      timestamp: ts,
     };
 
     Habitat.create(habitatData, (error, habitat) => {

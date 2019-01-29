@@ -9,7 +9,10 @@ const HabitatSchema = new mongoose.Schema({
   gameModel: {
     type: String,
     required: true
-  }
+  },
+  timestamp: {
+    type: Number,
+  },
 });
 
 const Habitat = mongoose.model('Habitat', HabitatSchema);
