@@ -33,8 +33,9 @@ class MarketSection extends Component {
         }
         {
           modelsOnPage.map((model, i) => {
+            let index = i + this.state.pageNumber;
             return (
-              <MarketItem key={i} model={model} onPurchase={this.props.onPurchase(i)}/>
+              <MarketItem key={i} model={model} onPurchase={this.props.onPurchase(index)}/>
             );
           })
         }
