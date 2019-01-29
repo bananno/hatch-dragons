@@ -1,10 +1,8 @@
 import React from 'react';
-import dragonModels from '../gameModels/dragons';
+import findModel from '../gameModels/findModel';
 
 const incubatorDragon = (props) => {
-  let gameModel = dragonModels.filter(model => {
-    return model.name === props.dragon.gameModel;
-  })[0];
+  let gameModel = findModel('dragon', props.dragon);
 
   let className = 'dragon egg';
 

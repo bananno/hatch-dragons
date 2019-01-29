@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
-import dragonModels from '../gameModels/dragons';
+import findModel from '../gameModels/findModel';
 
 class ActiveDragon extends Component {
   onClose = () => {
@@ -41,9 +41,7 @@ class ActiveDragon extends Component {
 
     let className = 'dragon active';
 
-    let gameModel = dragonModels.filter(model => {
-      return model.name === dragon.gameModel;
-    })[0];
+    let gameModel = findModel('dragon', dragon);
 
     let imageSrc = gameModel.images[1];
 

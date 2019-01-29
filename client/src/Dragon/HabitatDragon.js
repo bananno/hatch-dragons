@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import dragonModels from '../gameModels/dragons';
+import findModel from '../gameModels/findModel';
 
 class Dragon extends Component {
   handleClick = () => {
@@ -11,9 +11,7 @@ class Dragon extends Component {
   render () {
     let dragon = this.props.dragon;
 
-    let gameModel = dragonModels.filter(model => {
-      return model.name === dragon.gameModel;
-    })[0];
+    let gameModel = findModel('dragon', dragon);
 
     let className = 'dragon habitat';
 

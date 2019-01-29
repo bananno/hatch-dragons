@@ -1,5 +1,5 @@
 import React from 'react';
-import dragonModels from '../gameModels/dragons';
+import findModel from '../gameModels/findModel';
 
 const parkIncubator = (props) => {
   let currentlyPlacingDragon = props.rootState.placeDragon != null;
@@ -23,9 +23,7 @@ const parkIncubator = (props) => {
       <h1>Incubator</h1>
 
       {dragonEggs.map((dragon, i) => {
-        let gameModel = dragonModels.filter(model => {
-          return model.name === dragon.gameModel;
-        })[0];
+        let gameModel = findModel('dragon', dragon);
 
         return (<img src={gameModel.images[0]} alt="" key={i}/>);
       })}
