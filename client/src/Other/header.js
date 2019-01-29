@@ -40,9 +40,7 @@ const header = (props) => {
     }
 
     return (
-      <form onSubmit={clickLogout}>
-        <button type="submit">logout</button>
-      </form>
+      <button onClick={clickLogout}>logout</button>
     );
   }
 
