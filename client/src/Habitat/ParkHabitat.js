@@ -3,9 +3,20 @@ import MiniDragon from '../Dragon/MiniDragon';
 import findModel from '../gameModels/findModel';
 
 class ParkHabitat extends Component {
+  state = {}
+
   habitat = this.props.habitat
 
   gameModel = findModel('habitat', this.habitat)
+
+  componentDidMount() {
+    this.setState({
+      construction: true
+    });
+  }
+
+  componentWillUnmount() {
+  }
 
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
@@ -18,6 +29,10 @@ class ParkHabitat extends Component {
   }
 
   isEligibleForPlacingDragon = () => {
+    if (this.state.construction) {
+      return false;
+    }
+
     let dragon = this.props.rootState.placeDragon;
 
     if (dragon == null) {
@@ -53,6 +68,16 @@ class ParkHabitat extends Component {
     });
   }
 
+  getTimerDisplay = () => {
+    if (!this.state.construction) {
+      return null;
+    }
+
+    return (
+      <span className="timer">TIMER</span>
+    );
+  }
+
   render () {
     let dragons = this.props.rootState.dragons.filter(dragon => {
       return dragon.habitat === this.habitat._id;
@@ -70,6 +95,7 @@ class ParkHabitat extends Component {
 
     return (
       <div className={className} onClick={this.handleClick} style={style}>
+        {this.getTimerDisplay()}
         {dragons.map((dragon, i) => {
           return (
             <MiniDragon key={i} dragon={dragon}/>
