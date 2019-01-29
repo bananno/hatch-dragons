@@ -103,6 +103,10 @@ class ParkHabitat extends Component {
   }
 
   getConstructionDisplay = () => {
+    if (this.props.habitat.complete) {
+      return null;
+    }
+
     if (this.state.waitingToComplete) {
       return (
         <Timer time={this.state.secondsRemaining}/>
