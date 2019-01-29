@@ -2,7 +2,8 @@ import React from 'react';
 
 const header = (props) => {
   const currentlyLoggedIn = props.rootState.currentUser != null;
-  const currentlyHatchingDragon = props.rootState.hatchDragon != null;
+  const currentlyPlacingDragon = props.rootState.hatchDragon != null
+    || props.rootState.moveDragon != null;
 
   const openMarket = () => {
     props.setRootState({
@@ -19,7 +20,7 @@ const header = (props) => {
       return null;
     }
 
-    let disabled = currentlyHatchingDragon;
+    let disabled = currentlyPlacingDragon;
 
     return (
       <button onClick={openMarket} disabled={disabled}>MARKET</button>
@@ -44,7 +45,7 @@ const header = (props) => {
       return null;
     }
 
-    let disabled = currentlyHatchingDragon;
+    let disabled = currentlyPlacingDragon;
 
     return (
       <button onClick={clickLogout} disabled={disabled}>logout</button>
