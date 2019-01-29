@@ -10,6 +10,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/7c/PlantDragonElder.png',
     ],
     eggTime: [0, 0, 5],
+    buy: 100,
   },
   {
     name: 'Fire',
@@ -22,6 +23,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/c/ce/FireDragonElder.png',
     ],
     eggTime: [0, 5, 0],
+    buy: 75,
   },
   {
     name: 'Earth',
@@ -34,6 +36,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/4/48/EarthDragonElder.png',
     ],
     eggTime: [2, 0, 0],
+    buy: 500,
   },
   {
     name: 'Cold',
@@ -46,6 +49,7 @@ const dragons = [
       'https://vignette.wikia.nocookie.net/dragonvale/images/7/70/ColdDragonElder.png',
     ],
     eggTime: [12, 0, 0],
+    buy: 30000,
   },
   {
     name: 'Evergreen',
@@ -58,6 +62,7 @@ const dragons = [
       null,
     ],
     eggTime: [10, 0, 0],
+    buy: 120000,
   },
 ];
 
