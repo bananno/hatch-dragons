@@ -13,7 +13,7 @@ const elements = [
   },
   {
     name: 'Cold',
-    image: null,
+    image: 'https://vignette.wikia.nocookie.net/dragonvale/images/4/4b/Icon_Cold.png',
   },
   {
     name: 'Lightning',
