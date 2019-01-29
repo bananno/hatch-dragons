@@ -1,17 +1,18 @@
 import React from 'react';
 
 const message = (props) => {
-  const onCancelHatchDragon = () => {
+  const onCancelPlaceDragon = () => {
     props.setRootState({
-      hatchDragon: null
+      hatchDragon: null,
+      moveDragon: null,
     });
   }
 
-  if (props.rootState.hatchDragon) {
+  if (props.rootState.hatchDragon || props.rootState.moveDragon) {
     return (
       <div className="message">
         Select a habitat for the dragon.
-        <button onClick={onCancelHatchDragon}>cancel</button>
+        <button onClick={onCancelPlaceDragon}>cancel</button>
       </div>
     );
   }
