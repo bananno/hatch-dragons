@@ -20,6 +20,16 @@ class MarketSection extends Component {
     });
   }
 
+  getScrollButton = (direction, showButton, handleClick) => {
+    let className = 'market-scroll arrow-' + direction;
+    if (showButton) {
+      className += ' available';
+    }
+    return (
+      <div className={className} onClick={handleClick}> </div>
+    );
+  }
+
   render () {
     let startIndex = this.state.pageNumber;
     let modelsOnPage = this.props.models.slice(startIndex, startIndex + resultsPerPage);
@@ -28,9 +38,7 @@ class MarketSection extends Component {
 
     return (
       <div className="market-section">
-        {
-          showBackButton ? <button onClick={this.onBackPage}>BACK</button> : null
-        }
+        {this.getScrollButton('left', showBackButton, this.onBackPage)}
         {
           modelsOnPage.map((model, i) => {
             let index = i + this.state.pageNumber;
@@ -39,9 +47,7 @@ class MarketSection extends Component {
             );
           })
         }
-        {
-          showNextButton ? <button onClick={this.onNextPage}>NEXT</button> : null
-        }
+        {this.getScrollButton('right', showNextButton, this.onNextPage)}
       </div>
     );
   }
