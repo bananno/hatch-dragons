@@ -14,8 +14,6 @@ class ParkHabitat extends Component {
   componentDidMount() {
     if (this.props.habitat.complete) {
       this.setState({
-        readyToComplete: false,
-        waitingToComplete: false,
         secondsRemaining: 0
       });
     } else {
@@ -28,12 +26,18 @@ class ParkHabitat extends Component {
     clearInterval(this.interval);
   }
 
+  waitingToComplete = () => {
+    return !this.props.habitat.complete && this.state.secondsRemaining > 0;
+  }
+
+  readyToComplete = () => {
+    return !this.props.habitat.complete && this.state.secondsRemaining <= 0;
+  }
+
   makeTimer = () => {
     let times = calculateTime(this.habitat.timestamp, this.gameModel.buildTime);
 
     this.setState({
-      readyToComplete: times.timeIsDone,
-      waitingToComplete: !times.timeIsDone,
       secondsRemaining: times.secondsRemaining
     });
 
@@ -45,12 +49,12 @@ class ParkHabitat extends Component {
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
       this.placeDragon();
-    } else if (this.props.habitat.complete || this.state.secondsRemaining > 0) {
+    } else if (this.readyToComplete()) {
+      this.completeConstruction();
+    } else {
       this.props.setRootState({
         activeHabitat: this.props.habitat
       });
-    } else {
-      this.completeConstruction();
     }
   }
 
@@ -85,9 +89,6 @@ class ParkHabitat extends Component {
     this.props.makePostRequest('/completeHabitat', {
       habitat: this.habitat._id
     });
-    this.setState({
-      readyToComplete: false
-    });
   }
 
   placeDragon = () => {
@@ -104,19 +105,19 @@ class ParkHabitat extends Component {
   }
 
   getConstructionDisplay = () => {
-    if (this.props.habitat.complete) {
-      return null;
-    }
-
-    if (this.state.secondsRemaining > 0) {
+    if (this.waitingToComplete()) {
       return (
         <Timer time={this.state.secondsRemaining}/>
       );
     }
 
-    return (
-      <button>COMPLETE</button>
-    );
+    if (this.readyToComplete()) {
+      return (
+        <button>COMPLETE</button>
+      );
+    }
+
+    return null;
   }
 
   render () {
