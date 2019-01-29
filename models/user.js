@@ -12,6 +12,10 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  money: {
+    type: Number,
+    default: 200,
+  }
 });
 
 // authenticate input against database
