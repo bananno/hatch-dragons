@@ -135,12 +135,7 @@ function completeHabitat(req, res, next) {
       } else {
         let habitatModel = findModel('habitat', habitat);
 
-        let secondsElapsed = getSecondsElapsed(habitat.timestamp);
-
-        let secondsRequired = habitatModel.buildTime[2] + (habitatModel.buildTime[1] * 60)
-          + (habitatModel.buildTime[0] * 3600);
-
-        if (secondsElapsed < secondsRequired) {
+        if (!timeIsComplete(habitat.timestamp, habitatModel.buildTime)) {
           return;
         }
 
@@ -186,12 +181,7 @@ function placeDragon(req, res, next) {
           };
 
           if (dragon.level == 0) {
-            let secondsElapsed = getSecondsElapsed(dragon.timestamp);
-
-            let secondsRequired = dragonModel.eggTime[2] + (dragonModel.eggTime[1] * 60)
-              + (dragonModel.eggTime[0] * 60 * 60);
-
-            if (secondsElapsed < secondsRequired) {
+            if (!timeIsComplete(dragon.timestamp, dragonModel.eggTime)) {
               return;
             }
 
@@ -251,6 +241,12 @@ function elementsOverlap(model1, model2) {
 function getSecondsElapsed(timestamp) {
   let now = new Date().getTime();
   let secondsElapsed = Math.round((now - timestamp)/1000);
+}
+
+function timeIsComplete(timestamp, requiredTime) {
+  let secondsElapsed = getSecondsElapsed(timestamp);
+  let secondsRequired = requiredTime[2] + (requiredTime[1] * 60) + (requiredTime[0] * 3600);
+  return secondsElapsed >= secondsRequired;
 }
 
 module.exports = router;
