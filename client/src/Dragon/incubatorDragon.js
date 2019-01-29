@@ -10,7 +10,7 @@ const incubatorDragon = (props) => {
 
   const onHatch = () => {
     props.setRootState({
-      hatchDragon: props.dragon,
+      placeDragon: props.dragon,
       showIncubator: false
     });
   };
