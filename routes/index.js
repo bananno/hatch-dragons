@@ -10,6 +10,7 @@ const dragonModels = require('../client/src/gameModels/dragons.js');
 
 router.get('/getData', getData);
 router.post('/buyHabitat', buyHabitat);
+router.post('/completeHabitat', completeHabitat);
 router.post('/buyDragon', buyDragon);
 router.post('/sellHabitat', sellHabitat);
 router.post('/placeDragon', placeDragon);
@@ -114,6 +115,46 @@ function sellHabitat(req, res, next) {
         });
       } else {
         console.log('Cannot delete habitat that houses dragons.');
+      }
+    });
+  });
+}
+
+function completeHabitat(req, res, next) {
+  let habitatId = req.body.habitat;
+
+  authenticate(req, res, next, (user) => {
+    Habitat.findById(habitatId, (error, habitat) => {
+      if (error) {
+        return next(error);
+      } else if ('' + habitat.user != '' + user._id) {
+        console.log('wrong user');
+        return res.redirect('/');
+      } else if (habitat.complete) {
+        return;
+      } else {
+        let habitatModel = findModel('habitat', habitat);
+
+        let now = new Date().getTime();
+        let secondsRequired = habitatModel.buildTime[2] + (habitatModel.buildTime[1] * 60)
+          + (habitatModel.buildTime[0] * 3600);
+        let secondsElapsed = Math.round((now - habitat.timestamp)/1000);
+
+        if (secondsElapsed < secondsRequired) {
+          return;
+        }
+
+        let habitatData = {
+          complete: true,
+        };
+
+        habitat.update(habitatData, (err, habitat) => {
+          if (err) {
+            return next(err);
+          } else {
+            return res.send('success');
+          }
+        });
       }
     });
   });

@@ -41,6 +41,7 @@ class ParkHabitat extends Component {
         activeHabitat: this.props.habitat
       });
     } else {
+      this.completeConstruction();
     }
   }
 
@@ -69,6 +70,12 @@ class ParkHabitat extends Component {
     })();
 
     return elementOverlap;
+  }
+
+  completeConstruction = () => {
+    this.props.makePostRequest('/completeHabitat', {
+      habitat: this.habitat._id
+    });
   }
 
   placeDragon = () => {
