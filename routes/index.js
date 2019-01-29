@@ -240,7 +240,7 @@ function elementsOverlap(model1, model2) {
 
 function getSecondsElapsed(timestamp) {
   let now = new Date().getTime();
-  let secondsElapsed = Math.round((now - timestamp)/1000);
+  return Math.round((now - timestamp)/1000);
 }
 
 function timeIsComplete(timestamp, requiredTime) {
