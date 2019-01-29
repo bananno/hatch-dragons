@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
+import calculateTime from '../tools/calculateTime';
 
 class IncubatorDragon extends Component {
   state = {}
@@ -17,21 +18,14 @@ class IncubatorDragon extends Component {
   }
 
   calculateEggTimer = () => {
-    let then = this.props.dragon.timestamp;
-    let now = new Date().getTime();
-    let secondsElapsed = Math.round((now - then)/1000);
-    let secondsNeeded = this.gameModel.eggTime[2] + this.gameModel.eggTime[1] * 60
-      + this.gameModel.eggTime[0] * 60 * 60;
-    let isHatching = secondsElapsed >= secondsNeeded;
-    let secondsRemaining = secondsNeeded - secondsElapsed;
+    let times = calculateTime(this.props.dragon.timestamp, this.gameModel.eggTime);
 
     this.setState({
-      isHatching: isHatching,
-      secondsNeeded: secondsNeeded,
-      secondsRemaining: secondsRemaining,
+      isHatching: times.timeIsDone,
+      secondsRemaining: times.secondsRemaining,
     });
 
-    if (isHatching) {
+    if (times.timeIsDone) {
       clearInterval(this.interval);
     }
   }
