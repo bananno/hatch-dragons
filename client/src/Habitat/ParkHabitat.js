@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import MiniDragon from '../Dragon/MiniDragon';
+import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
 
 class ParkHabitat extends Component {
-  state = {}
+  state = {
+    secondsRemaining: 0
+  }
 
   habitat = this.props.habitat
 
@@ -74,7 +77,7 @@ class ParkHabitat extends Component {
     }
 
     return (
-      <span className="timer">TIMER</span>
+      <Timer time={this.state.secondsRemaining}/>
     );
   }
 
