@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Other/header.js';
 import Message from './Other/message.js';
 import Login from './Login/Login.js';
 import Market from './Market/Market.js';
@@ -56,53 +57,15 @@ class App extends Component {
     this.visitDatabase();
   }
 
-  clickLogout = () => {
-    this.makePostRequest('/logout');
-  }
-
   setRootState = (newState) => {
     this.setState(newState);
-  }
-
-  openMarket = () => {
-    this.setState({
-      showMarket: !this.state.showMarket
-    });
   }
 
   render() {
     return (
       <div className="App">
-        <div className="page-header">
-          <h1>Hatch Dragons</h1>
-          <div>
-            {
-              (this.state.currentUser && !this.state.showMarket)
-              ? <button onClick={this.openMarket}>MARKET</button>
-              : null
-            }
-          </div>
-          <div>
-            {
-              this.state.currentUser
-              ? (
-                <p>
-                  <b>Current user: </b>
-                  {this.state.currentUser.username}
-                </p>
-              ) : null
-            }
-
-            {
-              this.state.currentUser
-              ? (<form onSubmit={this.clickLogout}>
-                  <button type="submit">logout</button>
-                </form>)
-              : null
-            }
-          </div>
-        </div>
-
+        <Header rootState={this.state} setRootState={this.setRootState}
+          makePostRequest={this.makePostRequest}/>
         <Message rootState={this.state} setRootState={this.setRootState}/>
         <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
         <Market rootState={this.state} makePostRequest={this.makePostRequest}
