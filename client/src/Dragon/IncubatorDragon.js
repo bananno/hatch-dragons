@@ -7,9 +7,18 @@ class IncubatorDragon extends Component {
   gameModel = findModel('dragon', this.props.dragon);
 
   componentDidMount() {
+    this.calculateEggTimer();
+    this.interval = setInterval(this.calculateEggTimer, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  calculateEggTimer = () => {
     let then = this.props.dragon.timestamp;
     let now = new Date().getTime();
-    let secondsElapsed = Math.round((now - this.props.dragon.timestamp)/1000);
+    let secondsElapsed = Math.round((now - then)/1000);
     let secondsNeeded = this.gameModel.eggTime[2] + this.gameModel.eggTime[1] * 60
       + this.gameModel.eggTime[0] * 60 * 60;
     let isHatching = secondsElapsed >= secondsNeeded;
@@ -20,6 +29,10 @@ class IncubatorDragon extends Component {
       secondsNeeded: secondsNeeded,
       secondsRemaining: secondsRemaining,
     });
+
+    if (isHatching) {
+      clearInterval(this.interval);
+    }
   }
 
   onHatch = () => {
