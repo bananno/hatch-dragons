@@ -126,10 +126,15 @@ function completeHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
     Habitat.findById(habitatId, (error, habitat) => {
       if (error) {
-        return next(error);
+        console.log('error');
+        console.log(error);
+        return;
+      } else if (habitat == null) {
+        console.log('habitat not found: ' + habitatId);
+        return;
       } else if ('' + habitat.user != '' + user._id) {
         console.log('wrong user');
-        return res.redirect('/');
+        return;
       } else if (habitat.complete) {
         return;
       } else {
@@ -145,7 +150,8 @@ function completeHabitat(req, res, next) {
 
         habitat.update(habitatData, (err, habitat) => {
           if (err) {
-            return next(err);
+            console.log('error');
+            console.log(error);
           } else {
             return res.send('success');
           }
