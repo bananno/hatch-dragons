@@ -14,6 +14,7 @@ const modal = (props) => {
             ? <button onClick={props.onBack}>BACK</button>
             : null
         }
+        <br/>
         {props.children}
       </div>
     </div>
