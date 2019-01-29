@@ -51,6 +51,10 @@ class ParkHabitat extends Component {
 
     let className = 'habitat park';
 
+    if (this.props.rootState.placeDragon) {
+      className += ' eligible';
+    }
+
     let style = {
       backgroundImage: 'url("' + this.gameModel.image + '")'
     };

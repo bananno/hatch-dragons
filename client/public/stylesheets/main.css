@@ -134,6 +134,10 @@
   cursor: pointer;
 }
 
+.habitat.park.eligible {
+  border: 2px solid blue;
+}
+
 .habitat.active h2 {
   font-weight: bold;
   font-size: 20px;
