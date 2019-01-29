@@ -17,6 +17,29 @@ class ParkHabitat extends Component {
     }
   }
 
+  isEligibleForPlacingDragon = () => {
+    let dragon = this.props.rootState.placeDragon;
+
+    if (dragon == null) {
+      return false;
+    }
+
+    let dragonModel = findModel('dragon', dragon);
+
+    let elementOverlap = (() => {
+      for (let i in this.gameModel.elements) {
+        for (let j in dragonModel.elements) {
+          if (this.gameModel.elements[i] === dragonModel.elements[j]) {
+            return true;
+          }
+        }
+      }
+      return false;
+    })();
+
+    return elementOverlap;
+  }
+
   placeDragon = () => {
     let dragon = this.props.rootState.placeDragon;
     let dragonModel = findModel('dragon', dragon);
@@ -51,7 +74,7 @@ class ParkHabitat extends Component {
 
     let className = 'habitat park';
 
-    if (this.props.rootState.placeDragon) {
+    if (this.isEligibleForPlacingDragon()) {
       className += ' eligible';
     }
 
