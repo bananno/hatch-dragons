@@ -20,7 +20,7 @@ const parkIncubator = (props) => {
 
   return (
     <div className="incubator park" onClick={handleClick}>
-      <h2>Incubator</h2>
+      <h1>Incubator</h1>
 
       {dragonEggs.map((dragon, i) => {
         let gameModel = dragonModels.filter(model => {

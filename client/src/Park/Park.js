@@ -12,7 +12,6 @@ class Park extends Component {
       <div>
         <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
         <div>
-          <h2>Habitats</h2>
           {
             this.props.rootState.habitats.map((habitat, i) => {
               return (
