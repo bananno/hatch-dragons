@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
 
 class IncubatorDragon extends Component {
@@ -42,45 +43,16 @@ class IncubatorDragon extends Component {
     });
   }
 
-  getTimeDisplay = (seconds) => {
-    let minutes = 0;
-    let hours = 0;
-
-    if (seconds >= 60) {
-      minutes = Math.floor(seconds/60);
-      seconds -= minutes * 60;
-    }
-
-    if (minutes >= 60) {
-      hours = Math.floor(minutes/60);
-      minutes -= hours * 60;
-    }
-
-    if (hours > 0) {
-      hours = '' + hours + ':';
-      if (minutes < 10) {
-        hours += '0';
-      }
-    } else {
-      hours = '';
-    }
-
-    return hours + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-  }
-
   render() {
     return (
       <div className="dragon egg">
         <h1>{this.gameModel.name} Dragon</h1>
         <img src={this.gameModel.images[0]} alt=""/><br/>
+
         {
           this.state.isHatching
           ? <button onClick={this.onHatch}>hatch</button>
-          : (
-            <span className="timer">
-              {this.getTimeDisplay(this.state.secondsRemaining)}
-            </span>
-          )
+          : <Timer time={this.state.secondsRemaining}/>
         }
       </div>
     );
