@@ -42,6 +42,16 @@ class Habitat extends Component {
           <img src={gameModel.image} className="main-image" alt=""/>
           <div className="column">
             <h1 className="main-title">{gameModel.name} Habitat</h1>
+            {
+              !habitat.complete
+              ? <p>UNDER CONSTRUCTION</p>
+              : null
+            }
+            {
+              dragons.length === 0
+              ? <button onClick={this.sell}>sell</button>
+              : null
+            }
           </div>
           <h2>Dragons</h2>
           <div>
@@ -53,16 +63,6 @@ class Habitat extends Component {
               );
             })}
           </div>
-          {
-            !habitat.complete
-            ? <p>UNDER CONSTRUCTION</p>
-            : null
-          }
-          {
-            dragons.length === 0
-            ? <button onClick={this.sell}>sell</button>
-            : null
-          }
         </div>
       </Modal>
     );

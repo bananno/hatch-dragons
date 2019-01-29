@@ -33,7 +33,9 @@
 }
 
 .modal .main-image {
-  height: 200px;
+  max-height: 200px;
+  max-width: 250px;
+  margin-right: 30px;
 }
 
 .modal .close-button-frame {
