@@ -51,10 +51,12 @@ class ActiveDragon extends Component {
       <Modal onClose={this.onClose} onBack={this.onBack} backText={backText}>
         <div className={className}>
           <img src={imageSrc} alt="" className="main-image"/>
-          <h1 className="main-title">{gameModel.name} Dragon</h1>
-          <br/>
-          <button onClick={this.sell}>sell</button>
-          <button onClick={this.move}>move</button>
+          <div className="column">
+            <h1 className="main-title">{gameModel.name} Dragon</h1>
+            <br/>
+            <button onClick={this.sell}>sell</button>
+            <button onClick={this.move}>move</button>
+          </div>
         </div>
       </Modal>
     );
