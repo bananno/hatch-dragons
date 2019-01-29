@@ -2,7 +2,13 @@ import React from 'react';
 import dragonModels from '../gameModels/dragons';
 
 const parkIncubator = (props) => {
+  let currentlyPlacingDragon = props.rootState.placeDragon != null;
+
   const handleClick = () => {
+    if (currentlyPlacingDragon) {
+      return;
+    }
+
     props.setRootState({
       showIncubator: true
     });
