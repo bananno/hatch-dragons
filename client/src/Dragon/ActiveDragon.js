@@ -24,7 +24,7 @@ class ActiveDragon extends Component {
 
   move = () => {
     this.props.setRootState({
-      moveDragon: this.props.rootState.activeDragon,
+      placeDragon: this.props.rootState.activeDragon,
       activeHabitat: null,
       activeDragon: null
     });

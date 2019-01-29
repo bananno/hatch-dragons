@@ -16,7 +16,7 @@ class App extends Component {
     showMarket: false,
     showIncubator: false,
     hatchDragon: null,
-    moveDragon: null,
+    placeDragon: null,
   }
 
   componentDidMount() {
