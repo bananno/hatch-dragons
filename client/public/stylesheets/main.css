@@ -236,8 +236,19 @@
   margin: 10px 0;
 }
 
-.dragon.egg button {
+.dragon.egg button,
+.dragon.egg .timer {
+  display: inline-block;
   padding: 5px;
-  cursor: pointer;
+  border: 1px solid black;
   border-radius: 5px;
+  width: 100px;
+}
+
+.dragon.egg .timer {
+  cursor: default;
+}
+
+.dragon.egg button {
+  cursor: pointer;
 }

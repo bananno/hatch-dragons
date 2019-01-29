@@ -76,7 +76,11 @@ class IncubatorDragon extends Component {
         {
           this.state.isHatching
           ? <button onClick={this.onHatch}>hatch</button>
-          : 'waiting... (' + this.getTimeDisplay(this.state.secondsRemaining) + ' remaining)'
+          : (
+            <span className="timer">
+              {this.getTimeDisplay(this.state.secondsRemaining)}
+            </span>
+          )
         }
       </div>
     );
