@@ -22,6 +22,14 @@ class ActiveDragon extends Component {
     });
   }
 
+  move = () => {
+    this.props.setRootState({
+      moveDragon: this.props.activeDragon,
+      activeHabitat: null,
+      activeDragon: null
+    });
+  }
+
   render () {
     let dragon = this.props.rootState.activeDragon;
 
@@ -44,6 +52,7 @@ class ActiveDragon extends Component {
           <h1 className="main-title">{gameModel.name} Dragon</h1>
           <br/>
           <button onClick={this.sell}>sell</button>
+          <button onClick={this.move}>move</button>
         </div>
       </Modal>
     );
