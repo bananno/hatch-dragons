@@ -224,8 +224,13 @@ function placeDragon(req, res, next) {
   });
 }
 
-function collectHabitat() {
+function collectHabitat(req, res, next) {
+  let habitatId = req.body.habitatId;
+  let newTime = new Date().getTime();
 
+  updateHabitatMoney(habitatId, newTime, true, () => {
+    return res.send('success');
+  });
 }
 
 function updateHabitatMoney(habitatId, newTimeStamp, collectMoney, next) {
