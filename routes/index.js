@@ -224,13 +224,14 @@ function placeDragon(req, res, next) {
 function updateHabitatMoney(habitatId, newTimeStamp, next) {
   if (habitatId == null) {
     next();
+  } else {
+    Habitat.findById(habitatId, (error, habitat) => {
+      let newData = {
+        timestamp: newTimeStamp
+      };
+      habitat.update(newData, next);
+    });
   }
-  Habitat.findById(habitatId, (error, habitat) => {
-    let newData = {
-      timestamp: newTimeStamp
-    };
-    habitat.update(newData, next);
-  });
 }
 
 function sellDragon(req, res, next) {
