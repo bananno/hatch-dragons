@@ -208,7 +208,14 @@ function placeDragon(req, res, next) {
             if (err) {
               return next(err);
             } else {
-              return res.send('success');
+              let newTime = new Date().getTime();
+              newHabitat.update({ timestamp: newTime }, (err, habitat) => {
+                if (err) {
+                  return next(err);
+                } else {
+                  return res.send('success');
+                }
+              });
             }
           });
         }
