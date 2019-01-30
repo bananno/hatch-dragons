@@ -211,8 +211,8 @@ function placeDragon(req, res, next) {
 
           let newTime = new Date().getTime();
 
-          updateHabitatMoney(oldHabitatId, newTime, false, () => {
-            updateHabitatMoney(newHabitat._id, newTime, false, () => {
+          updateHabitatMoney(oldHabitatId, newTime, null, () => {
+            updateHabitatMoney(newHabitat._id, newTime, null, () => {
               dragon.update(dragonData, (err, dragon) => {
                 return res.send('success');
               });
@@ -228,12 +228,14 @@ function collectHabitat(req, res, next) {
   let habitatId = req.body.habitatId;
   let newTime = new Date().getTime();
 
-  updateHabitatMoney(habitatId, newTime, true, () => {
-    return res.send('success');
+  authenticate(req, res, next, (user) => {
+    updateHabitatMoney(habitatId, newTime, user, () => {
+      return res.send('success');
+    });
   });
 }
 
-function updateHabitatMoney(habitatId, newTimeStamp, collectMoney, next) {
+function updateHabitatMoney(habitatId, newTimeStamp, user, next) {
   if (habitatId == null) {
     next();
   } else {
@@ -247,16 +249,20 @@ function updateHabitatMoney(habitatId, newTimeStamp, collectMoney, next) {
         });
 
         let minutesSinceLastUpdate = (newTimeStamp - habitat.timestamp) / 60000;
-
-        let money = habitat.money;
-        money += Math.round(moneyPerMinute * minutesSinceLastUpdate);
-
-        let newData = {
-          timestamp: newTimeStamp,
-          money: money
+        let money = habitat.money + Math.round(moneyPerMinute * minutesSinceLastUpdate);
+        let habitatData = {
+          timestamp: newTimeStamp
         };
 
-        habitat.update(newData, next);
+        if (user) {
+          habitatData.money = 0;
+          user.update({ money: user.money + money}, () => {
+            habitat.update(habitatData, next);
+          });
+        } else {
+          habitatData.money = money;
+          habitat.update(habitatData, next);
+        }
       });
     });
   }
