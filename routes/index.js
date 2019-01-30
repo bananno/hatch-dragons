@@ -52,6 +52,12 @@ function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
     let index = parseInt(req.body.habitatIndex);
     let model = habitatModels[index];
+
+    if (model.buy > user.money) {
+      console.log('cannot afford');
+      return;
+    }
+
     let ts = new Date().getTime();
 
     let habitatData = {
@@ -74,6 +80,11 @@ function buyDragon(req, res, next) {
   authenticate(req, res, next, (user) => {
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
+
+    if (model.buy > user.money) {
+      console.log('cannot afford');
+      return;
+    }
 
     let ts = new Date().getTime();
 
