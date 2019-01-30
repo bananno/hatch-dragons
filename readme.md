@@ -1,6 +1,6 @@
-#HatchDragons
+# HatchDragons
 
-##Run locally
+## Run locally
 
 You will need to install `yarn` and `concurrently` if not already installed.
 
