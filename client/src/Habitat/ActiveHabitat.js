@@ -28,9 +28,17 @@ class Habitat extends Component {
       incomePerMinute: incomePerMinute,
       money: this.props.rootState.activeHabitat.money,
     });
+
+    this.calculateMoney();
+    this.interval = setInterval(this.calculateMoney, 1000);
   }
 
   componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  calculateMoney = () => {
+
   }
 
   onClose = () => {
