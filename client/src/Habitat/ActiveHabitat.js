@@ -18,6 +18,12 @@ class Habitat extends Component {
     });
   }
 
+  collectMoney = () => {
+    this.props.makePostRequest('/collectHabitat', {
+      habitatId: this.props.rootState.activeHabitat._id
+    });
+  }
+
   render () {
     let habitat = this.props.rootState.activeHabitat;
     let dragon = this.props.rootState.activeDragon;
@@ -52,7 +58,8 @@ class Habitat extends Component {
               : null
             }
             <p>
-              <b>Current money:</b> {habitat.money}
+              <b>Current money:</b> {habitat.money}<br/>
+              <button onClick={this.collectMoney}>collect</button>
             </p>
             <p>
               <b>Income:</b> {incomePerMinute} per minute

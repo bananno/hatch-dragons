@@ -9,10 +9,13 @@ const habitatModels = require('../client/src/gameModels/habitats.js');
 const dragonModels = require('../client/src/gameModels/dragons.js');
 
 router.get('/getData', getData);
+
 router.post('/buyHabitat', buyHabitat);
 router.post('/completeHabitat', completeHabitat);
-router.post('/buyDragon', buyDragon);
 router.post('/sellHabitat', sellHabitat);
+router.post('/collectHabitat', collectHabitat);
+
+router.post('/buyDragon', buyDragon);
 router.post('/placeDragon', placeDragon);
 router.post('/sellDragon', sellDragon);
 
@@ -219,6 +222,10 @@ function placeDragon(req, res, next) {
       });
     });
   });
+}
+
+function collectHabitat() {
+
 }
 
 function updateHabitatMoney(habitatId, newTimeStamp, collectMoney, next) {
