@@ -53,7 +53,7 @@ function buyHabitat(req, res, next) {
     let index = parseInt(req.body.habitatIndex);
     let model = habitatModels[index];
 
-    updateMoney(user, -model.buy, (user) => {
+    updateMoney(user, -model.buy, () => {
       let habitatData = {
         user: user,
         gameModel: model.name,
@@ -75,7 +75,7 @@ function buyDragon(req, res, next) {
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
-    updateMoney(user, -model.buy, (user) => {
+    updateMoney(user, -model.buy, () => {
       let dragonData = {
         user: user,
         habitat: null,
@@ -262,14 +262,14 @@ function updateMoney(user, amount, callback) {
     return;
   }
 
-  user.update({ money: newMoney }, (error, user) => {
+  user.update({ money: newMoney }, error => {
     if (error) {
       console.log('error');
       console.log(error);
       return;
     }
 
-    callback(user);
+    callback();
   });
 }
 
