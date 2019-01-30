@@ -34,6 +34,12 @@ class Habitat extends Component {
       return dragon.habitat === habitat._id;
     });
 
+    let incomePerMinute = 0;
+
+    dragons.forEach(dragon => {
+      incomePerMinute += findModel('dragon', dragon).income[dragon.level];
+    });
+
     return (
       <Modal onClose={this.onClose}>
         <div className={className}>
@@ -46,7 +52,10 @@ class Habitat extends Component {
               : null
             }
             <p>
-              Current money: {habitat.money}
+              <b>Current money:</b> {habitat.money}
+            </p>
+            <p>
+              <b>Income:</b> {incomePerMinute} per minute
             </p>
             {
               dragons.length === 0
