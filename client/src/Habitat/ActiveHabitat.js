@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
 import findModel from '../gameModels/findModel';
+import calculateTime from '../tools/calculateTime';
 
 class Habitat extends Component {
   state = {
@@ -26,6 +27,7 @@ class Habitat extends Component {
     this.setState({
       dragons: dragons,
       incomePerMinute: incomePerMinute,
+      baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
     });
 
@@ -38,7 +40,12 @@ class Habitat extends Component {
   }
 
   calculateMoney = () => {
-
+    let lastUpdate = this.props.rootState.activeHabitat.timestamp;
+    let minutesElapsed = calculateTime(lastUpdate).minutesElapsed;
+    let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
+    this.setState({
+      money: this.state.baseMoney + addition
+    });
   }
 
   onClose = () => {
