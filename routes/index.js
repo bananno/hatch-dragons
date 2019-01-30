@@ -93,37 +93,19 @@ function buyDragon(req, res, next) {
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
-    if (model.buy > user.money) {
-      console.log('cannot afford');
-      return;
-    }
-
-    let ts = new Date().getTime();
-
-    let dragonData = {
-      user: user,
-      habitat: null,
-      gameModel: model.name,
-      level: 0,
-      timestamp: ts,
-    };
-
-    let userData = {
-      money: user.money - model.buy
-    };
-
-    user.update(userData, (error, user) => {
-      if (error) {
-        console.log('error');
-        console.log(error);
-        return;
-      }
+    updateMoney(user, -model.buy, (user) => {
+      let dragonData = {
+        user: user,
+        habitat: null,
+        gameModel: model.name,
+        level: 0,
+        timestamp: new Date().getTime(),
+      };
 
       Dragon.create(dragonData, (error, habitat) => {
         if (error) {
-          return next(error);
-        } else {
-          return res.redirect('/');
+          console.log('error');
+          console.log(error);
         }
       });
     });
@@ -288,6 +270,25 @@ function timeIsComplete(timestamp, requiredTime) {
   let secondsElapsed = getSecondsElapsed(timestamp);
   let secondsRequired = requiredTime[2] + (requiredTime[1] * 60) + (requiredTime[0] * 3600);
   return secondsElapsed >= secondsRequired;
+}
+
+function updateMoney(user, amount, callback) {
+  let newMoney = user.money + amount;
+
+  if (newMoney < 0) {
+    console.log('User does not have enough money for purchase.');
+    return;
+  }
+
+  user.update({ money: newMoney }, (error, user) => {
+    if (error) {
+      console.log('error');
+      console.log(error);
+      return;
+    }
+
+    callback(user);
+  });
 }
 
 module.exports = router;
