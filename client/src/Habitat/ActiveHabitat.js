@@ -4,6 +4,17 @@ import HabitatDragon from '../Dragon/HabitatDragon';
 import findModel from '../gameModels/findModel';
 
 class Habitat extends Component {
+  state = {}
+
+  componentDidMount() {
+    this.setState({
+      money: this.props.rootState.activeHabitat.money
+    });
+  }
+
+  componentWillUnmount() {
+  }
+
   onClose = () => {
     this.props.setRootState({
       activeHabitat: null
@@ -22,6 +33,17 @@ class Habitat extends Component {
     this.props.makePostRequest('/collectHabitat', {
       habitatId: this.props.rootState.activeHabitat._id
     });
+  }
+
+  getMoneyInfo = () => {
+    let money = Math.floor(this.state.money);
+    let disabled = money === 0;
+    return (
+      <p>
+        <b>Current money:</b> {money}<br/>
+        <button onClick={this.collectMoney} disabled={disabled}>collect</button>
+      </p>
+    );
   }
 
   render () {
@@ -57,10 +79,7 @@ class Habitat extends Component {
               ? <p>UNDER CONSTRUCTION</p>
               : null
             }
-            <p>
-              <b>Current money:</b> {habitat.money}<br/>
-              <button onClick={this.collectMoney}>collect</button>
-            </p>
+            {this.getMoneyInfo()}
             <p>
               <b>Income:</b> {incomePerMinute} per minute
             </p>
