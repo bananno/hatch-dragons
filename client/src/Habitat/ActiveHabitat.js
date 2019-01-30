@@ -8,6 +8,7 @@ class Habitat extends Component {
   state = {
     dragons: [],
     incomePerMinute: 0,
+    incomeCap: 0,
     money: 0
   }
 
@@ -29,6 +30,7 @@ class Habitat extends Component {
       incomePerMinute: incomePerMinute,
       baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
+      incomeCap: findModel('habitat', habitat).incomeCap,
     });
 
     this.calculateMoney();
@@ -43,8 +45,12 @@ class Habitat extends Component {
     let lastUpdate = this.props.rootState.activeHabitat.timestamp;
     let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
     let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
+    let totalMoney = this.state.baseMoney + addition;
+    if (totalMoney > this.state.incomeCap) {
+      totalMoney = this.state.incomeCap;
+    }
     this.setState({
-      money: this.state.baseMoney + addition
+      money: totalMoney
     });
   }
 
