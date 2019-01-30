@@ -234,10 +234,14 @@ function updateHabitatMoney(habitatId, newTimeStamp, next) {
           moneyPerMinute += gameModel.income[dragon.level];
         });
 
-        console.log(moneyPerMinute);
+        let minutesSinceLastUpdate = (newTimeStamp - habitat.timestamp) / 60000;
+
+        let money = habitat.money;
+        money += Math.round(moneyPerMinute * minutesSinceLastUpdate);
 
         let newData = {
-          timestamp: newTimeStamp
+          timestamp: newTimeStamp,
+          money: money
         };
 
         habitat.update(newData, next);
