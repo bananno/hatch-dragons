@@ -1,21 +1,18 @@
 
 const calculateTime = (startTime, requiredTime) => {
+  let times = {};
+
   let nowTime = new Date().getTime();
 
-  let secondsElapsed = Math.round((nowTime - startTime)/1000);
+  times.secondsElapsed = Math.round((nowTime - startTime)/1000);
 
-  let secondsRequired = requiredTime[2] + (requiredTime[1] * 60) + (requiredTime[0] * 3600);
+  if (requiredTime) {
+    times.secondsRequired = requiredTime[2] + (requiredTime[1] * 60) + (requiredTime[0] * 3600);
+    times.secondsRemaining = times.secondsRequired - times.secondsElapsed;
+    times.timeIsDone = times.secondsRemaining <= 0;
+  }
 
-  let secondsRemaining = secondsRequired - secondsElapsed;
-
-  let timeIsDone = secondsRemaining <= 0;
-
-  return {
-    secondsElapsed: secondsElapsed,
-    secondsRequired: secondsRequired,
-    secondsRemaining: secondsRemaining,
-    timeIsDone: timeIsDone,
-  };
+  return times;
 };
 
 export default calculateTime;
