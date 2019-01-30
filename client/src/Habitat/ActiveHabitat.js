@@ -47,6 +47,9 @@ class Habitat extends Component {
               ? <p>UNDER CONSTRUCTION</p>
               : null
             }
+            <p>
+              Current money: {habitat.money}
+            </p>
             {
               dragons.length === 0
               ? <button onClick={this.sell}>sell</button>

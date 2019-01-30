@@ -17,6 +17,10 @@ const HabitatSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  money: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Habitat = mongoose.model('Habitat', HabitatSchema);
