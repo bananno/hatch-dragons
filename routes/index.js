@@ -53,35 +53,17 @@ function buyHabitat(req, res, next) {
     let index = parseInt(req.body.habitatIndex);
     let model = habitatModels[index];
 
-    if (model.buy > user.money) {
-      console.log('cannot afford');
-      return;
-    }
-
-    let ts = new Date().getTime();
-
-    let habitatData = {
-      user: user,
-      gameModel: model.name,
-      timestamp: ts,
-    };
-
-    let userData = {
-      money: user.money - model.buy
-    };
-
-    user.update(userData, (error, user) => {
-      if (error) {
-        console.log('error');
-        console.log(error);
-        return;
-      }
+    updateMoney(user, -model.buy, (user) => {
+      let habitatData = {
+        user: user,
+        gameModel: model.name,
+        timestamp: new Date().getTime(),
+      };
 
       Habitat.create(habitatData, (error, habitat) => {
         if (error) {
-          return next(error);
-        } else {
-          return res.redirect('/');
+          console.log('error');
+          console.log(error);
         }
       });
     });
@@ -102,7 +84,7 @@ function buyDragon(req, res, next) {
         timestamp: new Date().getTime(),
       };
 
-      Dragon.create(dragonData, (error, habitat) => {
+      Dragon.create(dragonData, (error, dragon) => {
         if (error) {
           console.log('error');
           console.log(error);
