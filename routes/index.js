@@ -208,8 +208,8 @@ function placeDragon(req, res, next) {
 
           let newTime = new Date().getTime();
 
-          updateHabitatMoney(newHabitat._id, newTime, () => {
-            updateHabitatMoney(oldHabitatId, newTime, () => {
+          updateHabitatMoney(oldHabitatId, newTime, () => {
+            updateHabitatMoney(newHabitat._id, newTime, () => {
               dragon.update(dragonData, (err, dragon) => {
                 return res.send('success');
               });
@@ -226,10 +226,22 @@ function updateHabitatMoney(habitatId, newTimeStamp, next) {
     next();
   } else {
     Habitat.findById(habitatId, (error, habitat) => {
-      let newData = {
-        timestamp: newTimeStamp
-      };
-      habitat.update(newData, next);
+      Dragon.find({ habitat: habitatId }, (error, dragons) => {
+        let moneyPerMinute = 0;
+
+        dragons.forEach(dragon => {
+          let gameModel = findModel('dragon', dragon);
+          moneyPerMinute += gameModel.income[dragon.level];
+        });
+
+        console.log(moneyPerMinute);
+
+        let newData = {
+          timestamp: newTimeStamp
+        };
+
+        habitat.update(newData, next);
+      });
     });
   }
 }
