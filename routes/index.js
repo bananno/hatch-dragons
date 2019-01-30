@@ -206,24 +206,14 @@ function placeDragon(req, res, next) {
             dragonData.level = 1;
           }
 
-          dragon.update(dragonData, (err, dragon) => {
-            if (err) {
-              return next(err);
-            } else {
-              let newTime = new Date().getTime();
-              newHabitat.update({ timestamp: newTime }, (err, habitat) => {
-                if (err) {
-                  return next(err);
-                } else if (oldHabitatId) {
+          let newTime = new Date().getTime();
 
-                  updateHabitatMoney(oldHabitatId, newTime, () => {
-                    return res.send('success');
-                  });
-                } else {
-                  return res.send('success');
-                }
+          updateHabitatMoney(newHabitat._id, newTime, () => {
+            updateHabitatMoney(oldHabitatId, newTime, () => {
+              dragon.update(dragonData, (err, dragon) => {
+                return res.send('success');
               });
-            }
+            });
           });
         }
       });
@@ -232,6 +222,9 @@ function placeDragon(req, res, next) {
 }
 
 function updateHabitatMoney(habitatId, newTimeStamp, next) {
+  if (habitatId == null) {
+    next();
+  }
   Habitat.findById(habitatId, (error, habitat) => {
     let newData = {
       timestamp: newTimeStamp
