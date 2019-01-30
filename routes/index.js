@@ -109,12 +109,19 @@ function sellHabitat(req, res, next) {
 
     Dragon.find({ habitat: habitatId}, (error, dragons) => {
       if (dragons.length == 0) {
-        Habitat.deleteOne(habitatData, error => {
-          if (error) {
-            return next(error);
-          } else {
-            return res.redirect('/');
-          }
+        Habitat.find(habitatData, (error, habitat) => {
+          let gameModel = findModel('habitat', habitat);
+          let sellPrice = Math.round(gameModel.buy / 2);
+
+          updateMoney(user, sellPrice, () => {
+            Habitat.deleteOne(habitatData, error => {
+              if (error) {
+                return next(error);
+              } else {
+                return res.redirect('/');
+              }
+            });
+          });
         });
       } else {
         console.log('Cannot delete habitat that houses dragons.');
