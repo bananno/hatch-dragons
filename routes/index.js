@@ -217,18 +217,34 @@ function sellDragon(req, res, next) {
       user: user
     };
 
-    Dragon.deleteOne(dragonData, error => {
-      if (error) {
-        return next(error);
-      } else {
-        return res.redirect('/');
+    Dragon.find(dragonData, (error, dragon) => {
+      if (error || dragon == null) {
+        console.log('error');
+        console.log(error);
+        return;
       }
+
+      let gameModel = findModel('dragon', dragon);
+      let sellPrice = Math.round(gameModel.buy / 2);
+
+      updateMoney(user, sellPrice, () => {
+        Dragon.deleteOne(dragonData, error => {
+          if (error) {
+            return next(error);
+          } else {
+            return res.redirect('/');
+          }
+        });
+      });
     });
   });
 }
 
 function findModel(type, item) {
   let models = type === 'habitat' ? habitatModels : dragonModels;
+  if (item.constructor == Array) {
+    item = item[0];
+  }
   let modelName = item.gameModel;
 
   return models.filter(model => {
