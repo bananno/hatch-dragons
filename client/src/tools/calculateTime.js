@@ -4,7 +4,7 @@ const calculateTime = (startTime, requiredTime) => {
 
   let nowTime = new Date().getTime();
 
-  times.minutesElapsed = Math.round((nowTime - startTime)/60000);
+  times.minutesElapsedExact = (nowTime - startTime) / 60000;
   times.secondsElapsed = Math.round((nowTime - startTime)/1000);
 
   if (requiredTime) {

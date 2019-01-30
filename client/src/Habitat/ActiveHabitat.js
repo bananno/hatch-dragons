@@ -41,7 +41,7 @@ class Habitat extends Component {
 
   calculateMoney = () => {
     let lastUpdate = this.props.rootState.activeHabitat.timestamp;
-    let minutesElapsed = calculateTime(lastUpdate).minutesElapsed;
+    let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
     let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
     this.setState({
       money: this.state.baseMoney + addition
