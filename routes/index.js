@@ -215,14 +215,9 @@ function placeDragon(req, res, next) {
                 if (err) {
                   return next(err);
                 } else if (oldHabitatId) {
-                  Habitat.findById(oldHabitatId, (err1, oldHabitat) => {
-                    oldHabitat.update({ timestamp: newTime }, (err, habitat) => {
-                      if (err) {
-                        return next(err);
-                      } else {
-                        return res.send('success');
-                      }
-                    });
+
+                  updateHabitatMoney(oldHabitatId, newTime, () => {
+                    return res.send('success');
                   });
                 } else {
                   return res.send('success');
@@ -233,6 +228,15 @@ function placeDragon(req, res, next) {
         }
       });
     });
+  });
+}
+
+function updateHabitatMoney(habitatId, newTimeStamp, next) {
+  Habitat.findById(habitatId, (error, habitat) => {
+    let newData = {
+      timestamp: newTimeStamp
+    };
+    habitat.update(newData, next);
   });
 }
 
