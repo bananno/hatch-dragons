@@ -208,8 +208,8 @@ function placeDragon(req, res, next) {
 
           let newTime = new Date().getTime();
 
-          updateHabitatMoney(oldHabitatId, newTime, () => {
-            updateHabitatMoney(newHabitat._id, newTime, () => {
+          updateHabitatMoney(oldHabitatId, newTime, false, () => {
+            updateHabitatMoney(newHabitat._id, newTime, false, () => {
               dragon.update(dragonData, (err, dragon) => {
                 return res.send('success');
               });
@@ -221,7 +221,7 @@ function placeDragon(req, res, next) {
   });
 }
 
-function updateHabitatMoney(habitatId, newTimeStamp, next) {
+function updateHabitatMoney(habitatId, newTimeStamp, collectMoney, next) {
   if (habitatId == null) {
     next();
   } else {
