@@ -249,18 +249,21 @@ function updateHabitatMoney(habitatId, newTimeStamp, user, next) {
         });
 
         let minutesSinceLastUpdate = (newTimeStamp - habitat.timestamp) / 60000;
-        let money = habitat.money + Math.round(moneyPerMinute * minutesSinceLastUpdate);
+        let existingMoney = habitat.money;
+        let newMoney = Math.round(moneyPerMinute * minutesSinceLastUpdate);
         let habitatData = {
-          timestamp: newTimeStamp
+          timestamp: newTimeStamp,
+          money: existingMoney
         };
 
         if (user) {
-          habitatData.money = 0;
-          user.update({ money: user.money + money}, () => {
+          habitatData.money -= existingMoney;
+          let totalMoney = user.money + existingMoney + newMoney;
+          user.update({ money: totalMoney }, () => {
             habitat.update(habitatData, next);
           });
         } else {
-          habitatData.money = money;
+          habitatData.money += newMoney;
           habitat.update(habitatData, next);
         }
       });
