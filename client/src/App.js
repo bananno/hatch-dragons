@@ -78,9 +78,13 @@ class App extends Component {
         <Park rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
-        <ActiveHabitat rootState={this.state}
-          setRootState={this.setRootState}
-          makePostRequest={this.makePostRequest}/>
+        {
+          this.state.activeHabitat
+          ? <ActiveHabitat rootState={this.state}
+              setRootState={this.setRootState}
+              makePostRequest={this.makePostRequest}/>
+          : null
+        }
         <ActiveDragon rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
