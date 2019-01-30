@@ -66,12 +66,24 @@ function buyHabitat(req, res, next) {
       timestamp: ts,
     };
 
-    Habitat.create(habitatData, (error, habitat) => {
+    let userData = {
+      money: user.money - model.buy
+    };
+
+    user.update(userData, (error, user) => {
       if (error) {
-        return next(error);
-      } else {
-        return res.redirect('/');
+        console.log('error');
+        console.log(error);
+        return;
       }
+
+      Habitat.create(habitatData, (error, habitat) => {
+        if (error) {
+          return next(error);
+        } else {
+          return res.redirect('/');
+        }
+      });
     });
   });
 }
