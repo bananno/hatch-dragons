@@ -64,6 +64,8 @@ function buyHabitat(req, res, next) {
         if (error) {
           console.log('error');
           console.log(error);
+        } else {
+          return res.redirect('/');
         }
       });
     });
@@ -88,6 +90,8 @@ function buyDragon(req, res, next) {
         if (error) {
           console.log('error');
           console.log(error);
+        } else {
+          return res.redirect('/');
         }
       });
     });
