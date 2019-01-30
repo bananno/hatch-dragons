@@ -5,6 +5,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/5/55/PlantHabitat2013.png',
     buildTime: [0, 0, 0],
     buy: 100,
+    incomeCap: 200,
   },
   {
     name: 'Fire',
@@ -12,6 +13,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/d/dc/FireHabitat2013.png',
     buildTime: [0, 5, 0],
     buy: 100,
+    incomeCap: 7500,
   },
   {
     name: 'Earth',
@@ -19,6 +21,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/9/96/EarthHabitat2013.png',
     buildTime: [3, 0, 0],
     buy: 500,
+    incomeCap: 10000,
   },
   {
     name: 'Cold',
@@ -26,6 +29,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/4/42/ColdHabitat2013.png',
     buildTime: [12, 0, 0],
     buy: 20000,
+    incomeCap: 15000,
   },
   {
     name: 'Lightning',
@@ -33,6 +37,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/6/69/LightningHabitat2013.png',
     buildTime: [0, 30, 0],
     buy: 50000,
+    incomeCap: 1250,
   },
   {
     name: 'Water',
@@ -40,6 +45,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/0/08/WaterHabitat2013.png',
     buildTime: [0, 4, 0],
     buy: 100000,
+    incomeCap: 15000,
   },
   {
     name: 'Air',
@@ -47,6 +53,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/7/7c/AirHabitat2013.png',
     buildTime: [8, 0, 0],
     buy: 500000,
+    incomeCap: 6000,
   },
   {
     name: 'Metal',
@@ -54,6 +61,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/3/38/MetalHabitat2013.png',
     buildTime: [10, 0, 0],
     buy: 1000000,
+    incomeCap: 25000,
   },
   {
     name: 'Light',
@@ -61,6 +69,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/a/ab/LightHabitat.png',
     buildTime: [16, 0, 0],
     buy: 3000000,
+    incomeCap: 35000,
   },
   {
     name: 'Dark',
@@ -68,6 +77,7 @@ const habitats = [
     image: 'https://vignette.wikia.nocookie.net/dragonvale/images/c/c6/DarkHabitat.png',
     buildTime: [18, 0, 0],
     buy: 7500000,
+    incomeCap: 50000,
   },
 ];
 
