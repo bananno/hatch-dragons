@@ -176,16 +176,16 @@ function placeDragon(req, res, next) {
   let dragonId = req.body.dragon;
 
   authenticate(req, res, next, (user) => {
-    Habitat.findById(habitatId, (err1, habitat) => {
+    Habitat.findById(habitatId, (err1, newHabitat) => {
       Dragon.findById(dragonId, (err2, dragon) => {
         if (err1 || err2) {
           return next(err1 || err2);
-        } else if ('' + habitat.user != '' + user._id
+        } else if ('' + newHabitat.user != '' + user._id
             || '' + dragon.user != '' + user._id) {
           console.log('wrong user');
           return res.redirect('/');
         } else {
-          let habitatModel = findModel('habitat', habitat);
+          let habitatModel = findModel('habitat', newHabitat);
           let dragonModel = findModel('dragon', dragon);
 
           if (!elementsOverlap(habitatModel, dragonModel)) {
@@ -193,7 +193,7 @@ function placeDragon(req, res, next) {
           }
 
           let dragonData = {
-            habitat: habitat,
+            habitat: newHabitat,
           };
 
           if (dragon.level == 0) {
