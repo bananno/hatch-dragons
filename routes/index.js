@@ -188,6 +188,8 @@ function placeDragon(req, res, next) {
           let habitatModel = findModel('habitat', newHabitat);
           let dragonModel = findModel('dragon', dragon);
 
+          let oldHabitatId = dragon.habitat;
+
           if (!elementsOverlap(habitatModel, dragonModel)) {
             return;
           }
@@ -212,6 +214,16 @@ function placeDragon(req, res, next) {
               newHabitat.update({ timestamp: newTime }, (err, habitat) => {
                 if (err) {
                   return next(err);
+                } else if (oldHabitatId) {
+                  Habitat.findById(oldHabitatId, (err1, oldHabitat) => {
+                    oldHabitat.update({ timestamp: newTime }, (err, habitat) => {
+                      if (err) {
+                        return next(err);
+                      } else {
+                        return res.send('success');
+                      }
+                    });
+                  });
                 } else {
                   return res.send('success');
                 }
