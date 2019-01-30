@@ -108,12 +108,24 @@ function buyDragon(req, res, next) {
       timestamp: ts,
     };
 
-    Dragon.create(dragonData, (error, habitat) => {
+    let userData = {
+      money: user.money - model.buy
+    };
+
+    user.update(userData, (error, user) => {
       if (error) {
-        return next(error);
-      } else {
-        return res.redirect('/');
+        console.log('error');
+        console.log(error);
+        return;
       }
+
+      Dragon.create(dragonData, (error, habitat) => {
+        if (error) {
+          return next(error);
+        } else {
+          return res.redirect('/');
+        }
+      });
     });
   });
 }
