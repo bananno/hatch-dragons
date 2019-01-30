@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
-import habitatModels from '../gameModels/habitats';
+import findModel from '../gameModels/findModel';
 
 class Habitat extends Component {
   onClose = () => {
@@ -28,9 +28,7 @@ class Habitat extends Component {
 
     let className = 'habitat active';
 
-    let gameModel = habitatModels.filter(model => {
-      return model.name === habitat.gameModel;
-    })[0];
+    let gameModel = findModel('habitat', habitat);
 
     let dragons = this.props.rootState.dragons.filter(dragon => {
       return dragon.habitat === habitat._id;
