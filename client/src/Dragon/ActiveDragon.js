@@ -43,7 +43,7 @@ class ActiveDragon extends Component {
 
     let gameModel = findModel('dragon', dragon);
 
-    let imageSrc = gameModel.images[1];
+    let imageSrc = gameModel.images[dragon.level];
 
     let backText = findModel('habitat', this.props.rootState.activeHabitat).name + ' Habitat';
 
@@ -53,7 +53,9 @@ class ActiveDragon extends Component {
           <img src={imageSrc} alt="" className="main-image"/>
           <div className="column">
             <h1 className="main-title">{gameModel.name} Dragon</h1>
-            <br/>
+            <p>
+              <b>Income:</b> {gameModel.income[dragon.level]} coins per minute
+            </p>
             <button onClick={this.sell}>sell</button>
             <button onClick={this.move}>move</button>
           </div>
