@@ -138,6 +138,20 @@ class Habitat extends Component {
     });
   }
 
+  sellHabitat = () => {
+    this.props.makePostRequest('/sellHabitat', {
+      habitatId: this.props.habitat._id
+    }, {
+      activeHabitat: null
+    });
+  }
+
+  collectMoney = () => {
+    this.props.makePostRequest('/collectHabitat', {
+      habitatId: this.props.habitat._id
+    });
+  }
+
   getConstructionDisplay = () => {
     if (this.waitingToComplete()) {
       return (
@@ -201,6 +215,8 @@ class Habitat extends Component {
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
               currentMoney={this.state.currentMoney}
+              sellHabitat={this.sellHabitat}
+              collectMoney={this.collectMoney}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>

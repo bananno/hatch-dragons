@@ -9,20 +9,6 @@ class Habitat extends Component {
     });
   }
 
-  sell = () => {
-    this.props.makePostRequest('/sellHabitat', {
-      habitatId: this.props.habitat._id
-    }, {
-      activeHabitat: null
-    });
-  }
-
-  collectMoney = () => {
-    this.props.makePostRequest('/collectHabitat', {
-      habitatId: this.props.habitat._id
-    });
-  }
-
   getMoneyInfo = () => {
     let money = Math.floor(this.props.currentMoney);
     let disabled = money === 0;
@@ -30,7 +16,7 @@ class Habitat extends Component {
       <p>
         <b>Income:</b> {this.props.incomePerMinute} per minute<br/>
         <b>Current money:</b> {money}<br/>
-        <button onClick={this.collectMoney} disabled={disabled}>collect</button>
+        <button onClick={this.props.collectMoney} disabled={disabled}>collect</button>
       </p>
     );
   }
@@ -50,7 +36,7 @@ class Habitat extends Component {
             {this.getMoneyInfo()}
             {
               this.props.dragons.length === 0
-              ? <button onClick={this.sell}>sell</button>
+              ? <button onClick={this.props.sellHabitat}>sell</button>
               : null
             }
           </div>
