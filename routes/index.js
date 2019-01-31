@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Island = require('../models/island');
 const Habitat = require('../models/habitat');
 const Dragon = require('../models/dragon');
 
@@ -9,6 +10,8 @@ const habitatModels = require('../client/src/gameModels/habitats.js');
 const dragonModels = require('../client/src/gameModels/dragons.js');
 
 router.get('/getData', getData);
+
+router.post('/buyIsland', buyIsland);
 
 router.post('/buyHabitat', buyHabitat);
 router.post('/completeHabitat', completeHabitat);
@@ -50,6 +53,35 @@ function authenticate(req, res, next, callback) {
     }
   });
 }
+
+// ISLAND
+
+function buyIsland(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    Island.find({ user: user }, (err, islands) => {
+      if (islands.length) {
+        console.log('Free island has already been claimed.');
+        return;
+      }
+      updateMoney(user, 0, () => {
+        let islandData = {
+          user: user,
+          size: 1,
+        };
+        Island.create(islandData, (error, habitat) => {
+          if (error) {
+            console.log('error');
+            console.log(error);
+          } else {
+            return res.redirect('/');
+          }
+        });
+      });
+    });
+  });
+}
+
+// HABITAT
 
 function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
