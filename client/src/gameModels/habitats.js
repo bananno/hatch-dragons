@@ -6,6 +6,7 @@ const habitats = [
     buildTime: [0, 0, 0],
     buy: 100,
     incomeCap: 200,
+    size: [2.5, 2.5],
   },
   {
     name: 'Fire',
@@ -14,6 +15,7 @@ const habitats = [
     buildTime: [0, 5, 0],
     buy: 100,
     incomeCap: 7500,
+    size: [3, 1.5],
   },
   {
     name: 'Earth',
@@ -22,6 +24,7 @@ const habitats = [
     buildTime: [3, 0, 0],
     buy: 500,
     incomeCap: 10000,
+    size: [3, 2],
   },
   {
     name: 'Cold',
@@ -30,6 +33,7 @@ const habitats = [
     buildTime: [12, 0, 0],
     buy: 20000,
     incomeCap: 15000,
+    size: [3, 1.8],
   },
   {
     name: 'Lightning',
@@ -38,6 +42,7 @@ const habitats = [
     buildTime: [0, 30, 0],
     buy: 50000,
     incomeCap: 1250,
+    size: [3, 2],
   },
   {
     name: 'Water',
@@ -46,6 +51,7 @@ const habitats = [
     buildTime: [0, 4, 0],
     buy: 100000,
     incomeCap: 15000,
+    size: [3, 2],
   },
   {
     name: 'Air',
@@ -54,6 +60,7 @@ const habitats = [
     buildTime: [8, 0, 0],
     buy: 500000,
     incomeCap: 6000,
+    size: [3, 2],
   },
   {
     name: 'Metal',
@@ -62,6 +69,7 @@ const habitats = [
     buildTime: [10, 0, 0],
     buy: 1000000,
     incomeCap: 25000,
+    size: [3, 2],
   },
   {
     name: 'Light',
@@ -70,6 +78,7 @@ const habitats = [
     buildTime: [16, 0, 0],
     buy: 3000000,
     incomeCap: 35000,
+    size: [3, 2],
   },
   {
     name: 'Dark',
@@ -78,6 +87,7 @@ const habitats = [
     buildTime: [18, 0, 0],
     buy: 7500000,
     incomeCap: 50000,
+    size: [3, 2],
   },
 ];
 

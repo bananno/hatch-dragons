@@ -141,6 +141,12 @@ class ParkHabitat extends Component {
       backgroundImage: 'url("' + this.habitat.gameModel.image + '")'
     };
 
+    let tempSize = this.habitat.gameModel.size;
+
+    style.backgroundSize = tempSize[0] * 100;
+    style.width = tempSize[0] * 100;
+    style.height = tempSize[1] * 100;
+
     return (
       <div className={className} onClick={this.handleClick} style={style}>
         {this.getConstructionDisplay()}
