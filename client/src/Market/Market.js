@@ -69,7 +69,7 @@ class Market extends Component {
             <div onClick={this.getView('dragons')}>dragons</div>
           </div>
           {
-            this.state.view == 'islands'
+            this.state.view === 'islands'
             ? (
               <div>
                 <h3>Islands</h3>
@@ -78,7 +78,7 @@ class Market extends Component {
             ) : null
           }
           {
-            this.state.view == 'habitats'
+            this.state.view === 'habitats'
             ? (
               <div>
                 <h3>Habitats</h3>
@@ -87,7 +87,7 @@ class Market extends Component {
             ) : null
           }
           {
-            this.state.view == 'dragons'
+            this.state.view === 'dragons'
             ? (
               <div>
                 <h3>Dragons</h3>
