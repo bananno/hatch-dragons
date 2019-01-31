@@ -164,6 +164,7 @@ class Habitat extends Component {
         {
           showActiveWindow
           ? <ActiveHabitat
+              habitat={this.props.habitat}
               dragons={dragons}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}

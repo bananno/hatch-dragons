@@ -12,8 +12,6 @@ class Habitat extends Component {
   }
 
   componentDidMount() {
-    let habitat = this.props.rootState.activeHabitat;
-
     let incomePerMinute = 0;
 
     this.props.dragons.forEach(dragon => {
@@ -24,7 +22,7 @@ class Habitat extends Component {
       incomePerMinute: incomePerMinute,
       baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
-      incomeCap: habitat.gameModel.incomeCap,
+      incomeCap: this.props.habitat.gameModel.incomeCap,
     });
 
     this.calculateMoney();
@@ -81,18 +79,14 @@ class Habitat extends Component {
   }
 
   render () {
-    let habitat = this.props.rootState.activeHabitat;
-
-    let className = 'habitat active';
-
     return (
       <Modal onClose={this.onClose}>
-        <div className={className}>
-          <img src={habitat.gameModel.image} className="main-image" alt=""/>
+        <div className="habitat active">
+          <img src={this.props.habitat.gameModel.image} className="main-image" alt=""/>
           <div className="column">
-            <h1 className="main-title">{habitat.gameModel.name} Habitat</h1>
+            <h1 className="main-title">{this.props.habitat.gameModel.name} Habitat</h1>
             {
-              !habitat.complete
+              !this.props.habitat.complete
               ? <p>UNDER CONSTRUCTION</p>
               : null
             }
