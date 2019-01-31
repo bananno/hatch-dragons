@@ -95,7 +95,14 @@ class Market extends Component {
             ? (
               <div>
                 <h3>Islands</h3>
-                <button onClick={this.buyIsland}>buy first island now (free)</button>
+                <div className="market-item">
+                  <h4>Island #1</h4>
+                  <div className="image-frame">
+                    <img src="https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png"
+                      alt="Island #1"/>
+                  </div>
+                  <button onClick={this.buyIsland}>buy</button>
+                </div>
               </div>
             ) : null
           }
