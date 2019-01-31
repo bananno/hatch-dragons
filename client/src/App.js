@@ -73,10 +73,14 @@ class App extends Component {
           setRootState={this.setRootState}/>
         <Login rootState={this.state}
           visitDatabase={this.visitDatabase}/>
-        <Market rootState={this.state}
-          setRootState={this.setRootState}
-          makePostRequest={this.makePostRequest}
-          visitDatabase={this.visitDatabase}/>
+        {
+          this.state.showMarket
+          ?  <Market rootState={this.state}
+              setRootState={this.setRootState}
+              makePostRequest={this.makePostRequest}
+              visitDatabase={this.visitDatabase}/>
+          : null
+        }
         <Park rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
