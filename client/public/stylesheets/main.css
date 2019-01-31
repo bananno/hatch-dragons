@@ -285,3 +285,21 @@ button {
 .dragon.egg button {
   cursor: pointer;
 }
+
+/* OTHER */
+
+.show-money {
+  display: inline-block;
+  height: 35px;
+  background-image: url(../images/coin.png);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: left center;
+  color: black;
+  font-size: 20px;
+  padding-left: 30px;
+  line-height: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+}

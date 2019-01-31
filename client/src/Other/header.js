@@ -32,10 +32,9 @@ const header = (props) => {
     }
 
     return (
-      <p>
-        <b>Money: </b>
+      <div className="show-money">
         {Math.round(props.rootState.currentUser.money)}
-      </p>
+      </div>
     );
   }
 
