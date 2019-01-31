@@ -10,6 +10,7 @@ const message = (props) => {
    const onCancelPurchase = () => {
     props.setRootState({
       buyHabitat: null,
+      buyIncubator: false,
     });
   }
 
@@ -26,6 +27,15 @@ const message = (props) => {
     return (
       <div className="message">
         Select an island for the habitat.
+        <button onClick={onCancelPurchase}>cancel</button>
+      </div>
+    );
+  }
+
+  if (props.rootState.buyIncubator) {
+    return (
+      <div className="message">
+        Select an island for the incubator.
         <button onClick={onCancelPurchase}>cancel</button>
       </div>
     );
