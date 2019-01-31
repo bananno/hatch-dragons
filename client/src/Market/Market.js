@@ -64,19 +64,37 @@ class Market extends Component {
         <div className="market">
           <h2>MARKET</h2>
           <div>
-            current view: {this.state.view || 'none'}
-          </div>
-          <div>
             <div onClick={this.getView('islands')}>islands</div>
             <div onClick={this.getView('habitats')}>habitats</div>
             <div onClick={this.getView('dragons')}>dragons</div>
           </div>
-          <h3>Islands</h3>
-          <button onClick={this.buyIsland}>buy first island now (free)</button>
-          <h3>Habitats</h3>
-          <MarketSection models={habitatModels} onPurchase={this.buyHabitat}/>
-          <h3>Dragons</h3>
-          <MarketSection models={dragonModels} onPurchase={this.buyDragon}/>
+          {
+            this.state.view == 'islands'
+            ? (
+              <div>
+                <h3>Islands</h3>
+                <button onClick={this.buyIsland}>buy first island now (free)</button>
+              </div>
+            ) : null
+          }
+          {
+            this.state.view == 'habitats'
+            ? (
+              <div>
+                <h3>Habitats</h3>
+                <MarketSection models={habitatModels} onPurchase={this.buyHabitat}/>
+              </div>
+            ) : null
+          }
+          {
+            this.state.view == 'dragons'
+            ? (
+              <div>
+                <h3>Dragons</h3>
+                <MarketSection models={dragonModels} onPurchase={this.buyDragon}/>
+              </div>
+            ) : null
+          }
         </div>
       </Modal>
     );
