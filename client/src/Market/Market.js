@@ -26,9 +26,8 @@ class Market extends Component {
 
   buyHabitat = (index) => {
     return () => {
-      this.props.makePostRequest('/buyHabitat', {
-        habitatIndex: index
-      }, {
+      this.props.setRootState({
+        buyHabitat: index,
         showMarket: false
       });
     };
