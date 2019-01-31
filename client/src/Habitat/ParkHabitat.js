@@ -49,6 +49,8 @@ class ParkHabitat extends Component {
   handleClick = () => {
     if (this.props.rootState.placeDragon) {
       this.placeDragon();
+    } else if (this.props.rootState.buyHabitat != null) {
+      return;
     } else if (this.readyToComplete()) {
       this.completeConstruction();
     } else {
