@@ -252,7 +252,7 @@ function updateHabitatMoney(habitatId, newTimeStamp, user, next) {
 
         let moneyIncrease = moneyPerMinute * minutesSinceLastUpdate;
         let totalMoneyInHabitat = habitat.money + moneyIncrease;
-        let habitatMoneyCap = findModel('habitat', habitat);
+        let habitatMoneyCap = findModel('habitat', habitat).incomeCap;
 
         if (totalMoneyInHabitat > habitatMoneyCap) {
           totalMoneyInHabitat = habitatMoneyCap;
