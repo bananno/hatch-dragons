@@ -24,6 +24,7 @@ class Habitat extends Component {
     this.setState({
       incomePerMinute: incomePerMinute,
       baseMoney: this.props.habitat.money,
+      currentMoney: this.props.habitat.money,
       incomeCap: this.props.habitat.gameModel.incomeCap,
     });
 
@@ -143,6 +144,19 @@ class Habitat extends Component {
     return null;
   }
 
+  calculateMoney = () => {
+    let lastUpdate = this.props.habitat.timestamp;
+    let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
+    let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
+    let totalMoney = this.state.baseMoney + addition;
+    if (totalMoney > this.state.incomeCap) {
+      totalMoney = this.state.incomeCap;
+    }
+    this.setState({
+      currentMoney: totalMoney
+    });
+  }
+
   render () {
     let dragons = this.props.rootState.dragons.filter(dragon => {
       return dragon.habitat === this.habitat._id;
@@ -183,8 +197,8 @@ class Habitat extends Component {
               habitat={this.props.habitat}
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
-              baseMoney={this.state.baseMoney}
-              incomeCap={this.state.incomeCap}
+              currentMoney={this.state.currentMoney}
+              calculateMoney={this.calculateMoney}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>

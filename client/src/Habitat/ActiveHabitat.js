@@ -1,37 +1,15 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
-import calculateTime from '../tools/calculateTime';
 
 class Habitat extends Component {
-  state = {
-    money: 0
-  }
-
   componentDidMount() {
-    this.setState({
-      money: this.props.habitat.money,
-    });
-
-    this.calculateMoney();
-    this.interval = setInterval(this.calculateMoney, 1000);
+    this.props.calculateMoney();
+    this.interval = setInterval(this.props.calculateMoney, 1000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-  }
-
-  calculateMoney = () => {
-    let lastUpdate = this.props.habitat.timestamp;
-    let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
-    let addition = Math.floor(this.props.incomePerMinute * minutesElapsed);
-    let totalMoney = this.props.baseMoney + addition;
-    if (totalMoney > this.props.incomeCap) {
-      totalMoney = this.props.incomeCap;
-    }
-    this.setState({
-      money: totalMoney
-    });
   }
 
   onClose = () => {
@@ -55,7 +33,7 @@ class Habitat extends Component {
   }
 
   getMoneyInfo = () => {
-    let money = Math.floor(this.state.money);
+    let money = Math.floor(this.props.currentMoney);
     let disabled = money === 0;
     return (
       <p>
