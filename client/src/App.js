@@ -11,6 +11,7 @@ import ActiveIncubator from './Park/ActiveIncubator.js';
 class App extends Component {
   state = {
     currentUser: null,
+    islands: [],
     habitats: [],
     dragons: [],
     showMarket: false,
@@ -35,6 +36,7 @@ class App extends Component {
     this.callApi()
       .then(res => this.setState({
         currentUser: res.user,
+        islands: res.islands,
         habitats: res.habitats,
         dragons: res.dragons,
       }))
