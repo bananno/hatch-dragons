@@ -6,6 +6,8 @@ class Island extends Component {
   onClick = () => {
     if (this.props.rootState.buyHabitat != null) {
       this.buyHabitat();
+    } else if (this.props.rootState.buyIncubator) {
+      this.buyIncubator();
     }
   }
 
@@ -15,6 +17,14 @@ class Island extends Component {
       island: this.props.island._id,
     }, {
       buyHabitat: null
+    });
+  }
+
+  buyIncubator = () => {
+    this.props.makePostRequest('/buyIncubator', {
+      island: this.props.island._id,
+    }, {
+      buyIncubator: false
     });
   }
 
@@ -34,7 +44,7 @@ class Island extends Component {
 
     let className = 'island';
 
-    if (this.props.rootState.buyHabitat != null) {
+    if (this.props.rootState.buyHabitat != null || this.props.rootState.buyIncubator) {
       className += ' pointer';
     }
 
