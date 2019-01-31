@@ -151,6 +151,9 @@ class Habitat extends Component {
     this.props.makePostRequest('/collectHabitat', {
       habitatId: this.props.habitat._id
     });
+    this.setState({
+      currentMoney: 0
+    });
   }
 
   getConstructionDisplay = () => {
