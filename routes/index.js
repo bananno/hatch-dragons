@@ -12,6 +12,7 @@ const dragonModels = require('../client/src/gameModels/dragons.js');
 router.get('/getData', getData);
 
 router.post('/buyIsland', buyIsland);
+router.post('/buyIncubator', buyIncubator);
 
 router.post('/buyHabitat', buyHabitat);
 router.post('/completeHabitat', completeHabitat);
@@ -79,6 +80,49 @@ function buyIsland(req, res, next) {
             return res.redirect('/');
           }
         });
+      });
+    });
+  });
+}
+
+// INCUBATOR
+
+function buyIncubator(req, res, next) {
+  authenticate(req, res, next, (user) => {
+    let islandId = req.body.island;
+
+    if (user.incubator.size > 0) {
+      console.log('User already has an incubator');
+      return;
+    }
+
+    Island.findById(islandId, (error, island) => {
+      if (error) {
+        console.log('error');
+        console.log(error);
+        return;
+      }
+
+      if (!sameUser(island.user, user)) {
+        console.log('wrong user');
+        return;
+      }
+
+      let userData = {
+        incubator: {
+          size: 1,
+          island: island
+        }
+      };
+
+      user.update(userData, (error, user) => {
+        if (error) {
+          console.log('error');
+          console.log(error);
+          return;
+        } else {
+          return res.redirect('/');
+        }
       });
     });
   });
