@@ -19,3 +19,18 @@
   background-size: 900px 900px;
   padding-top: 50px;
 }
+
+.zoom-1 .dragon.mini img {
+  max-height: 15px;
+  max-height: 15px;
+}
+
+.zoom-2 .dragon.mini img {
+  max-height: 30px;
+  max-height: 30px;
+}
+
+.zoom-3 .dragon.mini img {
+  max-height: 50px;
+  max-height: 50px;
+}
