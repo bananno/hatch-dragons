@@ -35,14 +35,16 @@ class App extends Component {
   }
 
   visitDatabase = () => {
-    this.callApi()
-      .then(res => this.setState({
-        currentUser: res.user,
-        islands: res.islands,
-        habitats: (res.habitats || []).map(this.createHabitat),
-        dragons: res.dragons,
-      }))
-      .catch(err => console.log(err));
+    this.callApi().then(this.processDatabase).catch(err => console.log(err));
+  }
+
+  processDatabase = (res) => {
+    this.setState({
+      currentUser: res.user,
+      islands: res.islands,
+      habitats: (res.habitats || []).map(this.createHabitat),
+      dragons: res.dragons,
+    });
   }
 
   makePostRequest = async (path, data, stateChanges) => {
