@@ -15,10 +15,6 @@ class Login extends Component {
   }
 
   render () {
-    if (this.props.rootState.currentUser) {
-      return null;
-    }
-
     return (
       <div className="login-box">
         <Form title="Login" showError={this.showError} loginUser={this.loginUser}/>

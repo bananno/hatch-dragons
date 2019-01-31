@@ -91,16 +91,12 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.currentUser == null) {
+    if (this.state.currentUser == null) {
       return (
         <div className="App">
-          <Header rootState={this.state}
-            setRootState={this.setRootState}
-            makePostRequest={this.makePostRequest}/>
-          <Message rootState={this.state}
-            setRootState={this.setRootState}/>
-          <Login rootState={this.state}
-            visitDatabase={this.visitDatabase}/>
+          <Header rootState={this.state} setRootState={this.setRootState}/>
+          <Message rootState={this.state} setRootState={this.setRootState}/>
+          <Login rootState={this.state} visitDatabase={this.visitDatabase}/>
         </div>
       );
     }
