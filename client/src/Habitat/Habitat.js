@@ -11,6 +11,20 @@ class Habitat extends Component {
   habitat = this.props.habitat
 
   componentDidMount() {
+    let dragons = this.props.rootState.dragons.filter(dragon => {
+      return dragon.habitat === this.habitat._id;
+    });
+
+    let incomePerMinute = 0;
+
+    dragons.forEach(dragon => {
+      incomePerMinute += findModel('dragon', dragon).income[dragon.level];
+    });
+
+    this.setState({
+      incomePerMinute: incomePerMinute,
+    });
+
     if (this.props.habitat.complete) {
       this.setState({
         secondsRemaining: 0
@@ -166,6 +180,7 @@ class Habitat extends Component {
           ? <ActiveHabitat
               habitat={this.props.habitat}
               dragons={dragons}
+              incomePerMinute={this.state.incomePerMinute}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>

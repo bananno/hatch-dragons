@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
-import findModel from '../gameModels/findModel';
 import calculateTime from '../tools/calculateTime';
 
 class Habitat extends Component {
   state = {
-    incomePerMinute: 0,
     incomeCap: 0,
     money: 0
   }
 
   componentDidMount() {
-    let incomePerMinute = 0;
-
-    this.props.dragons.forEach(dragon => {
-      incomePerMinute += findModel('dragon', dragon).income[dragon.level];
-    });
-
     this.setState({
-      incomePerMinute: incomePerMinute,
       baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
       incomeCap: this.props.habitat.gameModel.incomeCap,
@@ -36,7 +27,7 @@ class Habitat extends Component {
   calculateMoney = () => {
     let lastUpdate = this.props.rootState.activeHabitat.timestamp;
     let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
-    let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
+    let addition = Math.floor(this.props.incomePerMinute * minutesElapsed);
     let totalMoney = this.state.baseMoney + addition;
     if (totalMoney > this.state.incomeCap) {
       totalMoney = this.state.incomeCap;
@@ -71,7 +62,7 @@ class Habitat extends Component {
     let disabled = money === 0;
     return (
       <p>
-        <b>Income:</b> {this.state.incomePerMinute} per minute<br/>
+        <b>Income:</b> {this.props.incomePerMinute} per minute<br/>
         <b>Current money:</b> {money}<br/>
         <button onClick={this.collectMoney} disabled={disabled}>collect</button>
       </p>
