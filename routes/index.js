@@ -169,6 +169,11 @@ function buyHabitat(req, res, next) {
 
 function buyDragon(req, res, next) {
   authenticate(req, res, next, (user) => {
+    if (user.incubator.size === 0) {
+      console.log('User has no incubator');
+      return;
+    }
+
     let index = parseInt(req.body.dragonIndex);
     let model = dragonModels[index];
 
