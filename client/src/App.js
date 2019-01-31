@@ -38,7 +38,7 @@ class App extends Component {
       .then(res => this.setState({
         currentUser: res.user,
         islands: res.islands,
-        habitats: res.habitats,
+        habitats: (res.habitats || []).map(this.createHabitat),
         dragons: res.dragons,
       }))
       .catch(err => console.log(err));
@@ -62,6 +62,19 @@ class App extends Component {
 
   setRootState = (newState) => {
     this.setState(newState);
+  }
+
+  createHabitat = (originalData) => {
+    let habitat = {};
+
+    habitat.complete = originalData.complete;
+    habitat.gameModel = originalData.gameModel;
+    habitat.island = originalData.island;
+    habitat.money = originalData.money;
+    habitat.timestamp = originalData.timestamp;
+    habitat._id = originalData._id;
+
+    return habitat;
   }
 
   render() {
