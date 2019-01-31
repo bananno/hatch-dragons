@@ -66,8 +66,10 @@ class Habitat extends Component {
     if (totalMoney > this.state.incomeCap) {
       totalMoney = this.state.incomeCap;
     }
+    let clickToCollect = totalMoney > (this.state.incomeCap/2);
     this.setState({
-      currentMoney: totalMoney
+      currentMoney: totalMoney,
+      clickToCollect: clickToCollect
     });
   }
 
@@ -152,7 +154,8 @@ class Habitat extends Component {
       habitatId: this.props.habitat._id
     });
     this.setState({
-      currentMoney: 0
+      currentMoney: 0,
+      clickToCollect: false
     });
   }
 
@@ -176,6 +179,15 @@ class Habitat extends Component {
     }
 
     return null;
+  }
+
+  getCoinPile = () => {
+    if (!this.state.clickToCollect) {
+      return null;
+    }
+    return (
+      <div className="habitat-coin-pile"> </div>
+    );
   }
 
   render () {
@@ -211,6 +223,7 @@ class Habitat extends Component {
               <MiniDragon key={dragon._id} dragon={dragon}/>
             );
           })}
+          {this.getCoinPile()}
         </div>
         {
           showActiveWindow

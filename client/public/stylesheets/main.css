@@ -173,6 +173,15 @@ button {
   max-height: 50px;
 }
 
+.habitat-coin-pile {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-image: url(../images/coin-pile.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+}
+
 /* DRAGON */
 
 .dragon {
