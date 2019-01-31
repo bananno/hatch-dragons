@@ -77,9 +77,14 @@ class Market extends Component {
               <img src="https://vignette.wikia.nocookie.net/dragonvale/images/1/16/HabitatsIconNew.png"
                 alt="habitats"/>
             </div>
+            <br/>
             <div onClick={this.getView('dragons')} className="market-view">
               <img src="https://vignette.wikia.nocookie.net/dragonvale/images/a/af/DragonsIconNew.png"
                 alt="dragons"/>
+            </div>
+            <div onClick={this.getView('buildings')} className="market-view">
+              <img src="https://vignette.wikia.nocookie.net/dragonvale/images/3/3b/BuildingsIconNew.png"
+                alt="buildings"/>
             </div>
           </div>
         </Modal>
@@ -121,6 +126,14 @@ class Market extends Component {
               <div>
                 <h3>Dragons</h3>
                 <MarketSection models={dragonModels} onPurchase={this.buyDragon}/>
+              </div>
+            ) : null
+          }
+          {
+            this.state.view === 'buildings'
+            ? (
+              <div>
+                <h3>Buildings</h3>
               </div>
             ) : null
           }
