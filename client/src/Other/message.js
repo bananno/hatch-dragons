@@ -41,6 +41,18 @@ const message = (props) => {
     );
   }
 
+  if (props.rootState.currentUser == null) {
+    return null;
+  }
+
+  if (props.rootState.currentUser.incubator.size === 0) {
+    return (
+      <div className="message">
+        You don't have any islands! Go to the market and claim your first island for free.
+      </div>
+    );
+  }
+
   return null;
 };
 
