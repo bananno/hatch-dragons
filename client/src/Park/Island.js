@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ParkHabitat from '../Habitat/ParkHabitat';
 
 class Island extends Component {
   onClick = () => {
@@ -17,9 +18,25 @@ class Island extends Component {
   }
 
   render () {
+    let habitats = this.props.rootState.habitats.filter(habitat => {
+      return habitat.island === this.props.island._id;
+    });
+
     return (
       <div className="island" onClick={this.onClick}>
         ISLAND
+        <div>
+          {
+            habitats.map(habitat => {
+              return (
+                <ParkHabitat key={habitat._id} habitat={habitat}
+                  rootState={this.props.rootState}
+                  setRootState={this.props.setRootState}
+                  makePostRequest={this.props.makePostRequest}/>
+              );
+            })
+          }
+        </div>
       </div>
     );
   }
