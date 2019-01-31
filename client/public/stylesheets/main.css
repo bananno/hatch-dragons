@@ -16,6 +16,10 @@ button {
   cursor: pointer;
 }
 
+.pointer:hover {
+  cursor: pointer;
+}
+
 /* PAGE HEADER */
 
 .page-header {

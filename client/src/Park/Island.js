@@ -22,8 +22,14 @@ class Island extends Component {
       return habitat.island === this.props.island._id;
     });
 
+    let className = 'island';
+
+    if (this.props.rootState.buyHabitat != null) {
+      className += ' pointer';
+    }
+
     return (
-      <div className="island" onClick={this.onClick}>
+      <div className={className} onClick={this.onClick}>
         <div>
           {
             habitats.map(habitat => {
