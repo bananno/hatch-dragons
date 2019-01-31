@@ -5,6 +5,10 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+body {
+  background-color: #84d8ff;
+}
+
 button {
   padding: 3px 5px;
   border: 1px solid black;
@@ -84,12 +88,14 @@ button {
 /* ISLAND */
 
 .island {
+  border: 1px solid red;
   display: inline-block;
   margin: 10px;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: #24a528;
-  padding: 10px;
+  background-image: url(https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png);
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 600px;
+  background-size: 600px 600px;
 }
 
 /* INCUBATOR */

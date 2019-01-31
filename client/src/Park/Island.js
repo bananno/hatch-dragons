@@ -24,7 +24,6 @@ class Island extends Component {
 
     return (
       <div className="island" onClick={this.onClick}>
-        ISLAND
         <div>
           {
             habitats.map(habitat => {
