@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Island from './Island';
-import ParkIncubator from './parkIncubator';
 
 class Park extends Component {
   render () {
@@ -10,7 +9,6 @@ class Park extends Component {
 
     return (
       <div>
-        <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
         <div>
           {
             this.props.rootState.islands.map(island => {
