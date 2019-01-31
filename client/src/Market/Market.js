@@ -148,7 +148,7 @@ class Market extends Component {
                       alt="Incubator"/>
                   </div>
                   <button onClick={this.buyIncubator}
-                    disabled={false}>buy</button>
+                    disabled={this.props.rootState.currentUser.incubator.size > 0}>buy</button>
                 </div>
               </div>
             ) : null
