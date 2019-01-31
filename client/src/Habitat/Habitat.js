@@ -208,9 +208,11 @@ class Habitat extends Component {
 
     let tempSize = this.props.habitat.gameModel.size;
 
-    style.backgroundSize = tempSize[0] * 100;
-    style.width = tempSize[0] * 100;
-    style.height = tempSize[1] * 100;
+    let scale = this.props.rootState.zoom * 25;
+
+    style.backgroundSize = tempSize[0] * scale;
+    style.width = tempSize[0] * scale;
+    style.height = tempSize[1] * scale;
 
     let showActiveWindow = this.props.rootState.activeDragon == null
       && (this.props.rootState.activeHabitat || {})._id === this.props.habitat._id;
