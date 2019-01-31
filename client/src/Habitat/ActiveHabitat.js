@@ -10,7 +10,7 @@ class Habitat extends Component {
 
   componentDidMount() {
     this.setState({
-      money: this.props.rootState.activeHabitat.money,
+      money: this.props.habitat.money,
     });
 
     this.calculateMoney();
@@ -22,7 +22,7 @@ class Habitat extends Component {
   }
 
   calculateMoney = () => {
-    let lastUpdate = this.props.rootState.activeHabitat.timestamp;
+    let lastUpdate = this.props.habitat.timestamp;
     let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
     let addition = Math.floor(this.props.incomePerMinute * minutesElapsed);
     let totalMoney = this.props.baseMoney + addition;
@@ -42,7 +42,7 @@ class Habitat extends Component {
 
   sell = () => {
     this.props.makePostRequest('/sellHabitat', {
-      habitatId: this.props.rootState.activeHabitat._id
+      habitatId: this.props.habitat._id
     }, {
       activeHabitat: null
     });
@@ -50,7 +50,7 @@ class Habitat extends Component {
 
   collectMoney = () => {
     this.props.makePostRequest('/collectHabitat', {
-      habitatId: this.props.rootState.activeHabitat._id
+      habitatId: this.props.habitat._id
     });
   }
 
