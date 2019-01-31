@@ -1,5 +1,7 @@
 # HatchDragons
 
+I created this app for practice. It's based on the mobile app "DragonVale" by Backflip Studios.
+
 ## Run locally
 
 You will need to install `yarn` and `concurrently` if not already installed.
