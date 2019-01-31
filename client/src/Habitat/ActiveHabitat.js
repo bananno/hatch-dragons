@@ -117,9 +117,10 @@ class Habitat extends Component {
           </div>
           <h2>Dragons</h2>
           <div>
-            {this.state.dragons.map((dragon, i) => {
+            {this.state.dragons.map(dragon => {
               return (
-                <HabitatDragon key={i} dragon={dragon} setRootState={this.props.setRootState}
+                <HabitatDragon key={dragon._id} dragon={dragon}
+                  setRootState={this.props.setRootState}
                   makePostRequest={this.props.makePostRequest}
                   rootState={this.props.rootState}/>
               );

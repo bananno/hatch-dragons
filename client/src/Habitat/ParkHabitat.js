@@ -144,9 +144,9 @@ class ParkHabitat extends Component {
     return (
       <div className={className} onClick={this.handleClick} style={style}>
         {this.getConstructionDisplay()}
-        {dragons.map((dragon, i) => {
+        {dragons.map(dragon => {
           return (
-            <MiniDragon key={i} dragon={dragon}/>
+            <MiniDragon key={dragon._id} dragon={dragon}/>
           );
         })}
       </div>
