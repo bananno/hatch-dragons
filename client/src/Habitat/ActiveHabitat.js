@@ -6,7 +6,6 @@ import calculateTime from '../tools/calculateTime';
 
 class Habitat extends Component {
   state = {
-    dragons: [],
     incomePerMinute: 0,
     incomeCap: 0,
     money: 0
@@ -17,16 +16,11 @@ class Habitat extends Component {
 
     let incomePerMinute = 0;
 
-    let dragons = this.props.rootState.dragons.filter(dragon => {
-      return dragon.habitat === habitat._id;
-    });
-
-    dragons.forEach(dragon => {
+    this.props.dragons.forEach(dragon => {
       incomePerMinute += findModel('dragon', dragon).income[dragon.level];
     });
 
     this.setState({
-      dragons: dragons,
       incomePerMinute: incomePerMinute,
       baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
@@ -96,10 +90,6 @@ class Habitat extends Component {
 
     let className = 'habitat active';
 
-    let dragons = this.props.rootState.dragons.filter(dragon => {
-      return dragon.habitat === habitat._id;
-    });
-
     return (
       <Modal onClose={this.onClose}>
         <div className={className}>
@@ -113,14 +103,14 @@ class Habitat extends Component {
             }
             {this.getMoneyInfo()}
             {
-              this.state.dragons.length === 0
+              this.props.dragons.length === 0
               ? <button onClick={this.sell}>sell</button>
               : null
             }
           </div>
           <h2>Dragons</h2>
           <div>
-            {dragons.map(dragon => {
+            {this.props.dragons.map(dragon => {
               return (
                 <HabitatDragon key={dragon._id} dragon={dragon}
                   setRootState={this.props.setRootState}

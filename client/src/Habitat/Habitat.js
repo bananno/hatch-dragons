@@ -160,7 +160,9 @@ class Habitat extends Component {
         </div>
         {
           this.props.rootState.activeHabitat === this.props.habitat
-          ? <ActiveHabitat rootState={this.props.rootState}
+          ? <ActiveHabitat
+              dragons={dragons}
+              rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>
           : null
