@@ -149,13 +149,15 @@ class ParkHabitat extends Component {
     style.height = tempSize[1] * 100;
 
     return (
-      <div className={className} onClick={this.handleClick} style={style}>
-        {this.getConstructionDisplay()}
-        {dragons.map(dragon => {
-          return (
-            <MiniDragon key={dragon._id} dragon={dragon}/>
-          );
-        })}
+      <div className={className} style={style}>
+        <div onClick={this.handleClick}>
+          {this.getConstructionDisplay()}
+          {dragons.map(dragon => {
+            return (
+              <MiniDragon key={dragon._id} dragon={dragon}/>
+            );
+          })}
+        </div>
         {
           this.props.rootState.activeHabitat === this.props.habitat
           ? <ActiveHabitat rootState={this.props.rootState}
