@@ -148,8 +148,8 @@ class Habitat extends Component {
     style.width = tempSize[0] * 100;
     style.height = tempSize[1] * 100;
 
-    let showActiveWindow = this.props.rootState.activeHabitat === this.props.habitat
-      && this.props.rootState.activeDragon == null;
+    let showActiveWindow = this.props.rootState.activeDragon == null
+      && (this.props.rootState.activeHabitat || {})._id === this.props.habitat._id;
 
     return (
       <div className="habitat base">
