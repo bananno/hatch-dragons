@@ -38,12 +38,19 @@ class App extends Component {
     this.callApi().then(this.processDatabase).catch(err => console.log(err));
   }
 
-  processDatabase = (res) => {
+  processDatabase = (serverResponse) => {
+    let habitats = serverResponse.habitats || [];
+    let dragons = serverResponse.dragons || [];
+
+    habitats = habitats.map(habitat => {
+      return this.createHabitat(habitat, dragons);
+    });
+
     this.setState({
-      currentUser: res.user,
-      islands: res.islands,
-      habitats: (res.habitats || []).map(this.createHabitat),
-      dragons: res.dragons,
+      currentUser: serverResponse.user,
+      islands: serverResponse.islands,
+      habitats: habitats,
+      dragons: dragons,
     });
   }
 
@@ -67,7 +74,7 @@ class App extends Component {
     this.setState(newState);
   }
 
-  createHabitat = (originalData) => {
+  createHabitat = (originalData, dragons) => {
     let habitat = {};
 
     habitat.complete = originalData.complete;
@@ -76,6 +83,9 @@ class App extends Component {
     habitat.money = originalData.money;
     habitat.timestamp = originalData.timestamp;
     habitat._id = originalData._id;
+    habitat.dragons = dragons.filter(dragon => {
+      return dragon.habitat === habitat._id;
+    });
 
     return habitat;
   }
