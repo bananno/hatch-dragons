@@ -149,8 +149,8 @@ class ParkHabitat extends Component {
     style.height = tempSize[1] * 100;
 
     return (
-      <div className={className} style={style}>
-        <div onClick={this.handleClick}>
+      <div className="habitat base">
+        <div className={className} onClick={this.handleClick} style={style}>
           {this.getConstructionDisplay()}
           {dragons.map(dragon => {
             return (

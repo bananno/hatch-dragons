@@ -123,9 +123,12 @@ button {
 
 /* HABITAT */
 
+.habitat.base {
+  display: inline-block;
+}
+
 .habitat.park {
   background-repeat: no-repeat;
-  display: inline-block;
   vertical-align: top;
   cursor: pointer;
 }
