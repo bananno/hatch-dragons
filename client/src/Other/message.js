@@ -7,11 +7,26 @@ const message = (props) => {
     });
   }
 
+   const onCancelPurchase = () => {
+    props.setRootState({
+      buyHabitat: null,
+    });
+  }
+
   if (props.rootState.placeDragon) {
     return (
       <div className="message">
         Select a habitat for the dragon.
         <button onClick={onCancelPlaceDragon}>cancel</button>
+      </div>
+    );
+  }
+
+  if (props.rootState.buyHabitat != null) {
+    return (
+      <div className="message">
+        Select an island for the habitat.
+        <button onClick={onCancelPurchase}>cancel</button>
       </div>
     );
   }
