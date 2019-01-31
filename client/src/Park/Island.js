@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ParkIncubator from './parkIncubator';
 import ParkHabitat from '../Habitat/ParkHabitat';
 
 class Island extends Component {
@@ -17,6 +18,15 @@ class Island extends Component {
     });
   }
 
+  showIncubator = () => {
+    let incubatorIsland = this.props.rootState.currentUser.incubator.island;
+    if (incubatorIsland === this.props.island._id) {
+      return (
+        <ParkIncubator rootState={this.props.rootState} setRootState={this.props.setRootState}/>
+      );
+    }
+  }
+
   render () {
     let habitats = this.props.rootState.habitats.filter(habitat => {
       return habitat.island === this.props.island._id;
@@ -31,6 +41,7 @@ class Island extends Component {
     return (
       <div className={className} onClick={this.onClick}>
         <div>
+          {this.showIncubator()}
           {
             habitats.map(habitat => {
               return (
