@@ -5,6 +5,18 @@ import habitatModels from '../gameModels/habitats';
 import dragonModels from '../gameModels/dragons';
 
 class Market extends Component {
+  state = {
+    view: null
+  }
+
+  getView = (view) => {
+    return () => {
+      this.setState({
+        view: view
+      });
+    };
+  }
+
   buyIsland = () => {
     this.props.makePostRequest('/buyIsland', {
     }, {
@@ -51,6 +63,14 @@ class Market extends Component {
       <Modal onClose={this.onClose}>
         <div className="market">
           <h2>MARKET</h2>
+          <div>
+            current view: {this.state.view || 'none'}
+          </div>
+          <div>
+            <div onClick={this.getView('islands')}>islands</div>
+            <div onClick={this.getView('habitats')}>habitats</div>
+            <div onClick={this.getView('dragons')}>dragons</div>
+          </div>
           <h3>Islands</h3>
           <button onClick={this.buyIsland}>buy first island now (free)</button>
           <h3>Habitats</h3>
