@@ -137,15 +137,10 @@ class Market extends Component {
             ? (
               <div>
                 <h3>Buildings</h3>
-                <div className="market-item">
-                  <h4>Incubator</h4>
-                  <div className="image-frame">
-                    <img src="https://vignette.wikia.nocookie.net/dragonvale/images/5/5e/Nursery1NestNew.png"
-                      alt="Incubator"/>
-                  </div>
-                  <button onClick={this.buyIncubator}
-                    disabled={this.props.rootState.currentUser.incubator.size > 0}>buy</button>
-                </div>
+                <MarketItem name="Incubator"
+                  imageSrc="https://vignette.wikia.nocookie.net/dragonvale/images/5/5e/Nursery1NestNew.png"
+                  disabled={this.props.rootState.currentUser.incubator.size > 0}
+                  onPurchase={this.buyIncubator}/>
               </div>
             ) : null
           }
