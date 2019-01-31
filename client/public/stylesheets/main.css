@@ -89,6 +89,14 @@ button {
   cursor: pointer;
 }
 
+/* PARK */
+
+.main-park {
+  width: 99%;
+  height: 650px;
+  overflow: scroll;
+}
+
 /* ISLAND */
 
 .island {
