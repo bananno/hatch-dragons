@@ -96,6 +96,10 @@ class Habitat extends Component {
 
     let className = 'habitat active';
 
+    let dragons = this.props.rootState.dragons.filter(dragon => {
+      return dragon.habitat === habitat._id;
+    });
+
     return (
       <Modal onClose={this.onClose}>
         <div className={className}>
@@ -116,8 +120,7 @@ class Habitat extends Component {
           </div>
           <h2>Dragons</h2>
           <div>
-            {/* bug note: when a dragon is sold, this list does not update unless modal is closed and reopened*/}
-            {this.state.dragons.map(dragon => {
+            {dragons.map(dragon => {
               return (
                 <HabitatDragon key={dragon._id} dragon={dragon}
                   setRootState={this.props.setRootState}
