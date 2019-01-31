@@ -32,6 +32,9 @@ class Habitat extends Component {
       this.setState({
         secondsRemaining: 0
       });
+      this.calculateMoney();
+      clearInterval(this.interval);
+      this.interval = setInterval(this.calculateMoney, 1000);
     } else {
       this.makeTimer();
       this.interval = setInterval(this.makeTimer, 1000);
@@ -198,7 +201,6 @@ class Habitat extends Component {
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
               currentMoney={this.state.currentMoney}
-              calculateMoney={this.calculateMoney}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>

@@ -3,15 +3,6 @@ import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
 
 class Habitat extends Component {
-  componentDidMount() {
-    this.props.calculateMoney();
-    this.interval = setInterval(this.props.calculateMoney, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
   onClose = () => {
     this.props.setRootState({
       activeHabitat: null
