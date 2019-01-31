@@ -32,12 +32,12 @@ class Habitat extends Component {
       this.setState({
         secondsRemaining: 0
       });
-      this.calculateMoney();
+      this.timeIncomeBuildup();
       clearInterval(this.interval);
-      this.interval = setInterval(this.calculateMoney, 1000);
+      this.interval = setInterval(this.timeIncomeBuildup, 1000);
     } else {
-      this.makeTimer();
-      this.interval = setInterval(this.makeTimer, 1000);
+      this.timeRemainingConstruction();
+      this.interval = setInterval(this.timeRemainingConstruction, 1000);
     }
   }
 
@@ -45,15 +45,7 @@ class Habitat extends Component {
     clearInterval(this.interval);
   }
 
-  waitingToComplete = () => {
-    return !this.props.habitat.complete && this.state.secondsRemaining > 0;
-  }
-
-  readyToComplete = () => {
-    return !this.props.habitat.complete && this.state.secondsRemaining <= 0;
-  }
-
-  makeTimer = () => {
+  timeRemainingConstruction = () => {
     let times = calculateTime(this.habitat.timestamp, this.habitat.gameModel.buildTime);
 
     this.setState({
@@ -63,6 +55,27 @@ class Habitat extends Component {
     if (times.timeIsDone) {
       clearInterval(this.interval);
     }
+  }
+
+  timeIncomeBuildup = () => {
+    let lastUpdate = this.props.habitat.timestamp;
+    let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
+    let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
+    let totalMoney = this.state.baseMoney + addition;
+    if (totalMoney > this.state.incomeCap) {
+      totalMoney = this.state.incomeCap;
+    }
+    this.setState({
+      currentMoney: totalMoney
+    });
+  }
+
+  waitingToComplete = () => {
+    return !this.props.habitat.complete && this.state.secondsRemaining > 0;
+  }
+
+  readyToComplete = () => {
+    return !this.props.habitat.complete && this.state.secondsRemaining <= 0;
   }
 
   handleClick = () => {
@@ -145,19 +158,6 @@ class Habitat extends Component {
     }
 
     return null;
-  }
-
-  calculateMoney = () => {
-    let lastUpdate = this.props.habitat.timestamp;
-    let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
-    let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
-    let totalMoney = this.state.baseMoney + addition;
-    if (totalMoney > this.state.incomeCap) {
-      totalMoney = this.state.incomeCap;
-    }
-    this.setState({
-      currentMoney: totalMoney
-    });
   }
 
   render () {
