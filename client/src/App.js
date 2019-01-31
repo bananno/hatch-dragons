@@ -91,6 +91,20 @@ class App extends Component {
   }
 
   render() {
+    if (this.props.currentUser == null) {
+      return (
+        <div className="App">
+          <Header rootState={this.state}
+            setRootState={this.setRootState}
+            makePostRequest={this.makePostRequest}/>
+          <Message rootState={this.state}
+            setRootState={this.setRootState}/>
+          <Login rootState={this.state}
+            visitDatabase={this.visitDatabase}/>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <Header rootState={this.state}
@@ -98,8 +112,6 @@ class App extends Component {
           makePostRequest={this.makePostRequest}/>
         <Message rootState={this.state}
           setRootState={this.setRootState}/>
-        <Login rootState={this.state}
-          visitDatabase={this.visitDatabase}/>
         {
           this.state.showMarket
           ?  <Market rootState={this.state}
