@@ -148,6 +148,9 @@ class Habitat extends Component {
     style.width = tempSize[0] * 100;
     style.height = tempSize[1] * 100;
 
+    let showActiveWindow = this.props.rootState.activeHabitat === this.props.habitat
+      && this.props.rootState.activeDragon == null;
+
     return (
       <div className="habitat base">
         <div className={className} onClick={this.handleClick} style={style}>
@@ -159,7 +162,7 @@ class Habitat extends Component {
           })}
         </div>
         {
-          this.props.rootState.activeHabitat === this.props.habitat
+          showActiveWindow
           ? <ActiveHabitat
               dragons={dragons}
               rootState={this.props.rootState}

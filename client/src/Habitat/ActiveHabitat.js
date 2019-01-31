@@ -82,11 +82,6 @@ class Habitat extends Component {
 
   render () {
     let habitat = this.props.rootState.activeHabitat;
-    let activeDragon = this.props.rootState.activeDragon;
-
-    if (habitat == null || activeDragon != null) {
-      return null;
-    }
 
     let className = 'habitat active';
 
