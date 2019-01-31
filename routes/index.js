@@ -88,23 +88,36 @@ function buyIsland(req, res, next) {
 
 function buyHabitat(req, res, next) {
   authenticate(req, res, next, (user) => {
+    let islandId = req.body.island;
     let index = parseInt(req.body.habitatIndex);
     let model = habitatModels[index];
 
-    updateMoney(user, -model.buy, () => {
-      let habitatData = {
-        user: user,
-        gameModel: model.name,
-        timestamp: new Date().getTime(),
-      };
+    Island.findById(islandId, (error, island) => {
+      if (error) {
+        console.log('error');
+        console.log(error);
+        return;
+      }
+      if (!sameUser(island.user, user)) {
+        console.log('wrong user');
+        return;
+      }
+      updateMoney(user, -model.buy, () => {
+        let habitatData = {
+          user: user,
+          island: island,
+          gameModel: model.name,
+          timestamp: new Date().getTime(),
+        };
 
-      Habitat.create(habitatData, (error, habitat) => {
-        if (error) {
-          console.log('error');
-          console.log(error);
-        } else {
-          return res.redirect('/');
-        }
+        Habitat.create(habitatData, (error, habitat) => {
+          if (error) {
+            console.log('error');
+            console.log(error);
+          } else {
+            return res.redirect('/');
+          }
+        });
       });
     });
   });
@@ -392,6 +405,10 @@ function updateMoney(user, amount, callback) {
 
     callback();
   });
+}
+
+function sameUser(user1, user2) {
+  return ('' + (user1._id || user1)) === ('' + (user2._id || user2));
 }
 
 module.exports = router;
