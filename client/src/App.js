@@ -3,7 +3,7 @@ import Header from './Other/header.js';
 import Message from './Other/message.js';
 import Login from './Login/Login.js';
 import Market from './Market/Market.js';
-import Park from './Park/Park.js';
+import Park from './Park/park.js';
 import ActiveDragon from './Dragon/ActiveDragon.js';
 import ActiveIncubator from './Park/ActiveIncubator.js';
 import findModel from './gameModels/findModel';
