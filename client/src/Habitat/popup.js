@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../containers/modal';
-import HabitatDragon from '../Dragon/HabitatDragon';
+import HabitatDragon from '../Dragon/habitatDragon';
 
 const popup = (props) => {
   const onClosePopup = () => {
