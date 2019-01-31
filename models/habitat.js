@@ -6,6 +6,10 @@ const HabitatSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  island: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Island',
+  },
   gameModel: {
     type: String,
     required: true
