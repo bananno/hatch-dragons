@@ -64,6 +64,8 @@ class Market extends Component {
   }
 
   render () {
+    let userMoney = this.props.rootState.currentUser.money;
+
     if (this.props.rootState.currentUser == null) {
       return null;
     }
@@ -109,7 +111,7 @@ class Market extends Component {
                 <h3>Islands</h3>
                 <MarketItem name="Island #1"
                   imageSrc="https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png"
-                  price={0}
+                  price={0} userMoney={userMoney}
                   disabled={this.props.rootState.islands.length > 0}
                   onPurchase={this.buyIsland}/>
               </div>
@@ -120,7 +122,8 @@ class Market extends Component {
             ? (
               <div>
                 <h3>Habitats</h3>
-                <MarketSection models={habitatModels} onPurchase={this.buyHabitat}/>
+                <MarketSection models={habitatModels} onPurchase={this.buyHabitat}
+                  userMoney={userMoney}/>
               </div>
             ) : null
           }
@@ -129,7 +132,8 @@ class Market extends Component {
             ? (
               <div>
                 <h3>Dragons</h3>
-                <MarketSection models={dragonModels} onPurchase={this.buyDragon}/>
+                <MarketSection models={dragonModels} onPurchase={this.buyDragon}
+                  userMoney={userMoney}/>
               </div>
             ) : null
           }
@@ -140,7 +144,7 @@ class Market extends Component {
                 <h3>Buildings</h3>
                 <MarketItem name="Incubator"
                   imageSrc="https://vignette.wikia.nocookie.net/dragonvale/images/5/5e/Nursery1NestNew.png"
-                  price={0}
+                  price={0} userMoney={userMoney}
                   disabled={this.props.rootState.currentUser.incubator.size > 0}
                   onPurchase={this.buyIncubator}/>
               </div>

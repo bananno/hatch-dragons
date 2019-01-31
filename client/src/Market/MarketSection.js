@@ -45,7 +45,7 @@ class MarketSection extends Component {
             return (
               <MarketItem key={i} name={model.name}
                 imageSrc={model.image || model.images[1]}
-                price={model.buy}
+                price={model.buy} userMoney={this.props.userMoney}
                 disabled={false}
                 onPurchase={this.props.onPurchase(index)}/>
             );
