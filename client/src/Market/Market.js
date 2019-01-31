@@ -50,6 +50,12 @@ class Market extends Component {
     });
   }
 
+  onBack = () => {
+    this.setState({
+      view: null
+    });
+  }
+
   render () {
     if (this.props.rootState.currentUser == null) {
       return null;
@@ -59,15 +65,24 @@ class Market extends Component {
       return null;
     }
 
-    return (
-      <Modal onClose={this.onClose}>
-        <div className="market">
-          <h2>MARKET</h2>
-          <div>
-            <div onClick={this.getView('islands')}>islands</div>
-            <div onClick={this.getView('habitats')}>habitats</div>
-            <div onClick={this.getView('dragons')}>dragons</div>
+    if (this.state.view == null) {
+      return (
+        <Modal onClose={this.onClose}>
+          <div className="market">
+            <h2>MARKET</h2>
+            <div>
+              <div onClick={this.getView('islands')}>islands</div>
+              <div onClick={this.getView('habitats')}>habitats</div>
+              <div onClick={this.getView('dragons')}>dragons</div>
+            </div>
           </div>
+        </Modal>
+      );
+    }
+
+    return (
+      <Modal onClose={this.onClose} onBack={this.onBack} backText="MARKET">
+        <div className="market">
           {
             this.state.view === 'islands'
             ? (
