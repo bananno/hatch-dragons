@@ -147,6 +147,17 @@ button {
   background-image: url(../images/arrow-right.png);
 }
 
+/* ISLAND */
+
+.island {
+  display: inline-block;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #24a528;
+  padding: 10px;
+}
+
 /* INCUBATOR */
 
 .incubator.park {
