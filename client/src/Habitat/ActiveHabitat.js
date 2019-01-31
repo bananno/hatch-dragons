@@ -30,7 +30,7 @@ class Habitat extends Component {
       incomePerMinute: incomePerMinute,
       baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
-      incomeCap: findModel('habitat', habitat).incomeCap,
+      incomeCap: habitat.gameModel.incomeCap,
     });
 
     this.calculateMoney();
@@ -89,7 +89,6 @@ class Habitat extends Component {
   render () {
     let habitat = this.props.rootState.activeHabitat;
     let activeDragon = this.props.rootState.activeDragon;
-    let gameModel = findModel('habitat', habitat);
 
     if (habitat == null || activeDragon != null) {
       return null;
@@ -100,9 +99,9 @@ class Habitat extends Component {
     return (
       <Modal onClose={this.onClose}>
         <div className={className}>
-          <img src={gameModel.image} className="main-image" alt=""/>
+          <img src={habitat.gameModel.image} className="main-image" alt=""/>
           <div className="column">
-            <h1 className="main-title">{gameModel.name} Habitat</h1>
+            <h1 className="main-title">{habitat.gameModel.name} Habitat</h1>
             {
               !habitat.complete
               ? <p>UNDER CONSTRUCTION</p>

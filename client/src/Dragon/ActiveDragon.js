@@ -45,7 +45,7 @@ class ActiveDragon extends Component {
 
     let imageSrc = gameModel.images[dragon.level];
 
-    let backText = findModel('habitat', this.props.rootState.activeHabitat).name + ' Habitat';
+    let backText = this.props.rootState.activeHabitat.gameModel.name + ' Habitat';
 
     return (
       <Modal onClose={this.onClose} onBack={this.onBack} backText={backText}>

@@ -9,8 +9,6 @@ class ParkHabitat extends Component {
 
   habitat = this.props.habitat
 
-  gameModel = findModel('habitat', this.habitat)
-
   componentDidMount() {
     if (this.props.habitat.complete) {
       this.setState({
@@ -35,7 +33,7 @@ class ParkHabitat extends Component {
   }
 
   makeTimer = () => {
-    let times = calculateTime(this.habitat.timestamp, this.gameModel.buildTime);
+    let times = calculateTime(this.habitat.timestamp, this.habitat.gameModel.buildTime);
 
     this.setState({
       secondsRemaining: times.secondsRemaining
@@ -74,9 +72,9 @@ class ParkHabitat extends Component {
     let dragonModel = findModel('dragon', dragon);
 
     let elementOverlap = (() => {
-      for (let i in this.gameModel.elements) {
+      for (let i in this.habitat.gameModel.elements) {
         for (let j in dragonModel.elements) {
-          if (this.gameModel.elements[i] === dragonModel.elements[j]) {
+          if (this.habitat.gameModel.elements[i] === dragonModel.elements[j]) {
             return true;
           }
         }
@@ -140,7 +138,7 @@ class ParkHabitat extends Component {
     }
 
     let style = {
-      backgroundImage: 'url("' + this.gameModel.image + '")'
+      backgroundImage: 'url("' + this.habitat.gameModel.image + '")'
     };
 
     return (

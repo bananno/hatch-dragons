@@ -7,6 +7,7 @@ import Park from './Park/Park.js';
 import ActiveHabitat from './Habitat/ActiveHabitat.js';
 import ActiveDragon from './Dragon/ActiveDragon.js';
 import ActiveIncubator from './Park/ActiveIncubator.js';
+import findModel from './gameModels/findModel';
 
 class App extends Component {
   state = {
@@ -68,7 +69,7 @@ class App extends Component {
     let habitat = {};
 
     habitat.complete = originalData.complete;
-    habitat.gameModel = originalData.gameModel;
+    habitat.gameModel = findModel('habitat', originalData.gameModel);
     habitat.island = originalData.island;
     habitat.money = originalData.money;
     habitat.timestamp = originalData.timestamp;
