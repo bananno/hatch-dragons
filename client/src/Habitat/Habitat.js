@@ -32,20 +32,21 @@ class Habitat extends Component {
       this.setState({
         secondsRemaining: 0
       });
-      this.timeIncomeBuildup();
-      clearInterval(this.interval);
-      this.interval = setInterval(this.timeIncomeBuildup, 1000);
+      this.timerCalculateIncome();
+      clearInterval(this.constructionTimer);
+      this.incomeTimer = setInterval(this.timerCalculateIncome, 1000);
     } else {
-      this.timeRemainingConstruction();
-      this.interval = setInterval(this.timeRemainingConstruction, 1000);
+      this.timerRemainingConstruction();
+      this.constructionTimer = setInterval(this.timerRemainingConstruction, 1000);
     }
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.incomeTimer);
+    clearInterval(this.constructionTimer);
   }
 
-  timeRemainingConstruction = () => {
+  timerRemainingConstruction = () => {
     let times = calculateTime(this.habitat.timestamp, this.habitat.gameModel.buildTime);
 
     this.setState({
@@ -57,7 +58,7 @@ class Habitat extends Component {
     }
   }
 
-  timeIncomeBuildup = () => {
+  timerCalculateIncome = () => {
     let lastUpdate = this.props.habitat.timestamp;
     let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
     let addition = Math.floor(this.state.incomePerMinute * minutesElapsed);
@@ -70,26 +71,12 @@ class Habitat extends Component {
     });
   }
 
-  waitingToComplete = () => {
+  isWaitingToComplete = () => {
     return !this.props.habitat.complete && this.state.secondsRemaining > 0;
   }
 
-  readyToComplete = () => {
+  isReadyToComplete = () => {
     return !this.props.habitat.complete && this.state.secondsRemaining <= 0;
-  }
-
-  handleClick = () => {
-    if (this.props.rootState.placeDragon) {
-      this.placeDragon();
-    } else if (this.props.rootState.buyHabitat != null) {
-      return;
-    } else if (this.readyToComplete()) {
-      this.completeConstruction();
-    } else {
-      this.props.setRootState({
-        activeHabitat: this.props.habitat
-      });
-    }
   }
 
   isEligibleForPlacingDragon = () => {
@@ -119,13 +106,27 @@ class Habitat extends Component {
     return elementOverlap;
   }
 
-  completeConstruction = () => {
+  onClick = () => {
+    if (this.props.rootState.placeDragon) {
+      this.onPlaceDragon();
+    } else if (this.props.rootState.buyHabitat != null) {
+      return;
+    } else if (this.isReadyToComplete()) {
+      this.onCompleteConstruction();
+    } else {
+      this.props.setRootState({
+        activeHabitat: this.props.habitat
+      });
+    }
+  }
+
+  onCompleteConstruction = () => {
     this.props.makePostRequest('/completeHabitat', {
       habitat: this.habitat._id
     });
   }
 
-  placeDragon = () => {
+  onPlaceDragon = () => {
     if (!this.isEligibleForPlacingDragon()) {
       return;
     }
@@ -138,7 +139,7 @@ class Habitat extends Component {
     });
   }
 
-  sellHabitat = () => {
+  onSellHabitat = () => {
     this.props.makePostRequest('/sellHabitat', {
       habitatId: this.props.habitat._id
     }, {
@@ -146,14 +147,14 @@ class Habitat extends Component {
     });
   }
 
-  collectMoney = () => {
+  onCollectMoney = () => {
     this.props.makePostRequest('/collectHabitat', {
       habitatId: this.props.habitat._id
     });
   }
 
   getConstructionDisplay = () => {
-    if (this.waitingToComplete()) {
+    if (this.isWaitingToComplete()) {
       return (
         <div className="construction-waiting">
           <span>UNDER CONSTRUCATION</span><br/>
@@ -162,7 +163,7 @@ class Habitat extends Component {
       );
     }
 
-    if (this.readyToComplete()) {
+    if (this.isReadyToComplete()) {
       return (
         <div className="construction-ready">
           <span>READY</span><br/>
@@ -200,7 +201,7 @@ class Habitat extends Component {
 
     return (
       <div className="habitat base">
-        <div className={className} onClick={this.handleClick} style={style}>
+        <div className={className} onClick={this.onClick} style={style}>
           {this.getConstructionDisplay()}
           {dragons.map(dragon => {
             return (
@@ -215,8 +216,8 @@ class Habitat extends Component {
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
               currentMoney={this.state.currentMoney}
-              sellHabitat={this.sellHabitat}
-              collectMoney={this.collectMoney}
+              sellHabitat={this.onSellHabitat}
+              collectMoney={this.onCollectMoney}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>
