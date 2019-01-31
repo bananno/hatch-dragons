@@ -2,8 +2,10 @@ import React from 'react';
 import Island from './Island';
 
 const park = (props) => {
+  let className = 'main-park zoom-' + props.rootState.zoom;
+
   return (
-    <div className="main-park">
+    <div className={className}>
       {
         props.rootState.islands.map(island => {
           return (

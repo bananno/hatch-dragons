@@ -14,6 +14,7 @@ class App extends Component {
     islands: [],
     habitats: [],
     dragons: [],
+    zoom: 2,
     showMarket: false,
     showIncubator: false,
     placeDragon: null,

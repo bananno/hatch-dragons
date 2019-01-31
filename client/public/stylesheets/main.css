@@ -104,9 +104,24 @@ button {
   margin: 10px;
   background-image: url(https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png);
   background-repeat: no-repeat;
+}
+
+.main-park.zoom-1 .island {
+  width: 300px;
+  height: 300px;
+  background-size: 300px 300px;
+}
+
+.main-park.zoom-2 .island {
   width: 600px;
   height: 600px;
   background-size: 600px 600px;
+}
+
+.main-park.zoom-3 .island {
+  width: 900px;
+  height: 900px;
+  background-size: 900px 900px;
 }
 
 /* INCUBATOR */
