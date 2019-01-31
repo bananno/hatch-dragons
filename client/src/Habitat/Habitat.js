@@ -3,7 +3,7 @@ import MiniDragon from '../Dragon/MiniDragon';
 import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
 import calculateTime from '../tools/calculateTime';
-import ActiveHabitat from './ActiveHabitat.js';
+import HabitatPopup from './popup.js';
 
 class Habitat extends Component {
   state = {}
@@ -211,7 +211,7 @@ class Habitat extends Component {
         </div>
         {
           showActiveWindow
-          ? <ActiveHabitat
+          ? <HabitatPopup
               habitat={this.props.habitat}
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
