@@ -13,6 +13,7 @@ const marketItem = (props) => {
         ? (<div className="market-price">{props.price}</div>)
         : (<div className="market-price-free">FREE</div>)
       }
+      <br/>
       <button onClick={props.onPurchase} disabled={props.disabled}>{buttonText}</button>
     </div>
   );

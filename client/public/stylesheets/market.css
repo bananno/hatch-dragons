@@ -30,7 +30,7 @@
 
 .market-item, .market-scroll {
   display: inline-block;
-  height: 150px;
+  height: 160px;
   vertical-align: top;
   margin: 5px;
   padding: 5px;
@@ -74,4 +74,17 @@
 
 .arrow-right.available {
   background-image: url(../images/arrow-right.png);
+}
+
+.market-price,
+.market-price-free {
+  display: inline-block;
+  line-height: 25px;
+}
+
+.market-price {
+  background-image: url(../images/coin.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  padding-left: 28px;
 }
