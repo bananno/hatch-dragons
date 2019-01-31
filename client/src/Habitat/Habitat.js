@@ -8,11 +8,9 @@ import HabitatPopup from './popup.js';
 class Habitat extends Component {
   state = {}
 
-  habitat = this.props.habitat
-
   componentDidMount() {
     let dragons = this.props.rootState.dragons.filter(dragon => {
-      return dragon.habitat === this.habitat._id;
+      return dragon.habitat === this.props.habitat._id;
     });
 
     let incomePerMinute = 0;
@@ -47,14 +45,15 @@ class Habitat extends Component {
   }
 
   timerRemainingConstruction = () => {
-    let times = calculateTime(this.habitat.timestamp, this.habitat.gameModel.buildTime);
+    let times = calculateTime(this.props.habitat.timestamp,
+      this.props.habitat.gameModel.buildTime);
 
     this.setState({
       secondsRemaining: times.secondsRemaining
     });
 
     if (times.timeIsDone) {
-      clearInterval(this.interval);
+      clearInterval(this.constructionTimer);
     }
   }
 
@@ -95,9 +94,9 @@ class Habitat extends Component {
     let dragonModel = findModel('dragon', dragon);
 
     let elementOverlap = (() => {
-      for (let i in this.habitat.gameModel.elements) {
+      for (let i in this.props.habitat.gameModel.elements) {
         for (let j in dragonModel.elements) {
-          if (this.habitat.gameModel.elements[i] === dragonModel.elements[j]) {
+          if (this.props.habitat.gameModel.elements[i] === dragonModel.elements[j]) {
             return true;
           }
         }
@@ -126,7 +125,7 @@ class Habitat extends Component {
 
   onCompleteConstruction = () => {
     this.props.makePostRequest('/completeHabitat', {
-      habitat: this.habitat._id
+      habitat: this.props.habitat._id
     });
   }
 
@@ -137,7 +136,7 @@ class Habitat extends Component {
 
     this.props.makePostRequest('/placeDragon', {
       dragon: this.props.rootState.placeDragon._id,
-      habitat: this.habitat._id
+      habitat: this.props.habitat._id
     }, {
       placeDragon: null
     });
@@ -194,7 +193,7 @@ class Habitat extends Component {
 
   render () {
     let dragons = this.props.rootState.dragons.filter(dragon => {
-      return dragon.habitat === this.habitat._id;
+      return dragon.habitat === this.props.habitat._id;
     });
 
     let className = 'habitat park';
@@ -204,10 +203,10 @@ class Habitat extends Component {
     }
 
     let style = {
-      backgroundImage: 'url("' + this.habitat.gameModel.image + '")'
+      backgroundImage: 'url("' + this.props.habitat.gameModel.image + '")'
     };
 
-    let tempSize = this.habitat.gameModel.size;
+    let tempSize = this.props.habitat.gameModel.size;
 
     style.backgroundSize = tempSize[0] * 100;
     style.width = tempSize[0] * 100;
