@@ -1,60 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Modal from '../containers/modal';
 import HabitatDragon from '../Dragon/HabitatDragon';
 
-class Habitat extends Component {
-  onClose = () => {
-    this.props.setRootState({
+const popup = (props) => {
+  const onClosePopup = () => {
+    props.setRootState({
       activeHabitat: null
     });
-  }
+  };
 
-  getMoneyInfo = () => {
-    let money = Math.floor(this.props.currentMoney);
+  const getMoneyInfo = () => {
+    let money = Math.floor(props.currentMoney);
     let disabled = money === 0;
     return (
       <p>
-        <b>Income:</b> {this.props.incomePerMinute} per minute<br/>
+        <b>Income:</b> {props.incomePerMinute} per minute<br/>
         <b>Current money:</b> {money}<br/>
-        <button onClick={this.props.collectMoney} disabled={disabled}>collect</button>
+        <button onClick={props.collectMoney} disabled={disabled}>collect</button>
       </p>
     );
-  }
+  };
 
-  render () {
-    return (
-      <Modal onClose={this.onClose}>
-        <div className="habitat active">
-          <img src={this.props.habitat.gameModel.image} className="main-image" alt=""/>
-          <div className="column">
-            <h1 className="main-title">{this.props.habitat.gameModel.name} Habitat</h1>
-            {
-              !this.props.habitat.complete
-              ? <p>UNDER CONSTRUCTION</p>
-              : null
-            }
-            {this.getMoneyInfo()}
-            {
-              this.props.dragons.length === 0
-              ? <button onClick={this.props.sellHabitat}>sell</button>
-              : null
-            }
-          </div>
-          <h2>Dragons</h2>
-          <div>
-            {this.props.dragons.map(dragon => {
-              return (
-                <HabitatDragon key={dragon._id} dragon={dragon}
-                  setRootState={this.props.setRootState}
-                  makePostRequest={this.props.makePostRequest}
-                  rootState={this.props.rootState}/>
-              );
-            })}
-          </div>
+  return (
+    <Modal onClose={onClosePopup}>
+      <div className="habitat active">
+        <img src={props.habitat.gameModel.image} className="main-image" alt=""/>
+        <div className="column">
+          <h1 className="main-title">{props.habitat.gameModel.name} Habitat</h1>
+          {
+            !props.habitat.complete
+            ? <p>UNDER CONSTRUCTION</p>
+            : null
+          }
+          {getMoneyInfo()}
+          {
+            props.dragons.length === 0
+            ? <button onClick={props.sellHabitat}>sell</button>
+            : null
+          }
         </div>
-      </Modal>
-    );
-  }
+        <h2>Dragons</h2>
+        <div>
+          {props.dragons.map(dragon => {
+            return (
+              <HabitatDragon key={dragon._id} dragon={dragon}
+                setRootState={props.setRootState}
+                makePostRequest={props.makePostRequest}
+                rootState={props.rootState}/>
+            );
+          })}
+        </div>
+      </div>
+    </Modal>
+  );
 }
 
-export default Habitat;
+export default popup;
