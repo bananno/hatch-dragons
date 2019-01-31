@@ -5,7 +5,7 @@ import findModel from '../gameModels/findModel';
 import calculateTime from '../tools/calculateTime';
 import ActiveHabitat from './ActiveHabitat.js';
 
-class ParkHabitat extends Component {
+class Habitat extends Component {
   state = {}
 
   habitat = this.props.habitat
@@ -170,4 +170,4 @@ class ParkHabitat extends Component {
   }
 }
 
-export default ParkHabitat;
+export default Habitat;

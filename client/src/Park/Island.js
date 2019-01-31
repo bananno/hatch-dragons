@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ParkIncubator from './parkIncubator';
-import ParkHabitat from '../Habitat/ParkHabitat';
+import Habitat from '../Habitat/Habitat';
 
 class Island extends Component {
   onClick = () => {
@@ -55,7 +55,7 @@ class Island extends Component {
           {
             habitats.map(habitat => {
               return (
-                <ParkHabitat key={habitat._id} habitat={habitat}
+                <Habitat key={habitat._id} habitat={habitat}
                   rootState={this.props.rootState}
                   setRootState={this.props.setRootState}
                   makePostRequest={this.props.makePostRequest}/>
