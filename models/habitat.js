@@ -9,6 +9,7 @@ const HabitatSchema = new mongoose.Schema({
   island: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Island',
+    required: true
   },
   gameModel: {
     type: String,
