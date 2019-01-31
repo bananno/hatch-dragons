@@ -3,6 +3,7 @@ import MiniDragon from '../Dragon/MiniDragon';
 import Timer from '../containers/timer';
 import findModel from '../gameModels/findModel';
 import calculateTime from '../tools/calculateTime';
+import ActiveHabitat from './ActiveHabitat.js';
 
 class ParkHabitat extends Component {
   state = {}
@@ -155,6 +156,13 @@ class ParkHabitat extends Component {
             <MiniDragon key={dragon._id} dragon={dragon}/>
           );
         })}
+        {
+          this.props.rootState.activeHabitat === this.props.habitat
+          ? <ActiveHabitat rootState={this.props.rootState}
+              setRootState={this.props.setRootState}
+              makePostRequest={this.props.makePostRequest}/>
+          : null
+        }
       </div>
     );
   }

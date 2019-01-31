@@ -4,7 +4,6 @@ import Message from './Other/message.js';
 import Login from './Login/Login.js';
 import Market from './Market/Market.js';
 import Park from './Park/Park.js';
-import ActiveHabitat from './Habitat/ActiveHabitat.js';
 import ActiveDragon from './Dragon/ActiveDragon.js';
 import ActiveIncubator from './Park/ActiveIncubator.js';
 import findModel from './gameModels/findModel';
@@ -112,13 +111,7 @@ class App extends Component {
         <Park rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
-        {
-          this.state.activeHabitat
-          ? <ActiveHabitat rootState={this.state}
-              setRootState={this.setRootState}
-              makePostRequest={this.makePostRequest}/>
-          : null
-        }
+
         <ActiveDragon rootState={this.state}
           setRootState={this.setRootState}
           makePostRequest={this.makePostRequest}/>
