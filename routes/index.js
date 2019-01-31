@@ -264,8 +264,7 @@ function updateHabitatMoney(habitatId, newTimeStamp, user, next) {
 
         if (user) {
           habitatData.money = 0;
-          let userTotalMoney = user.money + totalMoneyInHabitat;
-          user.update({ money: userTotalMoney }, () => {
+          updateMoney(user, totalMoneyInHabitat, () => {
             habitat.update(habitatData, next);
           });
         } else {
