@@ -70,10 +70,17 @@ class Market extends Component {
         <Modal onClose={this.onClose}>
           <div className="market">
             <h2>MARKET</h2>
-            <div>
-              <div onClick={this.getView('islands')}>islands</div>
-              <div onClick={this.getView('habitats')}>habitats</div>
-              <div onClick={this.getView('dragons')}>dragons</div>
+            <div onClick={this.getView('islands')} className="market-view">
+              <img src="https://vignette.wikia.nocookie.net/dragonvale/images/e/e5/IslandsIconNew.png"
+                alt="islands"/>
+            </div>
+            <div onClick={this.getView('habitats')} className="market-view">
+              <img src="https://vignette.wikia.nocookie.net/dragonvale/images/1/16/HabitatsIconNew.png"
+                alt="habitats"/>
+            </div>
+            <div onClick={this.getView('dragons')} className="market-view">
+              <img src="https://vignette.wikia.nocookie.net/dragonvale/images/a/af/DragonsIconNew.png"
+                alt="dragons"/>
             </div>
           </div>
         </Modal>

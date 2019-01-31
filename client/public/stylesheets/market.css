@@ -1,3 +1,7 @@
+.market {
+  text-align: center;
+}
+
 .market h2 {
   font-size: 30px;
   font-weight: bold;
@@ -8,6 +12,16 @@
   margin: 20px 0 10px 0;
   font-size: 20px;
   font-weight: bold;
+}
+
+.market-view {
+  display: inline-block;
+  cursor: pointer;
+  margin: 20px 10px;
+}
+
+.market-view img {
+  height: 200px;
 }
 
 .market-section {
