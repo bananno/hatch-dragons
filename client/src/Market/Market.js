@@ -101,7 +101,8 @@ class Market extends Component {
                     <img src="https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png"
                       alt="Island #1"/>
                   </div>
-                  <button onClick={this.buyIsland}>buy</button>
+                  <button onClick={this.buyIsland}
+                    disabled={this.props.rootState.islands.length > 0}>claim</button>
                 </div>
               </div>
             ) : null
