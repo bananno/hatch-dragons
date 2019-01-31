@@ -117,6 +117,7 @@ class Habitat extends Component {
           </div>
           <h2>Dragons</h2>
           <div>
+            {/* bug note: when a dragon is sold, this list does not update unless modal is closed and reopened*/}
             {this.state.dragons.map(dragon => {
               return (
                 <HabitatDragon key={dragon._id} dragon={dragon}
