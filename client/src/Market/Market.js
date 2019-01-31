@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../containers/modal';
 import MarketSection from './MarketSection';
+import MarketItem from './marketItem';
 import habitatModels from '../gameModels/habitats';
 import dragonModels from '../gameModels/dragons';
 
@@ -104,17 +105,12 @@ class Market extends Component {
           {
             this.state.view === 'islands'
             ? (
-              <div>
+              <div className="market-section">
                 <h3>Islands</h3>
-                <div className="market-item">
-                  <h4>Island #1</h4>
-                  <div className="image-frame">
-                    <img src="https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png"
-                      alt="Island #1"/>
-                  </div>
-                  <button onClick={this.buyIsland}
-                    disabled={this.props.rootState.islands.length > 0}>claim</button>
-                </div>
+                <MarketItem name="Island #1"
+                  imageSrc="https://vignette.wikia.nocookie.net/dragonvale/images/4/4f/StandardIslandThemeWithPortal.png"
+                  disabled={this.props.rootState.islands.length > 0}
+                  onPurchase={this.buyIsland}/>
               </div>
             ) : null
           }
