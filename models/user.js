@@ -15,7 +15,17 @@ var UserSchema = new mongoose.Schema({
   money: {
     type: Number,
     default: 200,
-  }
+  },
+  incubator: {
+    size: {
+      type: Number,
+      default: 0,
+    },
+    island: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Island',
+    },
+  },
 });
 
 // authenticate input against database
