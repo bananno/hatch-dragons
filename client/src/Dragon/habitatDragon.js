@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import findModel from '../gameModels/findModel';
 
-class Dragon extends Component {
-  handleClick = () => {
-    this.props.setRootState({
-      activeDragon: this.props.dragon
+const habitatDragon = (props) => {
+  const onClick = () => {
+    props.setRootState({
+      activeDragon: props.dragon
     });
-  }
+  };
 
-  render () {
-    let dragon = this.props.dragon;
+  let gameModel = findModel('dragon', props.dragon);
+  let className = 'dragon habitat';
+  let title = gameModel.name + ' Dragon';
+  let imageSrc = gameModel.images[props.dragon.level];
 
-    let gameModel = findModel('dragon', dragon);
+  return (
+    <div className={className} onClick={onClick}>
+      <h3>{title}</h3>
+      <img src={imageSrc} alt={title}/>
+    </div>
+  );
+};
 
-    let className = 'dragon habitat';
-
-    return (
-      <div className={className} onClick={this.handleClick}>
-        <h3>{this.props.dragon.gameModel} Dragon</h3>
-        <img src={gameModel.images[dragon.level]} alt=""/>
-      </div>
-    );
-  }
-}
-
-export default Dragon;
+export default habitatDragon;
