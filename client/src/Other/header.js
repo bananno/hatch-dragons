@@ -16,6 +16,22 @@ const header = (props) => {
     props.makePostRequest('/logout');
   };
 
+  const onZoomOut = () => {
+    if (props.rootState.zoom > 1) {
+      props.setRootState({
+        zoom: props.rootState.zoom - 1
+      });
+    }
+  }
+
+  const onZoomIn = () => {
+    if (props.rootState.zoom < 3) {
+      props.setRootState({
+        zoom: props.rootState.zoom + 1
+      });
+    }
+  }
+
   const getMarketButton = () => {
     if (!currentlyLoggedIn) {
       return null;
@@ -24,7 +40,22 @@ const header = (props) => {
     return (
       <button onClick={openMarket} disabled={disableButtons}>MARKET</button>
     );
-  }
+  };
+
+  const getZoomOptions = () => {
+    if (!currentlyLoggedIn) {
+      return null;
+    }
+
+    return (
+      <div>
+        Zoom:<br/>
+        <span onClick={onZoomOut}>-</span>
+        {props.rootState.zoom}
+        <span onClick={onZoomIn}>+</span>
+      </div>
+    );
+  };
 
   const getMoneyInfo = () => {
     if (!currentlyLoggedIn) {
@@ -36,7 +67,7 @@ const header = (props) => {
         {Math.round(props.rootState.currentUser.money)}
       </div>
     );
-  }
+  };
 
   const getCurrentUserInfo = () => {
     if (!currentlyLoggedIn) {
@@ -49,7 +80,7 @@ const header = (props) => {
         {props.rootState.currentUser.username}
       </p>
     );
-  }
+  };
 
   const getLogoutButton = () => {
     if (props.rootState.currentUser == null) {
@@ -59,13 +90,14 @@ const header = (props) => {
     return (
       <button onClick={clickLogout} disabled={disableButtons}>logout</button>
     );
-  }
+  };
 
   return (
     <div className="page-header">
       <h1>Hatch Dragons</h1>
       <div>
         {getMarketButton()}
+        {getZoomOptions()}
       </div>
       <div>
         {getMoneyInfo()}
