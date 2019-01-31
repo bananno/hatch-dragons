@@ -115,6 +115,8 @@ class Habitat extends Component {
       return;
     } else if (this.isReadyToComplete()) {
       this.onCompleteConstruction();
+    } else if (this.state.clickToCollect) {
+      this.onCollectMoney();
     } else {
       this.props.setRootState({
         activeHabitat: this.props.habitat
