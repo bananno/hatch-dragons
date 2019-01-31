@@ -5,15 +5,12 @@ import calculateTime from '../tools/calculateTime';
 
 class Habitat extends Component {
   state = {
-    incomeCap: 0,
     money: 0
   }
 
   componentDidMount() {
     this.setState({
-      baseMoney: this.props.rootState.activeHabitat.money,
       money: this.props.rootState.activeHabitat.money,
-      incomeCap: this.props.habitat.gameModel.incomeCap,
     });
 
     this.calculateMoney();
@@ -28,9 +25,9 @@ class Habitat extends Component {
     let lastUpdate = this.props.rootState.activeHabitat.timestamp;
     let minutesElapsed = calculateTime(lastUpdate).minutesElapsedExact;
     let addition = Math.floor(this.props.incomePerMinute * minutesElapsed);
-    let totalMoney = this.state.baseMoney + addition;
-    if (totalMoney > this.state.incomeCap) {
-      totalMoney = this.state.incomeCap;
+    let totalMoney = this.props.baseMoney + addition;
+    if (totalMoney > this.props.incomeCap) {
+      totalMoney = this.props.incomeCap;
     }
     this.setState({
       money: totalMoney

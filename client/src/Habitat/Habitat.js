@@ -23,6 +23,8 @@ class Habitat extends Component {
 
     this.setState({
       incomePerMinute: incomePerMinute,
+      baseMoney: this.props.habitat.money,
+      incomeCap: this.props.habitat.gameModel.incomeCap,
     });
 
     if (this.props.habitat.complete) {
@@ -181,6 +183,8 @@ class Habitat extends Component {
               habitat={this.props.habitat}
               dragons={dragons}
               incomePerMinute={this.state.incomePerMinute}
+              baseMoney={this.state.baseMoney}
+              incomeCap={this.state.incomeCap}
               rootState={this.props.rootState}
               setRootState={this.props.setRootState}
               makePostRequest={this.props.makePostRequest}/>
