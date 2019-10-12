@@ -6,10 +6,11 @@ I created this app for practice. It's based on the mobile app "DragonVale" by Ba
 
 You will need to install `yarn` and `concurrently` if not already installed.
 
-Download and install:
+Download and install app:
 ```
 git clone git@github.com:bananno/hatch-dragons.git
 cd hatch-dragons
+cd client
 yarn install
 cd ..
 yarn install
