@@ -1,0 +1,14 @@
+{
+  "name": "hatch-dragons",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd server && npm install && cd ../client && npm install",
+    "start": "concurrently --kill-others-on-fail \"npm run start:server\" \"npm run start:client\"",
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

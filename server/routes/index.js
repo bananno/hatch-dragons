@@ -6,8 +6,8 @@ const Island = require('../models/island');
 const Habitat = require('../models/habitat');
 const Dragon = require('../models/dragon');
 
-const habitatModels = require('../client/src/gameModels/habitats.js');
-const dragonModels = require('../client/src/gameModels/dragons.js');
+const habitatModels = require('../../client/src/gameModels/habitats.js');
+const dragonModels = require('../../client/src/gameModels/dragons.js');
 
 router.get('/getData', getData);
 

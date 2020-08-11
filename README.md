@@ -4,22 +4,21 @@ I created this app for practice. It's based on the mobile app "DragonVale" by Ba
 
 ## Run locally
 
-You will need to install `yarn` and `concurrently` if not already installed.
-
 Download and install app:
 ```
 git clone git@github.com:bananno/hatch-dragons.git
 cd hatch-dragons
-cd client
-yarn install
-cd ..
-yarn install
+npm install
 ```
 
-Start the database and server in separate windows:
+A mongodb instance must be running in a separate tab:
 ```
 mongod
-yarn dev
+```
+
+Start server:
+```
+npm start
 ```
 
 Local address will open automatically:
